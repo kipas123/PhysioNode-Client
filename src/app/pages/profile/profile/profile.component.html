@@ -1,0 +1,66 @@
+<div class="row">
+  <div class="col-lg-6">
+    <nb-card>
+      <nb-card-header>Nick Jones</nb-card-header>
+      <nb-card-body>
+        <p>Twój identyfikator: #453424</p>
+        <p>Grupa: 3a</p>
+        <p>Twój fizjoterapeuta: Patryk Kowalski</p>
+        <p>Adres e-mail: kowalski@gmail.com</p>
+      
+      </nb-card-body>
+    </nb-card>
+    
+  </div>
+    <div class="col-lg-6">
+      <nb-card>
+        <nb-card-header>Dane osobowe: </nb-card-header>
+        <nb-card-body>
+
+          <div class="full-name-inputs">
+            <input type="text" nbInput fullWidth placeholder="Imię">
+            <input type="text" nbInput fullWidth placeholder="Nazwisko">
+            <input nbInput
+               placeholder="Data urodzenia"
+               [nbDatepicker]="formpicker">
+        <nb-datepicker #formpicker></nb-datepicker>
+        <br/>
+        <button style="float: right; margin-top: 5px;" nbButton status="success">Success</button>
+          </div>
+          <!-- <input type="password" nbInput fullWidth placeholder="Password">
+          <input type="text" nbInput fullWidth shape="rectangle" placeholder="Rectangle border">
+          <input type="text" nbInput fullWidth shape="semi-round" placeholder="Semi-round border">
+          <input type="text" nbInput fullWidth shape="round" placeholder="Rounded border">
+          <input type="text" nbInput fullWidth placeholder="Disabled input" disabled/>
+          <textarea rows="5" nbInput fullWidth shape="round"  placeholder="Text Area"></textarea>
+          <input type="text" nbInput fullWidth fieldSize="small"  placeholder="Small Input">
+          <input type="text" nbInput fullWidth fieldSize="medium"  placeholder="Medium Input">
+          <input type="text" nbInput fullWidth fieldSize="large"  placeholder="Large Input"> -->
+        </nb-card-body>
+      </nb-card>
+      <nb-card>
+        <nb-card-header>Zmień hasło: </nb-card-header>
+        <nb-card-body>
+
+          <div class="full-name-inputs">
+            <input type="text" nbInput fullWidth placeholder="Stare hasło">
+            <input type="text" nbInput fullWidth placeholder="Nowe hasło">
+            <input type="text" nbInput fullWidth placeholder="Powtórz nowe hasło">
+        <br/>
+        <button style="float: right; margin-top: 5px;" nbButton status="info">Zmień hasło</button>
+          </div>
+          <!-- <input type="password" nbInput fullWidth placeholder="Password">
+          <input type="text" nbInput fullWidth shape="rectangle" placeholder="Rectangle border">
+          <input type="text" nbInput fullWidth shape="semi-round" placeholder="Semi-round border">
+          <input type="text" nbInput fullWidth shape="round" placeholder="Rounded border">
+          <input type="text" nbInput fullWidth placeholder="Disabled input" disabled/>
+          <textarea rows="5" nbInput fullWidth shape="round"  placeholder="Text Area"></textarea>
+          <input type="text" nbInput fullWidth fieldSize="small"  placeholder="Small Input">
+          <input type="text" nbInput fullWidth fieldSize="medium"  placeholder="Medium Input">
+          <input type="text" nbInput fullWidth fieldSize="large"  placeholder="Large Input"> -->
+        </nb-card-body>
+      </nb-card>
+    </div>
+  
+  </div>
+  
