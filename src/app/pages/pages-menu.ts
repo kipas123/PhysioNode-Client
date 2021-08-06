@@ -20,6 +20,14 @@ export const MENU_ITEMS: NbMenuItem[] = [
     link: '/pages/treatment',
   },
   {
+    title: 'Zarządzanie grupami',
+    link: '/pages/groupsManagement',          
+  },
+  {
+    title: 'Zarządzanie grupą',
+    link: '/pages/groupManagement',          
+  },
+  {
     title: 'Auth',
     icon: 'lock-outline',
     children: [
