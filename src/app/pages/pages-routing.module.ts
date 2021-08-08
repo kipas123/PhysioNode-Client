@@ -3,10 +3,11 @@ import { NgModule } from '@angular/core';
 
 import { PagesComponent } from './pages.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { ProfileComponent } from './profile/profile/profile.component';
-import { UserTreatmentComponent } from './user-treatment/user-treatment.component';
-import { GroupsManagementComponent } from './groups/groups-management/groups-management.component';
-import { GroupManagementComponent } from './groups/group-management/group-management.component';
+import { ProfileComponent } from './user/profile-management/profile.component';
+import { UserTreatmentComponent } from './user/user-treatments/user-treatment.component';
+import { GroupsManagementComponent } from './physiotherapist/groups-management/groups-management.component';
+import { GroupManagementComponent } from './physiotherapist/group-management/group-management.component';
+import { TreatmentComponent } from './user/user-treatment/treatment.component';
 
 const routes: Routes = [{
   path: '',
@@ -21,7 +22,7 @@ const routes: Routes = [{
       component: ProfileComponent,
     },
     {
-      path: 'treatment',
+      path: 'treatments',
       component: UserTreatmentComponent,
     },
     {
@@ -31,6 +32,10 @@ const routes: Routes = [{
     {
       path: 'groupManagement',
       component: GroupManagementComponent,
+    },
+    {
+      path: 'treatment',
+      component: TreatmentComponent,
     },
     {
       path: '',

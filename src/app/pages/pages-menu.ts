@@ -17,7 +17,7 @@ export const MENU_ITEMS: NbMenuItem[] = [
   },
   {
     title: 'Moje leczenie',
-    link: '/pages/treatment',
+    link: '/pages/treatments',
   },
   {
     title: 'Zarządzanie grupami',
@@ -26,6 +26,10 @@ export const MENU_ITEMS: NbMenuItem[] = [
   {
     title: 'Zarządzanie grupą',
     link: '/pages/groupManagement',          
+  },
+  {
+    title: 'Choroba',
+    link: '/pages/treatment',          
   },
   {
     title: 'Auth',
