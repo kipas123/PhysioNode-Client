@@ -8,6 +8,7 @@ import { UserTreatmentComponent } from './user/user-treatments/user-treatment.co
 import { GroupsManagementComponent } from './physiotherapist/groups-management/groups-management.component';
 import { GroupManagementComponent } from './physiotherapist/group-management/group-management.component';
 import { TreatmentComponent } from './user/user-treatment/treatment.component';
+import { TreatmentManagementComponent } from './physiotherapist/treatment-management/treatment-management.component';
 
 const routes: Routes = [{
   path: '',
@@ -36,6 +37,10 @@ const routes: Routes = [{
     {
       path: 'treatment',
       component: TreatmentComponent,
+    },
+    {
+      path: 'treatment-management',
+      component: TreatmentManagementComponent,
     },
     {
       path: '',
