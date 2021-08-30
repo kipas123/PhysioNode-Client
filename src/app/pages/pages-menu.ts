@@ -20,6 +20,10 @@ export const MENU_ITEMS: NbMenuItem[] = [
     link: '/pages/treatments',
   },
   {
+    title: 'Zarzadzaj uzytkownikiem',
+    link: '/pages/user-management',
+  },
+  {
     title: 'Zarzadzanie leczeniem',
     link: '/pages/treatment-management',
   },

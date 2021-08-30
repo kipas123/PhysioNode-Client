@@ -6,7 +6,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { CoreModule } from './@core/core.module';
 import { ThemeModule } from './@theme/theme.module';
 import { AppComponent } from './app.component';
@@ -27,6 +27,7 @@ import { MyModuleModule } from './my-module/my-module/my-module.module';
 @NgModule({
   declarations: [AppComponent],
   imports: [
+    HttpClientModule,
     MyModuleModule,
     BrowserModule,
     BrowserAnimationsModule,

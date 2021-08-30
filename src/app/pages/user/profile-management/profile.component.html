@@ -1,12 +1,15 @@
 <div class="row">
   <div class="col-lg-6">
-    <nb-card>
-      <nb-card-header>Nick Jones</nb-card-header>
+    <nb-card *ngIf="user">
+      <nb-card-header>{{user.userName}}</nb-card-header>
       <nb-card-body>
-        <p>Twój identyfikator: #453424</p>
-        <p>Grupa: 3a</p>
-        <p>Twój fizjoterapeuta: Patryk Kowalski</p>
-        <p>Adres e-mail: kowalski@gmail.com</p>
+        <p>Twój identyfikator: #{{user.userId}}</p>
+        <p>Grupa: </p>
+        <p>Twój fizjoterapeuta: </p>
+        <p>Adres e-mail: {{user.userEmail}}</p>
+        <br/><br/>
+        <p>Twoje imie: {{user.userName}}</p>
+        <p>Twoje nazwisko: {{user.userSurname}}</p>
       
       </nb-card-body>
     </nb-card>
@@ -43,6 +46,9 @@
         </nb-card-body>
       </nb-card>
     </div>
+    <div class="col-lg-12">
+      <button  nbButton status="success" (click)="start()">Test przesyłu</button>
+  </div>
   
   </div>
   
