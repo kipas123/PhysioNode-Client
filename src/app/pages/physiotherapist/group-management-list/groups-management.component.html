@@ -1,0 +1,38 @@
+<div class="row">
+    <div class="col-lg-12">
+        <nb-card>
+            <nb-card-header>Dodaj grupę: </nb-card-header>
+            <nb-card-body>
+
+                <div class="full-name-inputs">
+                    <input type="text" nbInput fullWidth placeholder="Nazwa grupy">
+                    <br /><br />
+                    <textarea nbInput fullWidth placeholder="Krótki opis grupy"></textarea>
+                    <br /><br />
+                    <button style="float: right; margin-top: 5px;" nbButton status="success">Success</button>
+                </div>
+            </nb-card-body>
+        </nb-card>
+    </div>
+    <div class="col-lg-12">
+        <nb-card>
+            <nb-card-header>Grupy: </nb-card-header>
+            <nb-card-body>
+                <nb-accordion multi>
+                    <nb-accordion-item *ngFor="let mygroup of mygroups">
+                        <nb-accordion-item-header>
+                            {{mygroup.mygroupName}}
+                        </nb-accordion-item-header>
+                        <nb-accordion-item-body>
+                            {{mygroup.mygroupDescription}}
+                            <br />
+                            <button style="float: right; margin-top: 5px;" nbButton status="warning">Przejdź</button>
+                        </nb-accordion-item-body>
+                    </nb-accordion-item>
+
+                </nb-accordion>
+
+            </nb-card-body>
+        </nb-card>
+    </div>
+</div>

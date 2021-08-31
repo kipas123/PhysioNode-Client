@@ -4,12 +4,12 @@ import { NgModule } from '@angular/core';
 import { PagesComponent } from './pages.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ProfileComponent } from './user/profile-management/profile.component';
-import { UserTreatmentComponent } from './user/user-treatments/user-treatment.component';
-import { GroupsManagementComponent } from './physiotherapist/groups-management/groups-management.component';
+import { GroupsManagementComponent } from './physiotherapist/group-management-list/groups-management.component';
 import { GroupManagementComponent } from './physiotherapist/group-management/group-management.component';
-import { TreatmentComponent } from './user/user-treatment/treatment.component';
-import { TreatmentManagementComponent } from './physiotherapist/treatment-management/treatment-management.component';
 import { UserManagementComponent } from './physiotherapist/user-management/user-management.component';
+import { UserAilmentComponent } from './user/user-ailment/user-ailment.component';
+import { UserAilmentListComponent } from './user/user-ailment-list/user-ailment-list.component';
+import { AilmentManagementComponent } from './physiotherapist/ailment-management/ailment-management.component';
 
 const routes: Routes = [{
   path: '',
@@ -24,8 +24,8 @@ const routes: Routes = [{
       component: ProfileComponent,
     },
     {
-      path: 'treatments',
-      component: UserTreatmentComponent,
+      path: 'ailment-list',
+      component: UserAilmentListComponent,
     },
     {
       path: 'groupsManagement',
@@ -36,12 +36,12 @@ const routes: Routes = [{
       component: GroupManagementComponent,
     },
     {
-      path: 'treatment',
-      component: TreatmentComponent,
+      path: 'ailment',
+      component: UserAilmentComponent,
     },
     {
-      path: 'treatment-management',
-      component: TreatmentManagementComponent,
+      path: 'ailment-management',
+      component: AilmentManagementComponent,
     },
     {
       path: 'user-management',

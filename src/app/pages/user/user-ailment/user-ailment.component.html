@@ -1,0 +1,26 @@
+<div class="row">
+    <div class="col-lg-12">
+        <nb-card>
+            <nb-card-body>
+
+                <nb-tabset fullWidth *ngIf="ailment">
+                    <nb-tab tabTitle="Opis choroby">
+                        <nb-card *ngFor="let note of ailment.ailmentNotes">
+                            <nb-card-header>{{note.noteHeader}} </nb-card-header>
+                            <nb-card-body>
+                                <p>{{note.noteDescription}}</p>
+                            </nb-card-body>
+                        </nb-card>
+                    </nb-tab>
+                    <nb-tab tabTitle="Zalecenia">
+                        <p>Zalecenia</p>
+                    </nb-tab>
+                    <nb-tab tabTitle="Pliki">
+                        <p>Pliki choroby</p>
+                    </nb-tab>
+                </nb-tabset>
+
+            </nb-card-body>
+        </nb-card>
+    </div>
+</div>

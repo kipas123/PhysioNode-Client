@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from 'app/objModel/user.model';
-import { UserDataService } from 'app/service/data/user-data.service';
+import { UserDataService } from 'app/service/data/user/user-data.service';
 import { Console } from 'console';
 @Component({
   selector: 'profile',
@@ -19,7 +19,7 @@ export class ProfileComponent implements OnInit {
   }
 
   refreshProfile(){
-    this.service.executeHelloUserBeanService().subscribe(
+    this.service.executeGetUserByIdUser(1).subscribe(
       response => {
         this.user = response;
        // console.log(response.email);

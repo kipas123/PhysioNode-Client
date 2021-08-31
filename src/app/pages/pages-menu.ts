@@ -17,7 +17,7 @@ export const MENU_ITEMS: NbMenuItem[] = [
   },
   {
     title: 'Moje leczenie',
-    link: '/pages/treatments',
+    link: '/pages/ailment-list',
   },
   {
     title: 'Zarzadzaj uzytkownikiem',
@@ -25,7 +25,7 @@ export const MENU_ITEMS: NbMenuItem[] = [
   },
   {
     title: 'Zarzadzanie leczeniem',
-    link: '/pages/treatment-management',
+    link: '/pages/ailment-management',
   },
   {
     title: 'Zarządzanie grupami',
@@ -37,7 +37,7 @@ export const MENU_ITEMS: NbMenuItem[] = [
   },
   {
     title: 'Choroba',
-    link: '/pages/treatment',          
+    link: '/pages/ailment',          
   },
   {
     title: 'Auth',
