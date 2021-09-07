@@ -13,7 +13,12 @@
                         </nb-card>
                     </nb-tab>
                     <nb-tab tabTitle="Zalecenia">
-                        <p>Zalecenia</p>
+                        <nb-card *ngFor="let indication of ailment.ailmentIndications">
+                            <nb-card-header>{{indication.indicationHeader}} </nb-card-header>
+                            <nb-card-body>
+                                <p>{{indication.indicationDescription}}</p>
+                            </nb-card-body>
+                        </nb-card>
                     </nb-tab>
                     <nb-tab tabTitle="Pliki">
                         <p>Pliki choroby</p>

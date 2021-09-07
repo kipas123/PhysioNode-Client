@@ -1,16 +1,23 @@
-<div class="row">
+<nb-layout  *ngIf="!mygroups" >
+    <nb-layout-header><h5>Wait..</h5></nb-layout-header>
+    <nb-layout-column [nbSpinner]="true" nbSpinnerSize="giant" nbSpinnerStatus="primary" *ngIf="!user">
+    </nb-layout-column>
+  </nb-layout>
+
+<div class="row" *ngIf="mygroups">
     <div class="col-lg-12">
         <nb-card>
             <nb-card-header>Dodaj grupę: </nb-card-header>
             <nb-card-body>
-
+                <!-- <form (ngSubmit)="createGroup()"> -->
                 <div class="full-name-inputs">
-                    <input type="text" nbInput fullWidth placeholder="Nazwa grupy">
+                    <input type="text" nbInput fullWidth placeholder="Nazwa grupy" #name="ngModel" [(ngModel)] = "mygroup.mygroupName">
                     <br /><br />
-                    <textarea nbInput fullWidth placeholder="Krótki opis grupy"></textarea>
+                    <textarea nbInput fullWidth placeholder="Krótki opis grupy" #description="ngModel" [(ngModel)] = "mygroup.mygroupDescription"></textarea>
                     <br /><br />
-                    <button style="float: right; margin-top: 5px;" nbButton status="success">Success</button>
+                    <button style="float: right; margin-top: 5px;" nbButton status="success" (click)="createGroup()">Success</button>
                 </div>
+            <!-- </form> -->
             </nb-card-body>
         </nb-card>
     </div>

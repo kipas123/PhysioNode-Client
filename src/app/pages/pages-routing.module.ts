@@ -4,12 +4,12 @@ import { NgModule } from '@angular/core';
 import { PagesComponent } from './pages.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ProfileComponent } from './user/profile-management/profile.component';
-import { GroupsManagementComponent } from './physiotherapist/group-management-list/groups-management.component';
 import { GroupManagementComponent } from './physiotherapist/group-management/group-management.component';
 import { UserManagementComponent } from './physiotherapist/user-management/user-management.component';
 import { UserAilmentComponent } from './user/user-ailment/user-ailment.component';
 import { UserAilmentListComponent } from './user/user-ailment-list/user-ailment-list.component';
 import { AilmentManagementComponent } from './physiotherapist/ailment-management/ailment-management.component';
+import { GroupManagementListComponent } from './physiotherapist/group-management-list/group-management-list.component';
 
 const routes: Routes = [{
   path: '',
@@ -29,7 +29,7 @@ const routes: Routes = [{
     },
     {
       path: 'groupsManagement',
-      component: GroupsManagementComponent,
+      component: GroupManagementListComponent,
     },
     {
       path: 'groupManagement',

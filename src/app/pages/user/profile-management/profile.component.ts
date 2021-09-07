@@ -17,6 +17,12 @@ export class ProfileComponent implements OnInit {
   ngOnInit(): void {
     this.refreshProfile();
   }
+  loading = false;
+
+  toggleLoadingAnimation() {
+    this.loading = true;
+    setTimeout(() => this.loading = false, 3000);
+  }
 
   refreshProfile(){
     this.service.executeGetUserByIdUser(1).subscribe(

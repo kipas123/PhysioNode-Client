@@ -11,11 +11,13 @@ import { UserDataService } from 'app/service/data/user/user-data.service';
 })
 export class UserManagementComponent implements OnInit {
 user:User;
-ailments:Ailment
+ailments:Ailment;
+ailment:Ailment;
 
   constructor(private userService:UserDataService, private ailmentService:AilmentDataService) { }
 
   ngOnInit(): void {
+    this.ailment = new Ailment(null,null,null,null, null);
     this.refreshUserInfo();
   }
   refreshUserInfo(){
@@ -31,6 +33,18 @@ ailments:Ailment
          // console.log(response.email);
         }
     )
+  }
+
+  createAilment(){
+    this.ailmentService.executeCreateAilment(this.ailment)
+    .subscribe (
+      data => {
+        console.log(data)
+      }
+    )
+    console.log(this.ailment);
+    this.refreshUserInfo();
+
   }
 
 }

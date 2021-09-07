@@ -20,4 +20,9 @@ export class MygroupDataService {
     
   }
 
+  executeCreateGroup(mygroup){
+    return this.http.post("http://localhost:8081/physio-node/group/create", mygroup);
+    
+  }
+
 }

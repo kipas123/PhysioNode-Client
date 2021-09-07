@@ -1,4 +1,10 @@
-<div class="row">
+<nb-layout  *ngIf="!ailment" >
+    <nb-layout-header><h5>Wait..</h5></nb-layout-header>
+    <nb-layout-column [nbSpinner]="true" nbSpinnerSize="giant" nbSpinnerStatus="primary" *ngIf="!ailment">
+    </nb-layout-column>
+  </nb-layout>
+
+<div class="row" *ngIf="ailment">
     <div class="col-lg-12">
         <nb-card>
             <nb-card-body>
@@ -19,54 +25,10 @@
                                 </div>
                             </nb-card-body>
                         </nb-card>
-                        <nb-card>
-                            <nb-card-header>Leczenie kostki(29.04.2021): </nb-card-header>
+                        <nb-card *ngFor="let note of ailment.ailmentNotes">
+                            <nb-card-header>{{note.noteHeader}} </nb-card-header>
                             <nb-card-body>
-                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
-                                    Ipsum has been the
-                                    industry's standard dummy text ever since the 1500s, when an unknown printer took a
-                                    galley of type
-                                    and scrambled it to make a type specimen book. It has survived not only five
-                                    centuries, but also the
-                                    leap into electronic typesetting, remaining essentially unchanged. It was
-                                    popularised in the 1960s
-                                    with the release of Letraset sheets containing Lorem Ipsum passages, and more
-                                    recently with desktop
-                                    publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
-                            </nb-card-body>
-                        </nb-card>
-                        <hr />
-                        <nb-card>
-                            <nb-card-header>Leczenie uda(09.02.2020): </nb-card-header>
-                            <nb-card-body>
-                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
-                                    Ipsum has been the
-                                    industry's standard dummy text ever since the 1500s, when an unknown printer took a
-                                    galley of type
-                                    and scrambled it to make a type specimen book. It has survived not only five
-                                    centuries, but also the
-                                    leap into electronic typesetting, remaining essentially unchanged. It was
-                                    popularised in the 1960s
-                                    with the release of Letraset sheets containing Lorem Ipsum passages, and more
-                                    recently with desktop
-                                    publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
-                            </nb-card-body>
-                        </nb-card>
-                        <hr />
-                        <nb-card>
-                            <nb-card-header>Leczenie kostki(15.11.2019): </nb-card-header>
-                            <nb-card-body>
-                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
-                                    Ipsum has been the
-                                    industry's standard dummy text ever since the 1500s, when an unknown printer took a
-                                    galley of type
-                                    and scrambled it to make a type specimen book. It has survived not only five
-                                    centuries, but also the
-                                    leap into electronic typesetting, remaining essentially unchanged. It was
-                                    popularised in the 1960s
-                                    with the release of Letraset sheets containing Lorem Ipsum passages, and more
-                                    recently with desktop
-                                    publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+                                <p>{{note.noteDescription}}</p>
                             </nb-card-body>
                         </nb-card>
                     </nb-tab>
@@ -83,24 +45,15 @@
                                     <button style="float: right; margin-top: 5px;" nbButton
                                         status="success">Dodaj</button>
                                 </div>
-                            </nb-card-body>
-                        </nb-card>
-                        <nb-card>
-                            <nb-card-header>Ćwiczenia na lekkim ciężarze: </nb-card-header>
-                            <nb-card-body>
-                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
-                                    Ipsum has been the
-                                    industry's standard dummy text ever since the 1500s, when an unknown printer took a
-                                    galley of type
-                                    and scrambled it to make a type specimen book. It has survived not only five
-                                    centuries, but also the
-                                    leap into electronic typesetting, remaining essentially unchanged. It was
-                                    popularised in the 1960s
-                                    with the release of Letraset sheets containing Lorem Ipsum passages, and more
-                                    recently with desktop
-                                    publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
-                            </nb-card-body>
-                        </nb-card>
+                                </nb-card-body>
+                                </nb-card>
+                                <nb-card *ngFor="let indication of ailment.ailmentIndications">
+                                    <nb-card-header>{{indication.indicationHeader}} </nb-card-header>
+                                    <nb-card-body>
+                                        <p>{{indication.indicationDescription}}</p>
+                                    </nb-card-body>
+                                </nb-card>
+
                     </nb-tab>
                     <nb-tab tabTitle="Pliki">
                         <p>Pliki choroby</p>

@@ -17,4 +17,9 @@ export class AilmentDataService {
     executeGetAilmentByIdAilment(id){
       return this.http.get<Ailment>(`http://localhost:8081/physio-node/ailment/${id}`);
     }
+
+    executeCreateAilment(ailment){
+      return this.http.post("http://localhost:8081/physio-node/ailment/create", ailment);
+      
+    }
 }

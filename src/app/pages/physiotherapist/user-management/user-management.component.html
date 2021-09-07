@@ -18,11 +18,11 @@
             <nb-card-body>
     
                 <div class="full-name-inputs">
-                    <input type="text" nbInput fullWidth placeholder="Nazwa leczenia">
+                    <input type="text" nbInput fullWidth placeholder="Nazwa leczenia" #name="ngModel" [(ngModel)] = "ailment.ailmentName">
                     <br /><br />
-                    <textarea nbInput fullWidth placeholder="Krótki opis leczenia"></textarea>
+                    <textarea nbInput fullWidth placeholder="Krótki opis leczenia" #description="ngModel" [(ngModel)] = "ailment.ailmentDescription"></textarea>
                     <br /><br />
-                    <button style="float: right; margin-top: 5px;" nbButton status="success">Success</button>
+                    <button style="float: right; margin-top: 5px;" nbButton status="success" (click)="createAilment()">Success</button>
                 </div>
             </nb-card-body>
         </nb-card>

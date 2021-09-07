@@ -6,7 +6,7 @@ export class Ailment {
     public ailmentDescription: string;
     public ailmentName: string;
     public ailmentNotes: AilmentNote[];
-    public ailmentIndication: AilmentIndication[];
+    public ailmentIndications: AilmentIndication[];
     public ailmentFilepaths: AilmentFilepath[];
 
 
@@ -14,7 +14,7 @@ export class Ailment {
         this.ailmentDescription = ailmentDescription;
         this.ailmentName = ailmentName;
         this.ailmentNotes = ailmentNotes;
-        this.ailmentIndication = ailmentIndication;
+        this.ailmentIndications = ailmentIndication;
         this.ailmentFilepaths = ailmentFilepaths;
     }
 }

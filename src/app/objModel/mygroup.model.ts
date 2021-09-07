@@ -4,9 +4,11 @@ export class Mygroup {
     public mygroupDescription: string;
 
 
+
     constructor(idMygroup: number, mygroupName: string, mygroupDescription: string) {
         this.idMygroup = idMygroup;
         this.mygroupName = mygroupName;
         this.mygroupDescription = mygroupDescription;
     }
+
 }
