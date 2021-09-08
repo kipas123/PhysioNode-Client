@@ -5,6 +5,16 @@
   </nb-layout>
 
 <div class="row" *ngIf="ailment">
+    <div class="col-lg-4">
+        <nb-card *ngIf="user">
+          <nb-card-header><h2>{{ailment.ailmentName}}</h2></nb-card-header>
+          <nb-card-body>
+            <p>Identyfikator: #{{user.userId}}</p>
+            <p>Imię i nazwisko: {{user.userName}} {{user.userSurname}}</p>
+            <p>Twój fizjoterapeuta: </p>
+          </nb-card-body>
+        </nb-card>
+      </div>
     <div class="col-lg-12">
         <nb-card>
             <nb-card-body>
@@ -16,12 +26,12 @@
                             <nb-card-body>
 
                                 <div class="full-name-inputs">
-                                    <input type="text" nbInput fullWidth placeholder="Nagłówek">
+                                    <input type="text" nbInput fullWidth placeholder="Nagłówek" #noteHeader="ngModel" [(ngModel)]="ailmentNote.noteHeader" >
                                     <br /><br />
-                                    <textarea nbInput fullWidth placeholder="Opis"></textarea>
+                                    <textarea nbInput fullWidth placeholder="Opis" #noteDescription="ngModel" [(ngModel)]="ailmentNote.noteDescription"></textarea>
                                     <br /><br />
                                     <button style="float: right; margin-top: 5px;" nbButton
-                                        status="success">Dodaj</button>
+                                        status="success" (click)="createAilmentNote()">Dodaj</button>
                                 </div>
                             </nb-card-body>
                         </nb-card>
@@ -38,12 +48,12 @@
                             <nb-card-body>
 
                                 <div class="full-name-inputs">
-                                    <input type="text" nbInput fullWidth placeholder="Nagłówek">
+                                    <input type="text" nbInput fullWidth placeholder="Nagłówek" #indicationHeader="ngModel" [(ngModel)]="ailmentIndication.indicationHeader">
                                     <br /><br />
-                                    <textarea nbInput fullWidth placeholder="Opis"></textarea>
+                                    <textarea nbInput fullWidth placeholder="Opis" #indicationDescription="ngModel" [(ngModel)]="ailmentIndication.indicationDescription"></textarea>
                                     <br /><br />
                                     <button style="float: right; margin-top: 5px;" nbButton
-                                        status="success">Dodaj</button>
+                                        status="success" (click)="createAilmentIndication()">Dodaj</button>
                                 </div>
                                 </nb-card-body>
                                 </nb-card>

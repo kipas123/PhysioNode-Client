@@ -17,7 +17,7 @@ ailment:Ailment;
   constructor(private userService:UserDataService, private ailmentService:AilmentDataService) { }
 
   ngOnInit(): void {
-    this.ailment = new Ailment(null,null,null,null, null);
+    this.ailment = new Ailment(-1,null,null,null,null, null);
     this.refreshUserInfo();
   }
   refreshUserInfo(){
@@ -39,11 +39,13 @@ ailment:Ailment;
     this.ailmentService.executeCreateAilment(this.ailment)
     .subscribe (
       data => {
+       // setTimeout(()=>{  this.refreshUserInfo();}, 200)
+        this.refreshUserInfo();
         console.log(data)
       }
     )
     console.log(this.ailment);
-    this.refreshUserInfo();
+    //this.refreshUserInfo();
 
   }
 

@@ -3,6 +3,7 @@ import { AilmentIndication } from "./ailmentIndication.model";
 import { AilmentNote } from "./ailmentNote.model";
 
 export class Ailment {
+    public idailment: number;
     public ailmentDescription: string;
     public ailmentName: string;
     public ailmentNotes: AilmentNote[];
@@ -10,7 +11,8 @@ export class Ailment {
     public ailmentFilepaths: AilmentFilepath[];
 
 
-    constructor(ailmentDescription: string, ailmentName: string, ailmentNotes: AilmentNote[], ailmentIndication: AilmentIndication[], ailmentFilepaths: AilmentFilepath[]) {
+    constructor(idailment: number, ailmentDescription: string, ailmentName: string, ailmentNotes: AilmentNote[], ailmentIndication: AilmentIndication[], ailmentFilepaths: AilmentFilepath[]) {
+        this.idailment = idailment;
         this.ailmentDescription = ailmentDescription;
         this.ailmentName = ailmentName;
         this.ailmentNotes = ailmentNotes;

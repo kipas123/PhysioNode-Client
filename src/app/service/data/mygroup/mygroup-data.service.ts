@@ -20,8 +20,8 @@ export class MygroupDataService {
     
   }
 
-  executeCreateGroup(mygroup){
-    return this.http.post("http://localhost:8081/physio-node/group/create", mygroup);
+  async executeCreateGroup(mygroup){
+    return await this.http.post("http://localhost:8081/physio-node/group/create", mygroup);
     
   }
 

@@ -25,15 +25,17 @@ export class GroupManagementListComponent implements OnInit {
     )
   }
 
-  createGroup(){
-    this.service.executeCreateGroup(this.mygroup)
-    .subscribe (
-      data => {
-        console.log(data)
-      }
-    )
-    console.log(this.mygroup);
-    this.refreshGroups();
+   async createGroup(){
+    (await this.service.executeCreateGroup(this.mygroup))
+      .subscribe(
+        data => {
+          this.refreshGroups();
+          console.log("Oto data:");
+          console.log(data);
+        }
+      );
+    //console.log(this.mygroup);
+    //  this.refreshGroups();
 
   }
 

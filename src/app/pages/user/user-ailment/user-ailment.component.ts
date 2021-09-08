@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Ailment } from 'app/objModel/ailment.model';
+import { User } from 'app/objModel/user.model';
 import { AilmentDataService } from 'app/service/data/ailment/ailment-data.service';
+import { UserDataService } from 'app/service/data/user/user-data.service';
 
 @Component({
   selector: 'user-ailment',
@@ -8,10 +10,12 @@ import { AilmentDataService } from 'app/service/data/ailment/ailment-data.servic
   styleUrls: ['./user-ailment.component.scss']
 })
 export class UserAilmentComponent implements OnInit {
-ailment:Ailment
-  constructor(private ailmentService:AilmentDataService) { }
+ailment:Ailment;
+user:User;
+  constructor(private ailmentService:AilmentDataService, private userService:UserDataService) { }
 
   ngOnInit(): void {
+    this.getProfile();
     this.refreshAilment();
   }
 
@@ -21,6 +25,14 @@ ailment:Ailment
       response => {
         this.ailment = response;
         console.log(this.ailment);
+      }
+    )
+  }
+  getProfile(){
+    this.userService.executeGetUserByIdUser(1).subscribe(
+      response => {
+        this.user = response;
+       // console.log(response.email);
       }
     )
   }

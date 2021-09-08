@@ -22,4 +22,12 @@ export class AilmentDataService {
       return this.http.post("http://localhost:8081/physio-node/ailment/create", ailment);
       
     }
+    executeCreateAilmentNote(ailmentNote){
+      return this.http.post("http://localhost:8081/physio-node/ailment/createAilmentNode", ailmentNote);
+      
+    }
+    executeCreateAilmentIndication(ailmentIndication){
+      return this.http.post("http://localhost:8081/physio-node/ailment/createAilmentIndication", ailmentIndication);
+      
+    }
 }
