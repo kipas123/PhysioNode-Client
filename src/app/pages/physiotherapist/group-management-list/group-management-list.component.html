@@ -9,6 +9,9 @@
         <nb-card>
             <nb-card-header>Dodaj grupę: </nb-card-header>
             <nb-card-body>
+                <nb-alert status="success" closable (close)="onClose()" *ngIf="alertIsOpen">
+                    Stworzono grupę!
+                  </nb-alert>
                 <!-- <form (ngSubmit)="createGroup()"> -->
                 <div class="full-name-inputs">
                     <input type="text" nbInput fullWidth placeholder="Nazwa grupy" #name="ngModel" [(ngModel)] = "mygroup.mygroupName">

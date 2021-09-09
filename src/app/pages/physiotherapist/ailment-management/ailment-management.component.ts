@@ -16,6 +16,9 @@ export class AilmentManagementComponent implements OnInit {
   ailmentNote:AilmentNote;
   ailmentIndication:AilmentIndication;
   user: User;
+  alertNoteIsOpen: boolean = false;
+  alertIndicationIsOpen: boolean = false;
+  alertFilepathIsOpen: boolean = false;
   constructor(private ailmentService:AilmentDataService, private userService:UserDataService) { }
 
   ngOnInit(): void {
@@ -38,6 +41,7 @@ export class AilmentManagementComponent implements OnInit {
       response =>{
           console.log(this.ailmentNote);
           this.refreshAilmentInfo();
+          this.alertNoteIsOpen=true;
       }
     )
   }
@@ -47,6 +51,7 @@ export class AilmentManagementComponent implements OnInit {
       response =>{
           console.log(this.ailmentIndication);
           this.refreshAilmentInfo();
+          this.alertIndicationIsOpen=true;
       }
     )
   }
@@ -58,5 +63,11 @@ export class AilmentManagementComponent implements OnInit {
        // console.log(response.email);
       }
     )
+  }
+
+  onClose(){
+    this.alertNoteIsOpen=false;
+    this.alertIndicationIsOpen=false;
+    this.alertFilepathIsOpen=false;
   }
 }

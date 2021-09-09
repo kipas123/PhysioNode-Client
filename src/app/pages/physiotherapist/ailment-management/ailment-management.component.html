@@ -24,7 +24,9 @@
                         <nb-card>
                             <nb-card-header>Dodaj notkę do choroby: </nb-card-header>
                             <nb-card-body>
-
+                                <nb-alert status="success" closable (close)="onClose()" *ngIf="alertNoteIsOpen">
+                                    Dodano notkę!
+                                  </nb-alert>
                                 <div class="full-name-inputs">
                                     <input type="text" nbInput fullWidth placeholder="Nagłówek" #noteHeader="ngModel" [(ngModel)]="ailmentNote.noteHeader" >
                                     <br /><br />
@@ -46,7 +48,9 @@
                         <nb-card>
                             <nb-card-header>Dodaj zalecenia: </nb-card-header>
                             <nb-card-body>
-
+                                <nb-alert status="success" closable (close)="onClose()" *ngIf="alertIndicationIsOpen">
+                                    Dodano zalecenie!
+                                  </nb-alert>
                                 <div class="full-name-inputs">
                                     <input type="text" nbInput fullWidth placeholder="Nagłówek" #indicationHeader="ngModel" [(ngModel)]="ailmentIndication.indicationHeader">
                                     <br /><br />

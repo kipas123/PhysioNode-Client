@@ -11,6 +11,7 @@ export class GroupManagementListComponent implements OnInit {
 
   mygroups: Mygroup;
   mygroup: Mygroup;
+  alertIsOpen: boolean = false;
   constructor(private service: MygroupDataService) { }
 
   ngOnInit(): void {
@@ -25,18 +26,25 @@ export class GroupManagementListComponent implements OnInit {
     )
   }
 
-   async createGroup(){
-    (await this.service.executeCreateGroup(this.mygroup))
+    createGroup(){
+     this.service.executeCreateGroup(this.mygroup)
       .subscribe(
         data => {
           this.refreshGroups();
           console.log("Oto data:");
           console.log(data);
+          this.alertIsOpen=true;
         }
       );
+
+      
     //console.log(this.mygroup);
     //  this.refreshGroups();
 
+  }
+
+  onClose(){
+    this.alertIsOpen=false;
   }
 
 }

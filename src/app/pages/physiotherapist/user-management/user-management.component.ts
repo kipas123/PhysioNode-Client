@@ -13,6 +13,7 @@ export class UserManagementComponent implements OnInit {
 user:User;
 ailments:Ailment;
 ailment:Ailment;
+alertIsOpen: boolean = false;
 
   constructor(private userService:UserDataService, private ailmentService:AilmentDataService) { }
 
@@ -42,11 +43,16 @@ ailment:Ailment;
        // setTimeout(()=>{  this.refreshUserInfo();}, 200)
         this.refreshUserInfo();
         console.log(data)
+        this.alertIsOpen=true;
       }
     )
     console.log(this.ailment);
     //this.refreshUserInfo();
 
+  }
+
+  onClose(){
+    this.alertIsOpen=false;
   }
 
 }

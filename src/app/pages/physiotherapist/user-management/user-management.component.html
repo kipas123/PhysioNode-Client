@@ -16,7 +16,9 @@
         <nb-card>
             <nb-card-header>Dodaj leczenie: </nb-card-header>
             <nb-card-body>
-    
+              <nb-alert status="success" closable (close)="onClose()" *ngIf="alertIsOpen">
+                Dodano leczenie!
+              </nb-alert>
                 <div class="full-name-inputs">
                     <input type="text" nbInput fullWidth placeholder="Nazwa leczenia" #name="ngModel" [(ngModel)] = "ailment.ailmentName">
                     <br /><br />
