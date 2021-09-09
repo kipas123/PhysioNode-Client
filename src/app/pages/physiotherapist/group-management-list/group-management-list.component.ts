@@ -14,7 +14,7 @@ export class GroupManagementListComponent implements OnInit {
   constructor(private service: MygroupDataService) { }
 
   ngOnInit(): void {
-    this.mygroup = new Mygroup(-1,"","");
+    this.mygroup = new Mygroup(-1,"","","");
     this.refreshGroups();
   }
   refreshGroups(){

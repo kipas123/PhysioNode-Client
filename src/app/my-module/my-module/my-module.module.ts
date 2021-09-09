@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { NbAccordionModule, NbButtonModule, NbCardModule, NbDatepickerModule, NbInputModule, NbLayoutModule, NbListModule, NbSelectModule, NbSidebarModule, NbSpinnerModule, NbTabsetModule, NbUserModule } from '@nebular/theme';
+import { NbAccordionModule, NbAlertModule, NbButtonModule, NbCardModule, NbDatepickerModule, NbInputModule, NbLayoutModule, NbListModule, NbSelectModule, NbSidebarModule, NbSpinnerModule, NbTabsetModule, NbUserModule } from '@nebular/theme';
 import { ThemeModule } from 'app/@theme/theme.module';
 import { GroupManagementComponent } from 'app/pages/physiotherapist/group-management/group-management.component';
 import { UserManagementComponent } from 'app/pages/physiotherapist/user-management/user-management.component';
@@ -38,6 +38,7 @@ import { FormsModule } from '@angular/forms';
     NbTabsetModule,
     NbSpinnerModule,
     FormsModule,
+    NbAlertModule
   ]
 })
 export class MyModuleModule { }

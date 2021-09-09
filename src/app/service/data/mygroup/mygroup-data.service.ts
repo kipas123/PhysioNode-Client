@@ -12,7 +12,7 @@ export class MygroupDataService {
   ) { }
 
   executeGetAllGroupsByUserId(){
-    return this.http.get<Mygroup>("http://localhost:8081/physio-node/group/1");
+    return this.http.get<Mygroup>("http://localhost:8081/physio-node/group/all/1");
     
   }
   executeGetAllGroups(){
@@ -20,9 +20,18 @@ export class MygroupDataService {
     
   }
 
+  executeGetGroupByGroupId(id){
+    return this.http.get<Mygroup>(`http://localhost:8081/physio-node/group/${id}`);
+    
+  }
+
   async executeCreateGroup(mygroup){
     return await this.http.post("http://localhost:8081/physio-node/group/create", mygroup);
     
+  }
+
+  executechangeGroupInfo(mygroup){
+    return this.http.put("http://localhost:8081/physio-node/group/changeGroupInfo", mygroup);
   }
 
 }
