@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Ailment } from 'app/objModel/ailment.model';
-import { User } from 'app/objModel/user.model';
+import { UserReadModel } from 'app/objModel/userReadModel.model';
 import { AilmentDataService } from 'app/service/data/ailment/ailment-data.service';
 import { UserDataService } from 'app/service/data/user/user-data.service';
 
@@ -10,7 +10,7 @@ import { UserDataService } from 'app/service/data/user/user-data.service';
   styleUrls: ['./user-management.component.scss']
 })
 export class UserManagementComponent implements OnInit {
-user:User;
+user:UserReadModel;
 ailments:Ailment;
 ailment:Ailment;
 alertIsOpen: boolean = false;
@@ -42,7 +42,6 @@ alertIsOpen: boolean = false;
       data => {
        // setTimeout(()=>{  this.refreshUserInfo();}, 200)
         this.refreshUserInfo();
-        console.log(data)
         this.alertIsOpen=true;
       }
     )

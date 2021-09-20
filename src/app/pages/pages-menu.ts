@@ -45,11 +45,11 @@ export const MENU_ITEMS: NbMenuItem[] = [
     children: [
       {
         title: 'Login',
-        link: '/auth/login',
+        link: '/pages/login',
       },
       {
         title: 'Register',
-        link: '/auth/register',
+        link: '/pages/register',
       },
       {
         title: 'Request Password',

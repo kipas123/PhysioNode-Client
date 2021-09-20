@@ -10,11 +10,28 @@ import { UserAilmentComponent } from './user/user-ailment/user-ailment.component
 import { UserAilmentListComponent } from './user/user-ailment-list/user-ailment-list.component';
 import { AilmentManagementComponent } from './physiotherapist/ailment-management/ailment-management.component';
 import { GroupManagementListComponent } from './physiotherapist/group-management-list/group-management-list.component';
+import { LoginComponent } from './auth/login/login.component';
+import { AuthGuard } from 'app/guards/auth.guard';
+import { Role } from 'app/objModel/role';
+import { RegisterComponent } from './auth/register/register.component';
+import { UnathorizedComponent } from './unathorized/unathorized.component';
 
 const routes: Routes = [{
   path: '',
   component: PagesComponent,
   children: [
+    {
+      path: 'login',
+      component: LoginComponent,
+    },
+    {
+      path: 'register',
+      component: RegisterComponent,
+    },
+    {
+      path: 'unathorized',
+      component: UnathorizedComponent,
+    },
     {
       path: 'dashboard',
       component: DashboardComponent,
@@ -22,6 +39,8 @@ const routes: Routes = [{
     {
       path: 'profile',
       component: ProfileComponent,
+      canActivate: [AuthGuard],
+      data: {roles: [Role.user, Role.admin]}
     },
     {
       path: 'ailment-list',
@@ -30,22 +49,32 @@ const routes: Routes = [{
     {
       path: 'groupsManagement',
       component: GroupManagementListComponent,
+      canActivate: [AuthGuard],
+      data: {roles: [Role.admin]}
     },
     {
       path: 'groupManagement',
       component: GroupManagementComponent,
+      canActivate: [AuthGuard],
+      data: {roles: [Role.admin]}
     },
     {
       path: 'ailment',
       component: UserAilmentComponent,
+      canActivate: [AuthGuard],
+      data: {roles: [Role.user, Role.admin]}
     },
     {
       path: 'ailment-management',
       component: AilmentManagementComponent,
+      canActivate: [AuthGuard],
+      data: {roles: [Role.admin]}
     },
     {
       path: 'user-management',
       component: UserManagementComponent,
+      canActivate: [AuthGuard],
+      data: {roles: [Role.admin]}
     },
     {
       path: '',

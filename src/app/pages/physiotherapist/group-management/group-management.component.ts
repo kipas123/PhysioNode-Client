@@ -1,6 +1,7 @@
 import { ThrowStmt } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { Mygroup } from 'app/objModel/mygroup.model';
+import { MygroupWriteModel } from 'app/objModel/mygroupWriteModel.model';
 import { MygroupDataService } from 'app/service/data/mygroup/mygroup-data.service';
 
 @Component({
@@ -10,7 +11,7 @@ import { MygroupDataService } from 'app/service/data/mygroup/mygroup-data.servic
 })
 export class GroupManagementComponent implements OnInit {
   group:Mygroup;
-  groupServiceObj: Mygroup = new Mygroup(null,null,null,null);
+  groupServiceObj: MygroupWriteModel = new MygroupWriteModel(null,null,null,null);
   alertIsOpen:boolean = false;
   constructor(private groupService:MygroupDataService) { }
 
@@ -30,7 +31,7 @@ export class GroupManagementComponent implements OnInit {
     this.groupService.executeGetGroupByGroupId(1).subscribe(
       response => {
         this.group = response;
-        this.groupServiceObj.idMygroup = this.group.idMygroup;
+        this.groupServiceObj.idmygroup = this.group.idMygroup;
         this.groupServiceObj.mygroupName=this.group.mygroupName;
         this.groupServiceObj.mygroupDescription=this.group.mygroupDescription;
       }
@@ -38,9 +39,9 @@ export class GroupManagementComponent implements OnInit {
   }
 
   changeGroupInfo(){
+    console.log(this.groupServiceObj);
     this.groupService.executechangeGroupInfo(this.groupServiceObj).subscribe(
       data =>{
-            console.log(data);
             this.refreshGroupInfo();
             this.alertIsOpen=true;
       }

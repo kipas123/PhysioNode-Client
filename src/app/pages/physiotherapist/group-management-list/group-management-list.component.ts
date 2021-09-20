@@ -1,5 +1,11 @@
+import { HttpHeaders } from '@angular/common/http';
+import { ThrowStmt } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Mygroup } from 'app/objModel/mygroup.model';
+import { MygroupWriteModel } from 'app/objModel/mygroupWriteModel.model';
+import { UserReadModel } from 'app/objModel/userReadModel.model';
+import { UserWriteModel } from 'app/objModel/userWriteMode.model';
 import { MygroupDataService } from 'app/service/data/mygroup/mygroup-data.service';
 
 @Component({
@@ -8,18 +14,28 @@ import { MygroupDataService } from 'app/service/data/mygroup/mygroup-data.servic
   styleUrls: ['./group-management-list.component.scss']
 })
 export class GroupManagementListComponent implements OnInit {
-
+  currentUser: UserReadModel;
+  userWrite:UserWriteModel;
+  headers: HttpHeaders;
   mygroups: Mygroup;
-  mygroup: Mygroup;
+  mygroup: MygroupWriteModel;
   alertIsOpen: boolean = false;
-  constructor(private service: MygroupDataService) { }
+
+
+  constructor(private service: MygroupDataService, private router: Router) {
+    this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
+    if(!this.currentUser){
+      console.log("Błąd");
+      this.router.navigate(['/pages/login']);
+    }
+   }
 
   ngOnInit(): void {
-    this.mygroup = new Mygroup(-1,"","","");
+    this.mygroup = new MygroupWriteModel(-1,"","",null);
     this.refreshGroups();
   }
   refreshGroups(){
-    this.service.executeGetAllGroups().subscribe(
+    this.service.executeGetAllGroupsByUserId(this.currentUser.userId).subscribe(
       response => {
         this.mygroups = response;
       }
@@ -27,6 +43,9 @@ export class GroupManagementListComponent implements OnInit {
   }
 
     createGroup(){
+      this.userWrite = new UserWriteModel(this.currentUser.userId,"","","","",null);
+      this.mygroup.mygroupOwner = this.userWrite;
+      console.log(this.currentUser);
      this.service.executeCreateGroup(this.mygroup)
       .subscribe(
         data => {

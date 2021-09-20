@@ -10,6 +10,10 @@ import { UserAilmentComponent } from 'app/pages/user/user-ailment/user-ailment.c
 import { AilmentManagementComponent } from 'app/pages/physiotherapist/ailment-management/ailment-management.component';
 import { GroupManagementListComponent } from 'app/pages/physiotherapist/group-management-list/group-management-list.component';
 import { FormsModule } from '@angular/forms';
+import { LoginComponent } from 'app/pages/auth/login/login.component';
+import { RegisterComponent } from 'app/pages/auth/register/register.component';
+import { LogintestComponent } from 'app/auth/logintest/logintest.component';
+import { UnathorizedComponent } from 'app/pages/unathorized/unathorized.component';
 
 
 
@@ -21,7 +25,11 @@ import { FormsModule } from '@angular/forms';
      GroupManagementComponent,
      UserAilmentComponent,
      AilmentManagementComponent,
-    UserManagementComponent],
+     UserManagementComponent,
+     LoginComponent,
+     RegisterComponent,
+    LogintestComponent,
+  UnathorizedComponent],
   imports: [
     RouterModule, // RouterModule.forRoot(routes, { useHash: true }), if this is your app.module
     NbLayoutModule,

@@ -1,11 +1,16 @@
+
 <div class="row">
   <div class="col-lg-12">
     <nb-card>
       <nb-card-header>Moje leczenia: </nb-card-header>
-      <nb-card-body>
-
+      <nb-card-body >
+        <nb-layout  *ngIf="!ailments" >
+          <nb-layout-header><h8>Wait..</h8></nb-layout-header>
+          <nb-layout-column [nbSpinner]="true" nbSpinnerSize="giant" nbSpinnerStatus="primary" *ngIf="!user">
+          </nb-layout-column>
+        </nb-layout>
         <nb-accordion multi>
-          <nb-accordion-item *ngFor="let ailment of ailments">
+          <nb-accordion-item *ngFor="let ailment of ailments" >
             <nb-accordion-item-header>
               {{ailment.ailmentName}}
             </nb-accordion-item-header>

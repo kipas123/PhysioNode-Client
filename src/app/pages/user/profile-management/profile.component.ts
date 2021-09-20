@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { User } from 'app/objModel/user.model';
+import { Router } from '@angular/router';
+import { UserReadModel } from 'app/objModel/userReadModel.model';
 import { UserDataService } from 'app/service/data/user/user-data.service';
 import { Console } from 'console';
 @Component({
@@ -8,14 +9,18 @@ import { Console } from 'console';
   styleUrls: ['./profile.component.scss']
 })
 export class ProfileComponent implements OnInit {
-  user: User;
-
+  currentUser: UserReadModel;
   constructor(
-    private service:UserDataService
-  ) { }
+    private service:UserDataService, private router: Router
+  ) { 
+    this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
+    if(!this.currentUser){
+      console.log("Błąd");
+      this.router.navigate(['/login']);
+    }
+  }
 
   ngOnInit(): void {
-    this.refreshProfile();
   }
   loading = false;
 
@@ -24,14 +29,14 @@ export class ProfileComponent implements OnInit {
     setTimeout(() => this.loading = false, 3000);
   }
 
-  refreshProfile(){
-    this.service.executeGetUserByIdUser(1).subscribe(
-      response => {
-        this.user = response;
-       // console.log(response.email);
-      }
-    )
-  }
+  // refreshProfile(){
+  //   this.service.executeGetUserByIdUser(1).subscribe(
+  //     response => {
+  //       this.user = response;
+  //      // console.log(response.email);
+  //     }
+  //   )
+  // }
   start(){
     // console.log(this.service.executeHelloUserBeanService());
     // this.service.executeHelloUserBeanService().subscribe();

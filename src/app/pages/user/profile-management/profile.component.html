@@ -1,21 +1,21 @@
-<nb-layout  *ngIf="!user" >
+<nb-layout  *ngIf="!currentUser" >
   <nb-layout-header><h5>Wait..</h5></nb-layout-header>
   <nb-layout-column [nbSpinner]="true" nbSpinnerSize="giant" nbSpinnerStatus="primary" *ngIf="!user">
   </nb-layout-column>
 </nb-layout>
 
-<div class="row"  *ngIf="user" >
+<div class="row"  *ngIf="currentUser" >
   <div class="col-lg-6">
-    <nb-card *ngIf="user">
-      <nb-card-header>{{user.userName}}s</nb-card-header>
+    <nb-card *ngIf="currentUser">
+      <nb-card-header>{{currentUser.userName}}s</nb-card-header>
       <nb-card-body>
-        <p>Twój identyfikator: #{{user.userId}}</p>
+        <p>Twój identyfikator: #{{currentUser.userId}}</p>
         <p>Grupa: </p>
         <p>Twój fizjoterapeuta: </p>
-        <p>Adres e-mail: {{user.userEmail}}</p>
+        <p>Adres e-mail: {{currentUser.userEmail}}</p>
         <br/><br/>
-        <p>Twoje imie: {{user.userName}}</p>
-        <p>Twoje nazwisko: {{user.userSurname}}</p>
+        <p>Twoje imie: {{currentUser.userName}}</p>
+        <p>Twoje nazwisko: {{currentUser.userSurname}}</p>
       
       </nb-card-body>
     </nb-card>

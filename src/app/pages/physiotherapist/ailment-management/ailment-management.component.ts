@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Ailment } from 'app/objModel/ailment.model';
 import { AilmentIndication } from 'app/objModel/ailmentIndication.model';
 import { AilmentNote } from 'app/objModel/ailmentNote.model';
-import { User } from 'app/objModel/user.model';
+import { UserReadModel } from 'app/objModel/userReadModel.model';
 import { AilmentDataService } from 'app/service/data/ailment/ailment-data.service';
 import { UserDataService } from 'app/service/data/user/user-data.service';
 
@@ -15,7 +15,7 @@ export class AilmentManagementComponent implements OnInit {
   ailment:Ailment;
   ailmentNote:AilmentNote;
   ailmentIndication:AilmentIndication;
-  user: User;
+  user: UserReadModel;
   alertNoteIsOpen: boolean = false;
   alertIndicationIsOpen: boolean = false;
   alertFilepathIsOpen: boolean = false;
