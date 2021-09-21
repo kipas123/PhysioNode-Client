@@ -1,8 +1,9 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { Mygroup } from 'app/objModel/mygroup.model';
-import { UserReadModel } from 'app/objModel/userReadModel.model';
+import { Mygroup } from 'app/objModel/mygroup/mygroup.model';
+import { UserList } from 'app/objModel/mygroup/mygroup_userList.model';
+import { UserReadModel } from 'app/objModel/user/userReadModel.model';
 
 @Injectable({
   providedIn: 'root'
@@ -42,6 +43,11 @@ export class MygroupDataService {
 
   executeCreateGroup(mygroup){
     return this.http.post("http://localhost:8081/physio-node/group/create", mygroup, {headers:this.getCurrentUserHeader()});
+    
+  }
+
+  executeGetAllUsersByMygroupId(id){
+    return this.http.get<UserList>(`http://localhost:8081/physio-node/group/userList/${id}`, {headers:this.getCurrentUserHeader()});
     
   }
 

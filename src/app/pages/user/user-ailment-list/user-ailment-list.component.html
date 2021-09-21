@@ -17,7 +17,7 @@
             <nb-accordion-item-body>
               {{ailment.ailmentDescription}}
               <br />
-              <button style="float: right; margin-top: 5px;" nbButton status="warning">Wyświetl</button>
+              <button style="float: right; margin-top: 5px;" nbButton status="warning" (click) = "goToUserAilment(ailment.idailment)">Wyświetl</button>
             </nb-accordion-item-body>
           </nb-accordion-item>
 

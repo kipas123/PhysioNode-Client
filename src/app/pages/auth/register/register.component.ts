@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { UserWriteModel } from 'app/objModel/userWriteMode.model';
+import { UserWriteModel } from 'app/objModel/user/userWriteMode.model';
 import { UserDataService } from 'app/service/data/user/user-data.service';
 
 @Component({

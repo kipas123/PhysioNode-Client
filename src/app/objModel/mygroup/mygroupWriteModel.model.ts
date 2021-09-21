@@ -1,4 +1,4 @@
-import { UserWriteModel } from "./userWriteMode.model";
+import { UserWriteModel } from "../user/userWriteMode.model";
 
 export class MygroupWriteModel {
     public idmygroup: number;

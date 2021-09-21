@@ -1,5 +1,3 @@
-import { Ailment } from "./ailment.model";
-
 export class AilmentIndication {
     public idailmentIndication: number;
     public indicationDescription: string;

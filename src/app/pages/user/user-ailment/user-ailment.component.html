@@ -1,11 +1,20 @@
-<div class="row">
+    <div class="row" *ngIf="ailment">
         <div class="col-lg-4">
             <nb-card *ngIf="user">
-              <nb-card-header><h2>{{ailment.ailmentName}}</h2></nb-card-header>
+              <nb-card-header><h2>Choroba: </h2>
+                <h6>{{ailment.ailmentName}} </h6></nb-card-header>
               <nb-card-body>
                 <p>Identyfikator: #{{user.userId}}</p>
                 <p>Imię i nazwisko: {{user.userName}} {{user.userSurname}}</p>
-                <p>Twój fizjoterapeuta: </p>
+                <p>Twój fizjoterapeuta: {{ailment.attendingphysician}}</p>
+              </nb-card-body>
+            </nb-card>
+          </div>
+          <div class="col-lg-8">
+            <nb-card *ngIf="user">
+              <nb-card-header><h2>Krótki opis choroby:</h2></nb-card-header>
+              <nb-card-body>
+                <p>{{ailment.ailmentDescription}}</p>
               </nb-card-body>
             </nb-card>
           </div>

@@ -1,8 +1,11 @@
-import { ThrowStmt } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
-import { Mygroup } from 'app/objModel/mygroup.model';
-import { MygroupWriteModel } from 'app/objModel/mygroupWriteModel.model';
+import { Router } from '@angular/router';
+import { Mygroup } from 'app/objModel/mygroup/mygroup.model';
+import { MygroupWriteModel } from 'app/objModel/mygroup/mygroupWriteModel.model';
+import { UserList } from 'app/objModel/mygroup/mygroup_userList.model';
 import { MygroupDataService } from 'app/service/data/mygroup/mygroup-data.service';
+import { MygroupIdDataService } from 'app/service/mygroup-id-data.service';
+import { UserIdDataService } from 'app/service/user-id-data.service';
 
 @Component({
   selector: 'group-management',
@@ -10,30 +13,45 @@ import { MygroupDataService } from 'app/service/data/mygroup/mygroup-data.servic
   styleUrls: ['./group-management.component.scss']
 })
 export class GroupManagementComponent implements OnInit {
+  mygroupId: number;
+  userList:UserList
   group:Mygroup;
   groupServiceObj: MygroupWriteModel = new MygroupWriteModel(null,null,null,null);
   alertIsOpen:boolean = false;
-  constructor(private groupService:MygroupDataService) { }
+  constructor(private groupService:MygroupDataService, private mygroupIdService: MygroupIdDataService,
+    private userIdService:UserIdDataService,private router: Router) { }
 
   ngOnInit(): void {
+    this.getMygroupId();
     this.refreshGroupInfo();
+    
   }
 
-  x: { name: string, title: string }[] = [
-    { name: 'Carla Espinosa', title: 'Nurse' },
-    { name: 'Bob Kelso', title: 'Doctor of Medicine' },
-    { name: 'Janitor', title: 'Janitor' },
-    { name: 'Perry Cox', title: 'Doctor of Medicine' },
-    { name: 'Ben Sullivan', title: 'Carpenter and photographer' },
-  ];
+  getMygroupId(){
+    this.mygroupIdService.currentIdmygroup.subscribe(
+      mygroupId => this.mygroupId = mygroupId
+    );
+  }
 
   refreshGroupInfo(){
-    this.groupService.executeGetGroupByGroupId(1).subscribe(
+    if(this.mygroupId == -1){
+      this.router.navigate(['/pages/not-found']);
+      return false;
+    }
+    this.groupService.executeGetGroupByGroupId(this.mygroupId).subscribe(
       response => {
         this.group = response;
         this.groupServiceObj.idmygroup = this.group.idMygroup;
         this.groupServiceObj.mygroupName=this.group.mygroupName;
         this.groupServiceObj.mygroupDescription=this.group.mygroupDescription;
+        this.mygroupIdService.changeIdmygroup(-1);
+      }
+    );
+
+    this.groupService.executeGetAllUsersByMygroupId(this.mygroupId).subscribe(
+      response => {
+        this.userList = response;
+        this.mygroupIdService.changeIdmygroup(-1);
       }
     );
   }
@@ -47,6 +65,12 @@ export class GroupManagementComponent implements OnInit {
       }
     )
   }
+
+  goToUserManagement(userId: number){
+    this.userIdService.changeIduser(userId);
+    this.router.navigate(['/pages/user-management']);
+  }
+
   onClose(){
     this.alertIsOpen=false;
   }

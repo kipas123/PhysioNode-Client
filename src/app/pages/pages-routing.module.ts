@@ -12,9 +12,10 @@ import { AilmentManagementComponent } from './physiotherapist/ailment-management
 import { GroupManagementListComponent } from './physiotherapist/group-management-list/group-management-list.component';
 import { LoginComponent } from './auth/login/login.component';
 import { AuthGuard } from 'app/guards/auth.guard';
-import { Role } from 'app/objModel/role';
+import { Role } from 'app/objModel/role/role';
 import { RegisterComponent } from './auth/register/register.component';
-import { UnathorizedComponent } from './unathorized/unathorized.component';
+import { UnathorizedComponent } from './alertPages/unathorized/unathorized.component';
+import { NotFoundComponent } from './alertPages/not-found/not-found.component';
 
 const routes: Routes = [{
   path: '',
@@ -31,6 +32,10 @@ const routes: Routes = [{
     {
       path: 'unathorized',
       component: UnathorizedComponent,
+    },
+    {
+      path: 'not-found',
+      component: NotFoundComponent,
     },
     {
       path: 'dashboard',

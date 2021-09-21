@@ -1,10 +1,13 @@
-import { Component, OnInit } from '@angular/core';
-import { Ailment } from 'app/objModel/ailment.model';
-import { AilmentIndication } from 'app/objModel/ailmentIndication.model';
-import { AilmentNote } from 'app/objModel/ailmentNote.model';
-import { UserReadModel } from 'app/objModel/userReadModel.model';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import {AilmentReadModel } from 'app/objModel/ailment/ailmentReadModel.model';
+import { AilmentIndication } from 'app/objModel/ailment/ailmentIndication.model';
+import { AilmentNote } from 'app/objModel/ailment/ailmentNote.model';
+import { UserReadModel } from 'app/objModel/user/userReadModel.model';
+import { AilmentIDDataService } from 'app/service/ailment-id-data.service';
 import { AilmentDataService } from 'app/service/data/ailment/ailment-data.service';
 import { UserDataService } from 'app/service/data/user/user-data.service';
+import { UserIdDataService } from 'app/service/user-id-data.service';
 
 @Component({
   selector: 'ailment-management',
@@ -12,29 +15,63 @@ import { UserDataService } from 'app/service/data/user/user-data.service';
   styleUrls: ['./ailment-management.component.scss']
 })
 export class AilmentManagementComponent implements OnInit {
-  ailment:Ailment;
-  ailmentNote:AilmentNote;
-  ailmentIndication:AilmentIndication;
+  //Ailment&User id path variale;
+  ailmentId: number;
+  userId: number;
+  //Obj models
+  ailment:AilmentReadModel;
   user: UserReadModel;
+  ailmentNote:AilmentNote = new AilmentNote(null,"","",null);;
+  ailmentIndication:AilmentIndication = new AilmentIndication(null,"","",null);;
+  //Alerts
   alertNoteIsOpen: boolean = false;
   alertIndicationIsOpen: boolean = false;
   alertFilepathIsOpen: boolean = false;
-  constructor(private ailmentService:AilmentDataService, private userService:UserDataService) { }
+  
+  constructor(private ailmentService:AilmentDataService, private userService:UserDataService,
+    private ailmentIdService: AilmentIDDataService, private userIdService: UserIdDataService,
+    private router: Router) { }
 
   ngOnInit(): void {
-    this.ailmentNote = new AilmentNote(null,"","",null);
-    this.ailmentIndication = new AilmentIndication(null,"","",null);
+    this.getAilmentAndUserId();
     this.getProfile();
     this.refreshAilmentInfo();
   }
+
+  getAilmentAndUserId(){
+    this.ailmentIdService.currentIdailment.subscribe(
+      ailmentId => this.ailmentId = ailmentId
+    );
+    this.userIdService.currentIduser.subscribe(
+      userId => this.userId = userId
+    );
+  }
+
   refreshAilmentInfo(){
-    this.ailmentService.executeGetAilmentByIdAilment(1).subscribe(
+    if(this.ailmentId == -1){
+      this.router.navigate(['/pages/not-found']);
+      return false;
+    }
+    this.ailmentService.executeGetAilmentByIdAilment(this.ailmentId).subscribe(
       response => {
         this.ailment = response;
-        console.log(this.ailment);
       }
     )
   }
+
+  getProfile(){
+    if(this.userId == -1){
+      this.router.navigate(['/pages/not-found']);
+      return false;
+    }
+    this.userService.executeGetUserByIdUser(this.userId).subscribe(
+      response => {
+        this.user = response;
+       // console.log(response.email);
+      }
+    )
+  }
+
   createAilmentNote(){
     this.ailmentNote.ailmentId = this.ailment.idailment;
     this.ailmentService.executeCreateAilmentNote(this.ailmentNote).subscribe(
@@ -52,15 +89,6 @@ export class AilmentManagementComponent implements OnInit {
           console.log(this.ailmentIndication);
           this.refreshAilmentInfo();
           this.alertIndicationIsOpen=true;
-      }
-    )
-  }
-
-  getProfile(){
-    this.userService.executeGetUserByIdUser(1).subscribe(
-      response => {
-        this.user = response;
-       // console.log(response.email);
       }
     )
   }

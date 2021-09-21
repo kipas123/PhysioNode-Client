@@ -1,6 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { NbMenuItem } from '@nebular/theme';
+import { UserReadModel } from 'app/objModel/user/userReadModel.model';
 
-import { MENU_ITEMS } from './pages-menu';
 
 @Component({
   selector: 'ngx-pages',
@@ -12,7 +14,60 @@ import { MENU_ITEMS } from './pages-menu';
     </ngx-one-column-layout>
   `,
 })
-export class PagesComponent {
+export class PagesComponent implements OnInit{
+  menu: NbMenuItem[];
+  currentUser: UserReadModel;
+  adminRole:boolean = true;
 
-  menu = MENU_ITEMS;
+  constructor(private router: Router) {
+    this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
+    if(!this.currentUser){
+      this.router.navigate(['/pages/login']);
+    }
+    if(this.currentUser && this.currentUser.userRoleDTO.roleName == "admin"){
+      this.adminRole = false;
+    }
+   
+}
+  ngOnInit(): void {
+    this.menu = [
+      {
+        title: 'Dashboard',
+        icon: 'home-outline',
+        link: '/pages/dashboard',
+        home: true,
+      },
+      {
+        title: 'FEATURES',
+        group: true,
+      },
+      {
+        title: 'Profil',
+        link: '/pages/profile',
+      },
+      {
+        title: 'Moje leczenie',
+        link: '/pages/ailment-list',
+      },
+      {
+        title: 'Zarządzanie grupami',
+        link: '/pages/groupsManagement', 
+        hidden: this.adminRole         
+      },
+      {
+        title: 'Auth',
+        icon: 'lock-outline',
+        children: [
+          {
+            title: 'Login',
+            link: '/pages/login',
+          },
+          {
+            title: 'Register',
+            link: '/pages/register',
+          }
+        ],
+      },
+    ];
+}
 }

@@ -2,11 +2,12 @@ import { HttpHeaders } from '@angular/common/http';
 import { ThrowStmt } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Mygroup } from 'app/objModel/mygroup.model';
-import { MygroupWriteModel } from 'app/objModel/mygroupWriteModel.model';
-import { UserReadModel } from 'app/objModel/userReadModel.model';
-import { UserWriteModel } from 'app/objModel/userWriteMode.model';
+import { Mygroup } from 'app/objModel/mygroup/mygroup.model';
+import { MygroupWriteModel } from 'app/objModel/mygroup/mygroupWriteModel.model';
+import { UserReadModel } from 'app/objModel/user/userReadModel.model';
+import { UserWriteModel } from 'app/objModel/user/userWriteMode.model';
 import { MygroupDataService } from 'app/service/data/mygroup/mygroup-data.service';
+import { MygroupIdDataService } from 'app/service/mygroup-id-data.service';
 
 @Component({
   selector: 'group-management-list',
@@ -22,7 +23,8 @@ export class GroupManagementListComponent implements OnInit {
   alertIsOpen: boolean = false;
 
 
-  constructor(private service: MygroupDataService, private router: Router) {
+  constructor(private service: MygroupDataService, private router: Router,
+    private mygroupIdSercive:MygroupIdDataService) {
     this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
     if(!this.currentUser){
       console.log("Błąd");
@@ -55,11 +57,11 @@ export class GroupManagementListComponent implements OnInit {
           this.alertIsOpen=true;
         }
       );
+  }
 
-      
-    //console.log(this.mygroup);
-    //  this.refreshGroups();
-
+  goToGroup(mygroupId: number){
+    this.mygroupIdSercive.changeIdmygroup(mygroupId);
+    this.router.navigate(["/pages/groupManagement"]);
   }
 
   onClose(){

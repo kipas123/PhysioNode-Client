@@ -1,8 +1,8 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { Ailment } from 'app/objModel/ailment.model';
-import { UserReadModel } from 'app/objModel/userReadModel.model';
+import { AilmentReadModel } from 'app/objModel/ailment/ailmentReadModel.model';
+import { UserReadModel } from 'app/objModel/user/userReadModel.model';
 
 @Injectable({
   providedIn: 'root'
@@ -27,11 +27,11 @@ export class AilmentDataService {
       return this.headers;
     }
     executeGetUserAilmentByIdUser(id){
-      return this.http.get<Ailment>(`http://localhost:8081/physio-node/ailment/user/${id}`, {headers:this.getCurrentUserHeader()});
+      return this.http.get<AilmentReadModel>(`http://localhost:8081/physio-node/ailment/user/${id}`, {headers:this.getCurrentUserHeader()});
     }
 
     executeGetAilmentByIdAilment(id){
-      return this.http.get<Ailment>(`http://localhost:8081/physio-node/ailment/${id}` , {headers:this.getCurrentUserHeader()});
+      return this.http.get<AilmentReadModel>(`http://localhost:8081/physio-node/ailment/${id}` , {headers:this.getCurrentUserHeader()});
     }
 
     executeCreateAilment(ailment){

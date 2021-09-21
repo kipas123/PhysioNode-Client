@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Ailment } from 'app/objModel/ailment.model';
-import { UserReadModel} from 'app/objModel/userReadModel.model';
+import { Router } from '@angular/router';
+import { AilmentReadModel } from 'app/objModel/ailment/ailmentReadModel.model';
+import { UserReadModel} from 'app/objModel/user/userReadModel.model';
+import { AilmentIDDataService } from 'app/service/ailment-id-data.service';
 import { AilmentDataService } from 'app/service/data/ailment/ailment-data.service';
 import { UserDataService } from 'app/service/data/user/user-data.service';
 
@@ -10,21 +12,30 @@ import { UserDataService } from 'app/service/data/user/user-data.service';
   styleUrls: ['./user-ailment.component.scss']
 })
 export class UserAilmentComponent implements OnInit {
-ailment:Ailment;
+  ailmentId: number;
+ailment:AilmentReadModel;
 user:UserReadModel;
-  constructor(private ailmentService:AilmentDataService, private userService:UserDataService) { }
+  constructor(private ailmentService:AilmentDataService, private userService:UserDataService,
+    private ailmentIdService: AilmentIDDataService, private router: Router) { }
 
   ngOnInit(): void {
+    this.ailmentIdService.currentIdailment.subscribe(
+      ailmentId => this.ailmentId = ailmentId
+    );
     this.getProfile();
     this.refreshAilment();
   }
 
 
   refreshAilment(){
-    this.ailmentService.executeGetAilmentByIdAilment(1).subscribe(
+    if(this.ailmentId==-1){
+      this.router.navigate(["/pages/not-found"]);
+      return false;
+    }
+    this.ailmentService.executeGetAilmentByIdAilment(this.ailmentId).subscribe(
       response => {
         this.ailment = response;
-        console.log(this.ailment);
+        this.ailmentIdService.changeIdailment(-1);
       }
     )
   }

@@ -1,8 +1,8 @@
 import { U } from '@angular/cdk/keycodes';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { UserReadModel } from 'app/objModel/userReadModel.model';
-import { UserWriteModel } from 'app/objModel/userWriteMode.model';
+import { UserReadModel } from 'app/objModel/user/userReadModel.model';
+import { UserWriteModel } from 'app/objModel/user/userWriteMode.model';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 let API_URL = "http://localhost:8081/physio-node/user/";

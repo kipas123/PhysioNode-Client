@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { UserReadModel } from 'app/objModel/userReadModel.model';
+import { UserReadModel } from 'app/objModel/user/userReadModel.model';
 import { UserDataService } from 'app/service/data/user/user-data.service';
-import { Console } from 'console';
 @Component({
   selector: 'profile',
   templateUrl: './profile.component.html',
@@ -10,6 +9,7 @@ import { Console } from 'console';
 })
 export class ProfileComponent implements OnInit {
   currentUser: UserReadModel;
+  loading: boolean = false;
   constructor(
     private service:UserDataService, private router: Router
   ) { 
@@ -22,25 +22,11 @@ export class ProfileComponent implements OnInit {
 
   ngOnInit(): void {
   }
-  loading = false;
 
   toggleLoadingAnimation() {
     this.loading = true;
     setTimeout(() => this.loading = false, 3000);
   }
 
-  // refreshProfile(){
-  //   this.service.executeGetUserByIdUser(1).subscribe(
-  //     response => {
-  //       this.user = response;
-  //      // console.log(response.email);
-  //     }
-  //   )
-  // }
-  start(){
-    // console.log(this.service.executeHelloUserBeanService());
-    // this.service.executeHelloUserBeanService().subscribe();
-    // console.log(this.user.getUsername);
-  }
 
 }

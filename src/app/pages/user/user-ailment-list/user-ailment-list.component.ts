@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Ailment } from 'app/objModel/ailment.model';
-import { UserReadModel } from 'app/objModel/userReadModel.model';
+import { AilmentReadModel } from 'app/objModel/ailment/ailmentReadModel.model';
+import { UserReadModel } from 'app/objModel/user/userReadModel.model';
+import { AilmentIDDataService } from 'app/service/ailment-id-data.service';
 import { AilmentDataService } from 'app/service/data/ailment/ailment-data.service';
 
 @Component({
@@ -10,9 +11,10 @@ import { AilmentDataService } from 'app/service/data/ailment/ailment-data.servic
   styleUrls: ['./user-ailment-list.component.scss']
 })
 export class UserAilmentListComponent implements OnInit {
-  ailments: Ailment;
+  ailments: AilmentReadModel;
   currentUser: UserReadModel;
-  constructor(private service: AilmentDataService, private router: Router) { 
+  constructor(private service: AilmentDataService, private router: Router,
+    private ailmentIdService: AilmentIDDataService) { 
     this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
     if(!this.currentUser){
       console.log("Błąd");
@@ -33,5 +35,10 @@ export class UserAilmentListComponent implements OnInit {
       }
     )
   }
+
+goToUserAilment(idAilment: number){
+  this.ailmentIdService.changeIdailment(idAilment);
+  this.router.navigate(["/pages/ailment"]);
+}
 
 }

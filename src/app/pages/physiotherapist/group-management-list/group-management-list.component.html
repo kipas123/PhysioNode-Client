@@ -36,7 +36,7 @@
                         <nb-accordion-item-body>
                             {{mygroup.mygroupDescription}}
                             <br />
-                            <button style="float: right; margin-top: 5px;" nbButton status="warning">Przejdź</button>
+                            <button style="float: right; margin-top: 5px;" nbButton status="warning"(click)="goToGroup(mygroup.idMygroup)">Przejdź</button>
                         </nb-accordion-item-body>
                     </nb-accordion-item>
 
