@@ -16,6 +16,7 @@ import { Role } from 'app/objModel/role/role';
 import { RegisterComponent } from './auth/register/register.component';
 import { UnathorizedComponent } from './alertPages/unathorized/unathorized.component';
 import { NotFoundComponent } from './alertPages/not-found/not-found.component';
+import { UserActivationComponent } from './admin/user-activation/user-activation.component';
 
 const routes: Routes = [{
   path: '',
@@ -78,6 +79,12 @@ const routes: Routes = [{
     {
       path: 'user-management',
       component: UserManagementComponent,
+      canActivate: [AuthGuard],
+      data: {roles: [Role.admin]}
+    },
+    {
+      path: 'user-activation',
+      component: UserActivationComponent,
       canActivate: [AuthGuard],
       data: {roles: [Role.admin]}
     },

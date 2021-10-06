@@ -44,14 +44,12 @@ export class GroupManagementComponent implements OnInit {
         this.groupServiceObj.idmygroup = this.group.idMygroup;
         this.groupServiceObj.mygroupName=this.group.mygroupName;
         this.groupServiceObj.mygroupDescription=this.group.mygroupDescription;
-        this.mygroupIdService.changeIdmygroup(-1);
       }
     );
 
     this.groupService.executeGetAllUsersByMygroupId(this.mygroupId).subscribe(
       response => {
         this.userList = response;
-        this.mygroupIdService.changeIdmygroup(-1);
       }
     );
   }

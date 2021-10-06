@@ -14,15 +14,21 @@ import { UserDataService } from 'app/service/data/user/user-data.service';
 export class UserAilmentComponent implements OnInit {
   ailmentId: number;
 ailment:AilmentReadModel;
-user:UserReadModel;
+currentUser:UserReadModel;
   constructor(private ailmentService:AilmentDataService, private userService:UserDataService,
-    private ailmentIdService: AilmentIDDataService, private router: Router) { }
+    private ailmentIdService: AilmentIDDataService, private router: Router) {
+     }
 
   ngOnInit(): void {
+    this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
+    if(!this.currentUser){
+      console.log("Błąd");
+      this.router.navigate(['/login']);
+    }
+    
     this.ailmentIdService.currentIdailment.subscribe(
       ailmentId => this.ailmentId = ailmentId
     );
-    this.getProfile();
     this.refreshAilment();
   }
 
@@ -36,14 +42,6 @@ user:UserReadModel;
       response => {
         this.ailment = response;
         this.ailmentIdService.changeIdailment(-1);
-      }
-    )
-  }
-  getProfile(){
-    this.userService.executeGetUserByIdUser(1).subscribe(
-      response => {
-        this.user = response;
-       // console.log(response.email);
       }
     )
   }

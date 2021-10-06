@@ -7,16 +7,14 @@
 <div class="row"  *ngIf="currentUser" >
   <div class="col-lg-6">
     <nb-card *ngIf="currentUser">
-      <nb-card-header>{{currentUser.userName}}s</nb-card-header>
+      <nb-card-header>{{currentUser.userName}} {{currentUser.userSurname}}</nb-card-header>
       <nb-card-body>
         <p>Twój identyfikator: #{{currentUser.userId}}</p>
-        <p>Grupa: </p>
-        <p>Twój fizjoterapeuta: </p>
         <p>Adres e-mail: {{currentUser.userEmail}}</p>
         <br/><br/>
         <p>Twoje imie: {{currentUser.userName}}</p>
         <p>Twoje nazwisko: {{currentUser.userSurname}}</p>
-      
+        <p>Data urodzenia: {{currentUser.userDob}}</p>
       </nb-card-body>
     </nb-card>
   </div>

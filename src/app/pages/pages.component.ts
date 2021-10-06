@@ -55,6 +55,11 @@ export class PagesComponent implements OnInit{
         hidden: this.adminRole         
       },
       {
+        title: 'Aktywacja użytkowników',
+        link: '/pages/user-activation', 
+        hidden: this.adminRole         
+      },
+      {
         title: 'Auth',
         icon: 'lock-outline',
         children: [

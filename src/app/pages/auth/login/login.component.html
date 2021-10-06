@@ -13,7 +13,7 @@
             <input type="text" nbInput fullWidth placeholder="Email-address" id="input-email" #userEmail="ngModel" [(ngModel)] = "user.userEmail">
             <br /><br />
             <label class="label" for="input-password">Password:</label>
-            <input type="text" nbInput fullWidth placeholder="Password" id="input-password" #userPassword="ngModel" [(ngModel)] = "user.userPassword">
+            <input type="password" nbInput fullWidth placeholder="Password" id="input-password" #userPassword="ngModel" [(ngModel)] = "user.userPassword">
             <br /><br />
             <button style="float: right; margin-top: 5px;" nbButton status="success" (click)="login()">Success</button>
         </div>
