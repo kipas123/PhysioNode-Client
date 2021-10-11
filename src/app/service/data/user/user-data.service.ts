@@ -61,4 +61,12 @@ export class UserDataService {
     return this.http.get<UserReadModel>(`http://localhost:8081/physio-node/user/${id}`);
     
   }
+  executeGetUserByEmailOrNameOrSurname(value){
+    return this.http.get<UserReadModel>(`http://localhost:8081/physio-node/user/roleManagement/foundUser/${value}`);
+    
+  }
+  executeChangeUserRole(userId,roleId){
+    return this.http.get(`http://localhost:8081/physio-node/user/roleManagement/changeRole/${userId}/${roleId}`);
+    
+  }
 }
