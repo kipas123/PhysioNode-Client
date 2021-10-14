@@ -65,8 +65,25 @@ export class UserDataService {
     return this.http.get<UserReadModel>(`http://localhost:8081/physio-node/user/roleManagement/foundUser/${value}`);
     
   }
+
+  executeGetUnverifiedUserByUserNameOrUserSurname(value){
+    return this.http.get<UserReadModel>(`http://localhost:8081/physio-node/user/roleManagement/foundUserFiltr/${value}`);
+    
+  }
   executeChangeUserRole(userId,roleId){
     return this.http.get(`http://localhost:8081/physio-node/user/roleManagement/changeRole/${userId}/${roleId}`);
+    
+  }
+  executeGetAllUnverfiedUser(page, size){
+    return this.http.get<UserReadModel>(`http://localhost:8081/physio-node/user/roleManagement/unverified/${page}/${size}`);
+    
+  }
+  executeGetUsersWithModRole(){
+    return this.http.get<UserReadModel>(`http://localhost:8081/physio-node/user/roleManagement/modRole`);
+    
+  }
+  executeGetCountOfUnverfiedUser(){
+    return this.http.get<number>(`http://localhost:8081/physio-node/user/roleManagement/countUnverfied`);
     
   }
 }
