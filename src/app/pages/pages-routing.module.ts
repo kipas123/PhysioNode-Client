@@ -17,6 +17,7 @@ import { RegisterComponent } from './auth/register/register.component';
 import { UnathorizedComponent } from './alertPages/unathorized/unathorized.component';
 import { NotFoundComponent } from './alertPages/not-found/not-found.component';
 import { UserActivationComponent } from './admin/user-activation/user-activation.component';
+import { FindUserComponent } from './physiotherapist/find-user/find-user.component';
 
 const routes: Routes = [{
   path: '',
@@ -47,6 +48,10 @@ const routes: Routes = [{
       component: ProfileComponent,
       canActivate: [AuthGuard],
       data: {roles: [Role.user, Role.admin]}
+    },
+    {
+      path: 'findUser',
+      component: FindUserComponent,
     },
     {
       path: 'ailment-list',

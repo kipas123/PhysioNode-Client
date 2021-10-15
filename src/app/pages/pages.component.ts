@@ -42,6 +42,11 @@ export class PagesComponent implements OnInit{
         group: true,
       },
       {
+        title: 'Wyszukaj użytkownika',
+        link: '/pages/findUser',
+        hidden: this.adminRole 
+      },
+      {
         title: 'Profil',
         link: '/pages/profile',
       },

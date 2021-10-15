@@ -15,6 +15,7 @@ import { RegisterComponent } from 'app/pages/auth/register/register.component';
 import { UnathorizedComponent } from 'app/pages/alertPages/unathorized/unathorized.component';
 import { NotFoundComponent } from 'app/pages/alertPages/not-found/not-found.component';
 import { UserActivationComponent } from 'app/pages/admin/user-activation/user-activation.component';
+import { FindUserComponent } from 'app/pages/physiotherapist/find-user/find-user.component';
 
 
 
@@ -31,7 +32,8 @@ import { UserActivationComponent } from 'app/pages/admin/user-activation/user-ac
      RegisterComponent,
      UnathorizedComponent,
      NotFoundComponent,
-    UserActivationComponent],
+     UserActivationComponent,
+     FindUserComponent],
   imports: [
     RouterModule, // RouterModule.forRoot(routes, { useHash: true }), if this is your app.module
     NbLayoutModule,
