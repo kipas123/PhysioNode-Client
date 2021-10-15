@@ -27,10 +27,16 @@ export class MygroupDataService {
     return this.headers;
   }
 
-  executeGetAllGroupsByUserId(id){
+  executeGetAllGroupsByUserOwner(id){
     return this.http.get<Mygroup>(`http://localhost:8081/physio-node/group/all/${id}`, {headers:this.getCurrentUserHeader()});
     
   }
+
+  executeGetAllGroupByUserId(id){
+    return this.http.get<Mygroup>(`http://localhost:8081/physio-node/group/all/user/${id}`, {headers:this.getCurrentUserHeader()});
+    
+  }
+
   executeGetAllGroups(){
     return this.http.get<Mygroup>("http://localhost:8081/physio-node/group/all", {headers:this.getCurrentUserHeader()});
     

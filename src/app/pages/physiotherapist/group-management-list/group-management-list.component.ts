@@ -37,7 +37,7 @@ export class GroupManagementListComponent implements OnInit {
     this.refreshGroups();
   }
   refreshGroups(){
-    this.service.executeGetAllGroupsByUserId(this.currentUser.userId).subscribe(
+    this.service.executeGetAllGroupsByUserOwner(this.currentUser.userId).subscribe(
       response => {
         this.mygroups = response;
       }

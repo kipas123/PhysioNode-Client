@@ -4,9 +4,11 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AilmentReadModel } from 'app/objModel/ailment/ailmentReadModel.model';
 import { AilmentWriteModel } from 'app/objModel/ailment/ailmentWriteModel.model';
+import { Mygroup } from 'app/objModel/mygroup/mygroup.model';
 import { UserReadModel } from 'app/objModel/user/userReadModel.model';
 import { AilmentIDDataService } from 'app/service/ailment-id-data.service';
 import { AilmentDataService } from 'app/service/data/ailment/ailment-data.service';
+import { MygroupDataService } from 'app/service/data/mygroup/mygroup-data.service';
 import { UserDataService } from 'app/service/data/user/user-data.service';
 import { UserIdDataService } from 'app/service/user-id-data.service';
 
@@ -19,12 +21,14 @@ export class UserManagementComponent implements OnInit {
 currentUser: UserReadModel;
 userId: number;
 user:UserReadModel;
+userGroups: Mygroup;
 ailments:AilmentReadModel;
 ailment:AilmentWriteModel = new AilmentWriteModel(null,null,null,null);
 alertIsOpen: boolean = false;
 
   constructor(private userService:UserDataService, private ailmentService:AilmentDataService,
-   private ailmentIdService: AilmentIDDataService,private userIdService: UserIdDataService, private router: Router ) {
+   private ailmentIdService: AilmentIDDataService,private userIdService: UserIdDataService, private router: Router,
+   private mygroupDataService: MygroupDataService ) {
     this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
     if(!this.currentUser){
       console.log("Błąd");
@@ -55,13 +59,18 @@ alertIsOpen: boolean = false;
         console.log(this.user.userId);
        // console.log(response.email);
       }
-    )
+    );
+    this.mygroupDataService.executeGetAllGroupByUserId(this.userId).subscribe(
+      response => {
+        this.userGroups = response;
+      }
+    );
       this.ailmentService.executeGetUserAilmentByIdUser(this.userId).subscribe(
         response => {
           this.ailments = response;
          // console.log(response.email);
         }
-    )
+    );
   }
 
   createAilment(){

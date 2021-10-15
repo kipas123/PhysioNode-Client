@@ -13,7 +13,7 @@ export class UserActivationComponent implements OnInit {
   alertVeriviedIsOpen: boolean = false;
   chosenUsers: UserReadModel;
   unverfiedUsers: UserReadModel;
-  unverfiedUsersPageSize: number = 2;
+  unverfiedUsersPageSize: number = 5;
   unverfiedUsersFiltr: String;
   numberOfPage: number;
   searchAlert: boolean = false;
@@ -68,7 +68,7 @@ export class UserActivationComponent implements OnInit {
         response => {
           this.chosenUsers = response;
         }
-      )
+      );
   }
   changeUserRole(userId, roleId, functionType){
     if(functionType==1){
