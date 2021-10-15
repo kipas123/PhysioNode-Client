@@ -55,4 +55,13 @@ export class MygroupDataService {
     return this.http.put("http://localhost:8081/physio-node/group/changeGroupInfo", mygroup, {headers:this.getCurrentUserHeader()});
   }
 
+  executeAddUserToGroup(userId,groupId){
+    return this.http.get(`http://localhost:8081/physio-node/group/addUserToGroup/${userId}/${groupId}`, {headers:this.getCurrentUserHeader()});
+    
+  }
+
+  executeRemoveUserFromGroup(userId,groupId){
+    return this.http.get(`http://localhost:8081/physio-node/group/removeUserFromGroup/${userId}/${groupId}`, {headers:this.getCurrentUserHeader()});
+    
+  }
 }

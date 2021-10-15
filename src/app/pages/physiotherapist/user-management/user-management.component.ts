@@ -34,6 +34,7 @@ alertIsOpen: boolean = false;
 
   ngOnInit(): void {
     this.getUserId();
+    //console.log(this.userId);
     this.refreshUserInfo();
   }
 
@@ -51,6 +52,7 @@ alertIsOpen: boolean = false;
     this.userService.executeGetUserByIdUser(this.userId).subscribe(
       response => {
         this.user = response;
+        console.log(this.user.userId);
        // console.log(response.email);
       }
     )
@@ -80,6 +82,7 @@ alertIsOpen: boolean = false;
 
   goToAilment(id: number){
     this.ailmentIdService.changeIdailment(id);
+    console.log(this.user.userId);
     this.userIdService.changeIduser(this.user.userId);
     this.router.navigate(['/pages/ailment-management']);
 

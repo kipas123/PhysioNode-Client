@@ -19,9 +19,38 @@
       <nb-card-body>
 
         <div class="full-name-inputs">
-          <input type="text" nbInput fullWidth placeholder="Identyfikator/e-mail">
-          <br /><br />
-          <button style="float: right; margin-top: 5px;" nbButton status="success">Dodaj</button>
+          <nb-alert status="danger" closable (close)="onClose()" *ngIf="alertSearchUser">
+            Nieznaleziono użytkownika!
+          </nb-alert>
+          <div *ngIf="!searchUserList">
+          <input type="text" nbInput fullWidth #searchUser="ngModel" [(ngModel)] = "searchUserFiltr" placeholder="Identyfikator/e-mail">
+          <br />
+          <button style="float: right; margin-top: 5px;" nbButton status="success" (click)="findUser()">Wyszukaj</button><br/><br/>
+        </div>
+        <button *ngIf="searchUserList" nbButton size="tiny" status="danger" style="margin-bottom: 5px;"(click)="closeSearchUserList()">X<sub>{{searchUserFiltr}}</sub></button>
+        <nb-alert status="success" closable (close)="onClose()" *ngIf="alertAddUser">
+          Dodano użytkownika
+        </nb-alert>
+          <table *ngIf="searchUserList" class="table table-dark" style="margin-top: 5px !important;">
+            <thead>
+              <tr>
+                <th scope="col">E-mail</th>
+                <th scope="col">Name</th>
+                <th scope="col">Surname</th>
+                <th scope="col">D.Urodzenia</th>
+                <th scope="col">Narzedzia</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let user of searchUserList; index as i;">
+                <td>{{user.userEmail}}</td>
+                <td>{{user.userName}}</td>
+                <td>{{user.userSurname}}</td>
+                <td>{{user.userDob}}</td>
+                <td><button nbButton size="small" status="success"(click)="addUserToGroup(user.userId)">Dodaj</button></td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </nb-card-body>
     </nb-card>
@@ -49,12 +78,15 @@
   <div class="col-md-12 col-lg-12 col-xxxl-12">
     <nb-card class="list-card" size="small">
       <nb-card-header>Użytkownicy:</nb-card-header>
+      <nb-alert status="danger" closable (close)="onClose()" *ngIf="alertRemoveUser">
+        Usunieto użytkownika!
+      </nb-alert>
       <nb-list>
         <nb-list-item *ngFor="let user of userList">
           <nb-user [name]="user.userName + ' ' + user.userSurname" [title]="user.userRole">
           </nb-user>
           <button style="float: right;" nbButton status="warning" (click)="goToUserManagement(user.userId)">Przejdź</button>
-          <button style="float: right;" nbButton status="danger">Usuń</button>
+          <button style="float: right;" nbButton status="danger" (click)="removeUserFromGroup(user.userId)">Usuń</button>
         </nb-list-item>
       </nb-list>
     </nb-card>
