@@ -12,6 +12,8 @@ import { UserDataService } from 'app/service/data/user/user-data.service';
   styleUrls: ['./user-ailment.component.scss']
 })
 export class UserAilmentComponent implements OnInit {
+  messengerUserId: number;
+  messengerAilmentId: number;
   ailmentId: number;
 ailment:AilmentReadModel;
 currentUser:UserReadModel;
@@ -25,10 +27,13 @@ currentUser:UserReadModel;
       console.log("Błąd");
       this.router.navigate(['/login']);
     }
-    
+    this.messengerUserId = this.currentUser.userId;
+    console.log("Tu jestem" + this.messengerUserId);
     this.ailmentIdService.currentIdailment.subscribe(
       ailmentId => this.ailmentId = ailmentId
     );
+    this.messengerAilmentId = this.ailmentId;
+    console.log("Ciekawe:" +  this.ailment);
     this.refreshAilment();
   }
 

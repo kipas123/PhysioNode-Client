@@ -81,6 +81,10 @@
                     <nb-tab tabTitle="Pliki">
                         <p>Pliki choroby</p>
                     </nb-tab>
+                    <nb-tab tabTitle="Rozmowa">
+                      <messenger [ailmentId]="ailmentId" [currentUser]="currentUser"></messenger>
+
+                  </nb-tab>
                 </nb-tabset>
 
             </nb-card-body>

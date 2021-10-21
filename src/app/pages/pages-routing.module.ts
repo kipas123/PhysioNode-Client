@@ -18,6 +18,7 @@ import { UnathorizedComponent } from './alertPages/unathorized/unathorized.compo
 import { NotFoundComponent } from './alertPages/not-found/not-found.component';
 import { UserActivationComponent } from './admin/user-activation/user-activation.component';
 import { FindUserComponent } from './physiotherapist/find-user/find-user.component';
+import { TestComponent } from './test/test.component';
 
 const routes: Routes = [{
   path: '',
@@ -92,6 +93,10 @@ const routes: Routes = [{
       component: UserActivationComponent,
       canActivate: [AuthGuard],
       data: {roles: [Role.admin]}
+    },
+    {
+      path: 'test',
+      component: TestComponent,
     },
     {
       path: '',

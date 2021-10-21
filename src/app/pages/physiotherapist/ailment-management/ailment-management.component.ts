@@ -16,6 +16,8 @@ import { UserIdDataService } from 'app/service/user-id-data.service';
 })
 export class AilmentManagementComponent implements OnInit {
   //Ailment&User id path variale;
+  currentUser: UserReadModel;
+  messengerUserId: number;
   ailmentId: number;
   userId: number;
   //Obj models
@@ -33,6 +35,13 @@ export class AilmentManagementComponent implements OnInit {
     private router: Router) { }
 
   ngOnInit(): void {
+    this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
+    if(!this.currentUser){
+      console.log("Błąd");
+      this.router.navigate(['/login']);
+    }
+    this.messengerUserId = this.currentUser.userId;
+    console.log("To ja: " + this.messengerUserId);
     this.getAilmentAndUserId();
     this.getProfile();
     this.refreshAilmentInfo();

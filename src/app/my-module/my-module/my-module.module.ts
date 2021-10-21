@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { NbAccordionModule, NbAlertModule, NbButtonModule, NbCardModule, NbDatepickerModule, NbInputModule, NbLayoutModule, NbListModule, NbSelectModule, NbSidebarModule, NbSpinnerModule, NbTabsetModule, NbUserModule } from '@nebular/theme';
+import { NbAccordionModule, NbAlertModule, NbButtonModule, NbCardModule, NbChatModule, NbDatepickerModule, NbInputModule, NbLayoutModule, NbListModule, NbSelectModule, NbSidebarModule, NbSpinnerModule, NbTabsetModule, NbUserModule } from '@nebular/theme';
 import { ThemeModule } from 'app/@theme/theme.module';
 import { GroupManagementComponent } from 'app/pages/physiotherapist/group-management/group-management.component';
 import { UserManagementComponent } from 'app/pages/physiotherapist/user-management/user-management.component';
@@ -16,6 +16,8 @@ import { UnathorizedComponent } from 'app/pages/alertPages/unathorized/unathoriz
 import { NotFoundComponent } from 'app/pages/alertPages/not-found/not-found.component';
 import { UserActivationComponent } from 'app/pages/admin/user-activation/user-activation.component';
 import { FindUserComponent } from 'app/pages/physiotherapist/find-user/find-user.component';
+import { TestComponent } from 'app/pages/test/test.component';
+import { MessengerComponent } from 'app/components/messenger/messenger.component';
 
 
 
@@ -33,7 +35,9 @@ import { FindUserComponent } from 'app/pages/physiotherapist/find-user/find-user
      UnathorizedComponent,
      NotFoundComponent,
      UserActivationComponent,
-     FindUserComponent],
+     FindUserComponent,
+    TestComponent,
+MessengerComponent],
   imports: [
     RouterModule, // RouterModule.forRoot(routes, { useHash: true }), if this is your app.module
     NbLayoutModule,
@@ -50,7 +54,8 @@ import { FindUserComponent } from 'app/pages/physiotherapist/find-user/find-user
     NbTabsetModule,
     NbSpinnerModule,
     FormsModule,
-    NbAlertModule
+    NbAlertModule,
+    NbChatModule
   ]
 })
 export class MyModuleModule { }
