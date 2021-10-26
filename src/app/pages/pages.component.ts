@@ -22,7 +22,7 @@ export class PagesComponent implements OnInit{
   constructor(private router: Router) {
     this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
     if(!this.currentUser){
-      this.router.navigate(['/pages/login']);
+      //this.router.navigate(['/pages/login']);
     }
     if(this.currentUser && this.currentUser.userRoleDTO.roleName == "admin"){
       this.adminRole = false;
@@ -71,6 +71,14 @@ export class PagesComponent implements OnInit{
           {
             title: 'Login',
             link: '/pages/login',
+          },
+          {
+            title: 'ResetPassword',
+            link: '/pages/password-reset',
+          },
+          {
+            title: 'ResetPasswordChange',
+            link: '/pages/password-reset-change/222',
           },
           {
             title: 'Register',

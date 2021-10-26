@@ -18,6 +18,8 @@ import { UserActivationComponent } from 'app/pages/admin/user-activation/user-ac
 import { FindUserComponent } from 'app/pages/physiotherapist/find-user/find-user.component';
 import { TestComponent } from 'app/pages/test/test.component';
 import { MessengerComponent } from 'app/components/messenger/messenger.component';
+import { PasswordResetComponent } from 'app/pages/auth/password-reset/password-reset.component';
+import { PasswordResetChangeComponent} from 'app/pages/auth/pasword-reset-change/pasword-reset-change.component';
 
 
 
@@ -37,7 +39,9 @@ import { MessengerComponent } from 'app/components/messenger/messenger.component
      UserActivationComponent,
      FindUserComponent,
     TestComponent,
-MessengerComponent],
+MessengerComponent,
+PasswordResetComponent,
+PasswordResetChangeComponent],
   imports: [
     RouterModule, // RouterModule.forRoot(routes, { useHash: true }), if this is your app.module
     NbLayoutModule,

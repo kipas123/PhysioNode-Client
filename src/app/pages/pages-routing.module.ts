@@ -19,6 +19,8 @@ import { NotFoundComponent } from './alertPages/not-found/not-found.component';
 import { UserActivationComponent } from './admin/user-activation/user-activation.component';
 import { FindUserComponent } from './physiotherapist/find-user/find-user.component';
 import { TestComponent } from './test/test.component';
+import { PasswordResetComponent } from './auth/password-reset/password-reset.component';
+import { PasswordResetChangeComponent } from './auth/pasword-reset-change/pasword-reset-change.component';
 
 const routes: Routes = [{
   path: '',
@@ -31,6 +33,14 @@ const routes: Routes = [{
     {
       path: 'register',
       component: RegisterComponent,
+    },
+    {
+      path: 'password-reset',
+      component: PasswordResetComponent,
+    },
+    {
+      path: 'password-reset-change/:token',
+      component: PasswordResetChangeComponent,
     },
     {
       path: 'unathorized',
