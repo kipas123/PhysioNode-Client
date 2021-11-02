@@ -20,6 +20,7 @@ import { TestComponent } from 'app/pages/test/test.component';
 import { MessengerComponent } from 'app/components/messenger/messenger.component';
 import { PasswordResetComponent } from 'app/pages/auth/password-reset/password-reset.component';
 import { PasswordResetChangeComponent} from 'app/pages/auth/pasword-reset-change/pasword-reset-change.component';
+import { FileManagerComponent } from 'app/components/file-manager/file-manager.component';
 
 
 
@@ -41,7 +42,8 @@ import { PasswordResetChangeComponent} from 'app/pages/auth/pasword-reset-change
     TestComponent,
 MessengerComponent,
 PasswordResetComponent,
-PasswordResetChangeComponent],
+PasswordResetChangeComponent,
+FileManagerComponent],
   imports: [
     RouterModule, // RouterModule.forRoot(routes, { useHash: true }), if this is your app.module
     NbLayoutModule,
