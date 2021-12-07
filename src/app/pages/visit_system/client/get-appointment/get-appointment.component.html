@@ -1,0 +1,96 @@
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12">
+            <nb-card>
+                <nb-card-header>
+                    <h2>Zapisz się na wizytę</h2>
+                </nb-card-header>
+                <nb-card-body>
+                    <p>Imię fizjoterapeuty: Adam</p>
+                    <p>Nazwisko fizjoterapeuty: Kowalski</p>
+                    <p>Adres e-mail fizjoterapeuty: kipas@gaset.pl</p>
+                </nb-card-body>
+            </nb-card>
+        </div>
+        <div class="col-sm-6">
+            <nb-card>
+                <nb-card-header>
+                    <h1 class="h5">Wybierz dzień:</h1>
+                </nb-card-header>
+                <nb-card-body *ngIf=isReady>
+                    <nb-calendar [(date)]="date" [filter]="filter" (dateChange)="handleDateChange($event)"
+                        boundingMonth=false></nb-calendar>
+                </nb-card-body>
+            </nb-card>
+
+            <nb-card size="tiny">
+                <nb-card-header>
+                    Dostępne usługi fizjoterapeuty:
+                </nb-card-header>
+                <nb-card-body>
+                    <table class="table table-dark" *ngIf="listOfService">
+                        <thead>
+                          <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Nazwa</th>
+                            <th scope="col">Czas trwania</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr *ngFor="let service of listOfService; let indexOfelement=index;">
+                            <th scope="row">{{indexOfelement+1}}</th>
+                            <td>{{service.userServiceTypeName}}</td>
+                            <td>{{service.userServiceTypeDuration}}</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                </nb-card-body>
+            </nb-card>
+        </div>
+        <div class="col-sm-6">
+            <nb-card size="small">
+                <nb-card-header>
+                    Lista godzin przyjęć fizjoterapeuty
+                </nb-card-header>
+                <nb-list>
+                    <nb-list-item *ngFor="let hour of listOfHours" style="text-align: center !important;">
+                        <span style="text-align: center;">
+                            <!-- <s *ngIf="fruit.isAvailable == false">{{ fruit.name }}</s>
+                  <span *ngIf="fruit.isAvailable == true">{{ fruit.name }}</span> -->
+                            <button *ngIf="hour.empty==true" nbButton status="basic" style="text-align: center;"
+                                (click)="getAvailableUserServiceType(hour.availableHour)"
+                                st>{{hour.availableHour}}</button>
+                            <button nbButton *ngIf="hour.empty==false" disabled status="basic"
+                                style="text-align: center;" (click)="getAvailableUserServiceType(hour.availableHour)"
+                                st>{{hour.availableHour}}</button>
+                        </span>
+                    </nb-list-item>
+                </nb-list>
+
+            </nb-card>
+            <nb-card size="tiny">
+                <nb-card-header>
+                    Wybierz dostępną usługę:
+                </nb-card-header>
+                <nb-card-body>
+                    <nb-alert status="danger" *ngIf="userServiceTypeisNull">
+                        Brak dostępnych usług. Wybierz inną godzinę.
+                    </nb-alert>
+                    <nb-alert status="success" *ngIf="bookVisitSuccessfull">
+                        Zapisałeś się na wizytę!
+                    </nb-alert>
+                    <nb-select placeholder="Placeholder" fullWidth="true" (selectedChange)="handleSelectChange($event)"
+                        *ngIf="serviceType">
+                        <nb-option *ngFor="let service of serviceType" value="{{service.idUserServiceType}}">
+                            {{service.userServiceTypeName}}</nb-option>
+                    </nb-select>
+                    <br /><br />
+                    <input *ngIf="serviceType" type="text" nbInput placeholder="{{chosenHour}}" disabled>
+                    <input *ngIf="serviceType" type="text" nbInput placeholder="{{chosenService}}" disabled>
+                    <br /><br />
+                    <button nbButton status="primary" style="float: right;" *ngIf="serviceType" (click)="bookVisit()">Zapisz</button>
+                </nb-card-body>
+            </nb-card>
+        </div>
+    </div>
+</div>

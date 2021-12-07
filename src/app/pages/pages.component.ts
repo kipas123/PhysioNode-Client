@@ -51,6 +51,10 @@ export class PagesComponent implements OnInit{
         link: '/pages/profile',
       },
       {
+        title: 'Wiadomości',
+        link: '/pages/user-messanger',
+      },
+      {
         title: 'Moje leczenie',
         link: '/pages/ailment-list',
       },
@@ -84,6 +88,32 @@ export class PagesComponent implements OnInit{
             title: 'Register',
             link: '/pages/register',
           }
+        ],
+      },
+      {
+        title: 'Visit-system',
+        icon: 'lock-outline',
+        children: [
+          {
+            title: 'Kreator Wizyt',
+            link: '/pages/visit-creator',
+          },
+          {
+            title: 'Wyszukaj fizjoterapeutę',
+            link: '/pages/search-service-provider',
+          },
+          {
+            title: 'Zarządzaj wizytami',
+            link: '/pages/visit-management',
+          },
+          {
+            title: 'Moje wizyty',
+            link: '/pages/my-visit',
+          },
+          {
+            title: 'Historia wizyt',
+            link: '/pages/visit-history',
+          },
         ],
       },
     ];

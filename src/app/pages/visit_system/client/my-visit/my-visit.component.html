@@ -1,0 +1,41 @@
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12">
+            <nb-card>
+                <nb-card-header>
+                    <h1 class="h5">Nadchodzące wizyty</h1>
+                </nb-card-header>
+                <nb-card-body>
+                    <nb-accordion>
+                        <nb-accordion-item *ngFor="let visit of listOfUpcomingVisit">
+                            <nb-accordion-item-header>{{visit.userServiceTypeDTO.userServiceTypeName}} - {{visit.visitProvider.userName}} {{visit.visitProvider.userSurname}} / {{visit.visitDate || Date}}</nb-accordion-item-header>
+                            <nb-accordion-item-body>
+                                Item Content
+                            </nb-accordion-item-body>
+                        </nb-accordion-item>
+                    </nb-accordion>
+                </nb-card-body>
+            </nb-card>
+        </div>
+        <div class="col-sm-12">
+            <nb-card>
+                <nb-card-header>
+                    <h1 class="h5">Twoje wizyty</h1>
+                </nb-card-header>
+                <nb-card-body>
+                    <nb-accordion>
+                        <nb-accordion-item *ngFor="let visit of listOfVisit">
+                            <nb-accordion-item-header>{{visit.userServiceTypeDTO.userServiceTypeName}} - {{visit.visitProvider.userName}} {{visit.visitProvider.userSurname}} / {{visit.visitDate || Date}}</nb-accordion-item-header>
+                            <nb-accordion-item-body>
+                                Prowadzący:{{visit.visitProvider.userName}} {{visit.visitProvider.userSurname}}<br/>
+                                Data wizyty: {{visit.visitDate || Date}} {{visit.userVisitTime}} <br/>
+                                Rodzaj wizyty:{{visit.userServiceTypeDTO.userServiceTypeName}}<br/>
+                                Czas trwania wizyty: {{visit.userServiceTypeDTO.userServiceTypeDuration}}
+                            </nb-accordion-item-body>
+                        </nb-accordion-item>
+                    </nb-accordion>
+                </nb-card-body>
+            </nb-card>
+        </div>
+    </div>
+</div>

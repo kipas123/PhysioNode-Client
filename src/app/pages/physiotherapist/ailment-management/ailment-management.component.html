@@ -79,7 +79,7 @@
 
                     </nb-tab>
                     <nb-tab tabTitle="Pliki">
-                        <p>Pliki choroby</p>
+                      <file-manager [ailmentId]="ailmentId" [currentUser]="currentUser"></file-manager>
                     </nb-tab>
                     <nb-tab tabTitle="Rozmowa">
                       <messenger [ailmentId]="ailmentId" [currentUser]="currentUser"></messenger>

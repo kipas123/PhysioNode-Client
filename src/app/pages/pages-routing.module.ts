@@ -21,6 +21,13 @@ import { FindUserComponent } from './physiotherapist/find-user/find-user.compone
 import { TestComponent } from './test/test.component';
 import { PasswordResetComponent } from './auth/password-reset/password-reset.component';
 import { PasswordResetChangeComponent } from './auth/pasword-reset-change/pasword-reset-change.component';
+import { VisitCreatorComponent } from './visit_system/physiotherapist/visit-creator/visit-creator.component';
+import { SearchServiceProviderComponent } from './visit_system/client/search-service-provider/search-service-provider.component';
+import { GetAppointmentComponent } from './visit_system/client/get-appointment/get-appointment.component';
+import { VisitManagementComponent } from './visit_system/physiotherapist/visit-management/visit-management.component';
+import { MyVisitComponent } from './visit_system/client/my-visit/my-visit.component';
+import { VisitHistoryComponent } from './visit_system/physiotherapist/visit-history/visit-history.component';
+import { UserMessengerComponent } from './user/user-messenger/user-messenger.component';
 
 const routes: Routes = [{
   path: '',
@@ -107,6 +114,34 @@ const routes: Routes = [{
     {
       path: 'test',
       component: TestComponent,
+    },
+    {
+      path: 'user-messanger',
+      component: UserMessengerComponent,
+    },
+    {
+      path: 'visit-creator',
+      component: VisitCreatorComponent,
+    },
+    {
+      path: 'search-service-provider',
+      component: SearchServiceProviderComponent,
+    },
+    {
+      path: 'get-appointment',
+      component: GetAppointmentComponent,
+    },
+    {
+      path: 'visit-management',
+      component: VisitManagementComponent,
+    },
+    {
+      path: 'visit-history',
+      component: VisitHistoryComponent,
+    },
+    {
+      path: 'my-visit',
+      component: MyVisitComponent,
     },
     {
       path: '',

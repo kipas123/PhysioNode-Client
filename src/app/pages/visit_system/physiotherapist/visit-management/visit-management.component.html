@@ -1,0 +1,86 @@
+<div class="container">
+    <div class="row">
+        <div class="col-sm-4">
+            <nb-card>
+                <nb-card-header>
+                    <h1 class="h5">Selected date: {{ date | date }}</h1>
+                </nb-card-header>
+                <nb-card-body>
+                    <nb-calendar [(date)]="date"  (dateChange)="handleDateChange($event)" size="small">
+                    </nb-calendar>
+                </nb-card-body>
+            </nb-card>
+        </div>
+
+        <div class="col-sm-8">
+            <nb-card>
+                <nb-card-header>
+                    <h1 class="h5">Wizyty na dzień: {{ date | date }}</h1>
+                </nb-card-header>
+                <nb-card-body>
+                    <table class="table table-dark" *ngIf="visitListForChosenDay">
+                        <thead>
+                          <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Godzina rezerwacji</th>
+                            <th scope="col">Rodzaj rezerwacji</th>
+                            <th scope="col">Czas usługi</th>
+                            <th scope="col">Imie i nazwisko</th>
+                            <th scope="col">Narzędzia</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr *ngFor="let visit of visitListForChosenDay; let indexOfelement=index;">
+                            <th scope="row">{{indexOfelement+1}}</th>
+                            <td>{{visit.userVisitTime}}</td>
+                            <td>{{visit.userServiceTypeDTO.userServiceTypeName}}</td>
+                            <td>{{visit.userServiceTypeDTO.userServiceTypeDuration}}</td>
+                            <td>{{visit.userDTO.userName}} {{visit.userDTO.userSurname}}</td>
+                            <td><button nbButton status="danger" size="tiny">usuń</button></td>
+                          </tr>
+                        </tbody>
+                      </table>
+                </nb-card-body>
+            </nb-card>
+        </div>
+        <div class="col-sm-12">
+            <nb-card>
+                <nb-card-header>
+                    <h1 class="h5">Wizyty do akceptacji:</h1>
+                </nb-card-header>
+                <nb-card-body>
+                    <table class="table table-dark">
+                        <thead>
+                          <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Data rezerwacji</th>
+                            <th scope="col">Godzina rezerwacji</th>
+                            <th scope="col">Rodzaj rezerwacji</th>
+                            <th scope="col">Czas usługi</th>
+                            <th scope="col">Imie i nazwisko</th>
+                            <th scope="col">Narzędzia</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr *ngFor="let visit of visitToAccept; let indexOfelement=index;">
+                            <th scope="row">{{index}}</th>
+                            <td>{{visit.visitDate | date}}</td>
+                            <td>{{visit.userVisitTime}}</td>
+                            <td>{{visit.userServiceTypeDTO.userServiceTypeName}}</td>
+                            <td>{{visit.userServiceTypeDTO.userServiceTypeDuration}}</td>
+                            <td>{{visit.userDTO.userName}} {{visit.userDTO.userSurname}}</td>
+                            <td><button nbButton status="danger" size="tiny">Anuluj</button>
+                                <button nbButton status="success" size="tiny">Akceptuj</button>
+                            </td>
+                            </tr>
+                        </tbody>
+                      </table>
+                </nb-card-body>
+            </nb-card>
+        </div>
+
+
+
+
+    </div>
+</div>
