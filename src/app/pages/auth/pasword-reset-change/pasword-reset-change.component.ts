@@ -19,12 +19,12 @@ export class PasswordResetChangeComponent implements OnInit {
     private router: Router) { }
 
   ngOnInit(): void {
-    this.activatedRoute.paramMap.subscribe(
-      params =>{
-        this.token = params.get('token');
-      }
-    );
-    this.isTokenValid(this.token);
+    // this.activatedRoute.paramMap.subscribe(
+    //   params =>{
+    //     this.token = params.get('token');
+    //   }
+    // );
+    // this.isTokenValid(this.token);
   }
 
   isTokenValid(token: String){

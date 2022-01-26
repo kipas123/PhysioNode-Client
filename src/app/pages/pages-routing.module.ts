@@ -4,12 +4,12 @@ import { NgModule } from '@angular/core';
 import { PagesComponent } from './pages.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ProfileComponent } from './user/profile-management/profile.component';
-import { GroupManagementComponent } from './physiotherapist/group-management/group-management.component';
-import { UserManagementComponent } from './physiotherapist/user-management/user-management.component';
+import { GroupManagementComponent } from './physiotherapist&coach/group-management/group-management.component';
+import { UserManagementComponent } from './physiotherapist&coach/user-management/user-management.component';
 import { UserAilmentComponent } from './user/user-ailment/user-ailment.component';
 import { UserAilmentListComponent } from './user/user-ailment-list/user-ailment-list.component';
-import { AilmentManagementComponent } from './physiotherapist/ailment-management/ailment-management.component';
-import { GroupManagementListComponent } from './physiotherapist/group-management-list/group-management-list.component';
+import { AilmentManagementComponent } from './physiotherapist&coach/ailment-management/ailment-management.component';
+import { GroupManagementListComponent } from './physiotherapist&coach/group-management-list/group-management-list.component';
 import { LoginComponent } from './auth/login/login.component';
 import { AuthGuard } from 'app/guards/auth.guard';
 import { Role } from 'app/objModel/role/role';
@@ -17,8 +17,7 @@ import { RegisterComponent } from './auth/register/register.component';
 import { UnathorizedComponent } from './alertPages/unathorized/unathorized.component';
 import { NotFoundComponent } from './alertPages/not-found/not-found.component';
 import { UserActivationComponent } from './admin/user-activation/user-activation.component';
-import { FindUserComponent } from './physiotherapist/find-user/find-user.component';
-import { TestComponent } from './test/test.component';
+import { FindUserComponent } from './physiotherapist&coach/find-user/find-user.component';
 import { PasswordResetComponent } from './auth/password-reset/password-reset.component';
 import { PasswordResetChangeComponent } from './auth/pasword-reset-change/pasword-reset-change.component';
 import { VisitCreatorComponent } from './visit_system/physiotherapist/visit-creator/visit-creator.component';
@@ -28,6 +27,7 @@ import { VisitManagementComponent } from './visit_system/physiotherapist/visit-m
 import { MyVisitComponent } from './visit_system/client/my-visit/my-visit.component';
 import { VisitHistoryComponent } from './visit_system/physiotherapist/visit-history/visit-history.component';
 import { UserMessengerComponent } from './user/user-messenger/user-messenger.component';
+import { ExerciseManagementComponent } from './physiotherapist&coach/exercise-management/exercise-management.component';
 
 const routes: Routes = [{
   path: '',
@@ -96,6 +96,12 @@ const routes: Routes = [{
     {
       path: 'ailment-management',
       component: AilmentManagementComponent,
+      canActivate: [AuthGuard],
+      data: {roles: [Role.admin]}
+    },
+    {
+      path: 'exercise-management',
+      component: ExerciseManagementComponent,
       canActivate: [AuthGuard],
       data: {roles: [Role.admin]}
     },

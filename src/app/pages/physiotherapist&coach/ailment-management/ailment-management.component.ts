@@ -8,6 +8,7 @@ import { AilmentIDDataService } from 'app/service/ailment-id-data.service';
 import { AilmentDataService } from 'app/service/data/ailment/ailment-data.service';
 import { UserDataService } from 'app/service/data/user/user-data.service';
 import { UserIdDataService } from 'app/service/user-id-data.service';
+import { MessageDataService } from 'app/service/data/message/message-data.service';
 
 @Component({
   selector: 'ailment-management',
@@ -18,6 +19,7 @@ export class AilmentManagementComponent implements OnInit {
   //Ailment&User id path variale;
   currentUser: UserReadModel;
   messengerUserId: number;
+  messengerMessageRoomId: number
   ailmentId: number;
   userId: number;
   //Obj models
@@ -32,7 +34,7 @@ export class AilmentManagementComponent implements OnInit {
   
   constructor(private ailmentService:AilmentDataService, private userService:UserDataService,
     private ailmentIdService: AilmentIDDataService, private userIdService: UserIdDataService,
-    private router: Router) { }
+    private router: Router, private messageDataService:MessageDataService) { }
 
   ngOnInit(): void {
     this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
@@ -45,6 +47,19 @@ export class AilmentManagementComponent implements OnInit {
     this.getAilmentAndUserId();
     this.getProfile();
     this.refreshAilmentInfo();
+  }
+
+  getMessageRoom(){
+    let messageRoomId: number;
+    this.messageDataService.executeGetMessageRoom(this.currentUser.userId, this.user.userId).subscribe(
+      response => {
+          messageRoomId = response;
+          if(messageRoomId!=0){
+            this.messengerMessageRoomId = messageRoomId;
+          }
+      }
+    );
+
   }
 
   getAilmentAndUserId(){
@@ -64,6 +79,7 @@ export class AilmentManagementComponent implements OnInit {
     this.ailmentService.executeGetAilmentByIdAilment(this.ailmentId).subscribe(
       response => {
         this.ailment = response;
+        this.getMessageRoom();
       }
     )
   }

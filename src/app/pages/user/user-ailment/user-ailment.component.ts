@@ -4,6 +4,7 @@ import { AilmentReadModel } from 'app/objModel/ailment/ailmentReadModel.model';
 import { UserReadModel} from 'app/objModel/user/userReadModel.model';
 import { AilmentIDDataService } from 'app/service/ailment-id-data.service';
 import { AilmentDataService } from 'app/service/data/ailment/ailment-data.service';
+import { MessageDataService } from 'app/service/data/message/message-data.service';
 import { UserDataService } from 'app/service/data/user/user-data.service';
 
 @Component({
@@ -13,12 +14,12 @@ import { UserDataService } from 'app/service/data/user/user-data.service';
 })
 export class UserAilmentComponent implements OnInit {
   messengerUserId: number;
-  messengerAilmentId: number;
+  messengerMessageRoomId: number;
   ailmentId: number;
-ailment:AilmentReadModel;
+    ailment:AilmentReadModel;
 currentUser:UserReadModel;
   constructor(private ailmentService:AilmentDataService, private userService:UserDataService,
-    private ailmentIdService: AilmentIDDataService, private router: Router) {
+    private ailmentIdService: AilmentIDDataService, private router: Router, private messageDataService: MessageDataService) {
      }
 
   ngOnInit(): void {
@@ -32,8 +33,6 @@ currentUser:UserReadModel;
     this.ailmentIdService.currentIdailment.subscribe(
       ailmentId => this.ailmentId = ailmentId
     );
-    this.messengerAilmentId = this.ailmentId;
-    console.log("Ciekawe:" +  this.ailment);
     this.refreshAilment();
   }
 
@@ -46,8 +45,22 @@ currentUser:UserReadModel;
     this.ailmentService.executeGetAilmentByIdAilment(this.ailmentId).subscribe(
       response => {
         this.ailment = response;
+         this.getMessageRoom();
         this.ailmentIdService.changeIdailment(-1);
       }
-    )
+    );
+  }
+
+  getMessageRoom(){
+    let messageRoomId: number;
+    this.messageDataService.executeGetMessageRoom(this.currentUser.userId, this.ailment.attendingphysician.userId).subscribe(
+      response => {
+          messageRoomId = response;
+          if(messageRoomId!=0){
+            this.messengerMessageRoomId = messageRoomId;
+          }
+      }
+    );
+
   }
 }

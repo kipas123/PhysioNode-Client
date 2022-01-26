@@ -68,7 +68,7 @@
                 </nb-list>
 
             </nb-card>
-            <nb-card size="tiny">
+            <nb-card size="tiny" *ngIf="serviceType">
                 <nb-card-header>
                     Wybierz dostępną usługę:
                 </nb-card-header>
@@ -81,7 +81,7 @@
                     </nb-alert>
                     <nb-select placeholder="Placeholder" fullWidth="true" (selectedChange)="handleSelectChange($event)"
                         *ngIf="serviceType">
-                        <nb-option *ngFor="let service of serviceType" value="{{service.idUserServiceType}}">
+                        <nb-option *ngFor="let service of serviceType" value="{{service.idUserServiceType}}" >
                             {{service.userServiceTypeName}}</nb-option>
                     </nb-select>
                     <br /><br />

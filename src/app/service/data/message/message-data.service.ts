@@ -1,9 +1,10 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Message } from '@angular/compiler/src/i18n/i18n_ast';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { MessageReadModel } from 'app/objModel/message/messageReadModel';
 import { UserReadModel } from 'app/objModel/user/userReadModel.model';
-
+let API_URL = "http://localhost:8081/physio-node/message/";
 @Injectable({
   providedIn: 'root'
 })
@@ -12,29 +13,41 @@ export class MessageDataService {
   currentUser: UserReadModel;
   constructor(
     private http:HttpClient, private router: Router) { }
-
-   private getCurrentUserHeader() : HttpHeaders{
-    this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
-    if(!this.currentUser){
-      console.log("Błąd");
-      this.router.navigate(['/pages/login']);
+    
+    private getCurrentUserHeader() : HttpHeaders{
+      this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
+      if(!this.currentUser){
+        console.log("Błąd");
+        this.router.navigate(['/pages/login']);
+      }
+      this.headers = new HttpHeaders({
+        authorization:'Bearer ' + this.currentUser.token,
+        "Content-Type":"application/json; charset=UTF-8"
+      });
+      return this.headers;
     }
-    this.headers = new HttpHeaders({
-      authorization:'Bearer ' + this.currentUser.token,
-      "Content-Type":"application/json; charset=UTF-8"
-    });
-    return this.headers;
-  }
+    
+    executeGetMessage(ailmentid, size, page){
+      return this.http.get<MessageReadModel>(API_URL + `getMessage/${ailmentid}/${size}/${page}`);
+    }
+    executeCountMessage(ailmentid){
+      return this.http.get<number>(API_URL + `countMessage/${ailmentid}`);
+    }
+    
+    executeSendMessage(message){
+      return this.http.post(API_URL + "sendMessage", message);
+    }
+    
+    executeGetMessageRoom(firstUserId, secondUserId){
+      return this.http.get<number>(API_URL + `getMessageRoom/${firstUserId}/${secondUserId}`);
+    }
+    executeGetMessageByRoomId(messageRoomId: number, size: number, page: number) {
+      return this.http.get<MessageReadModel[]>(API_URL + `getMessageByRoomId/${messageRoomId}/${size}/${page}`);
+    }
 
-  executeGetMessage(ailmentid, size, page){
-    return this.http.get<MessageReadModel>(`http://localhost:8081/physio-node/message/getMessage/${ailmentid}/${size}/${page}`);
+    executeCountMessageByMessageRoomId(messageRoomId: number) {
+      return this.http.get<number>(API_URL + `countMessageByMessageRoomId/${messageRoomId}`);
+    }
+    
   }
-  executeCountMessage(ailmentid){
-    return this.http.get<number>(`http://localhost:8081/physio-node/message/countMessage/${ailmentid}`);
-  }
-
-  executeSendMessage(message){
-    return this.http.post("http://localhost:8081/physio-node/message/sendMessage", message);
-  }
-
-}
+  

@@ -44,7 +44,7 @@ export class PagesComponent implements OnInit{
       {
         title: 'Wyszukaj użytkownika',
         link: '/pages/findUser',
-        hidden: this.adminRole 
+        hidden: false,
       },
       {
         title: 'Profil',
@@ -73,19 +73,15 @@ export class PagesComponent implements OnInit{
         icon: 'lock-outline',
         children: [
           {
-            title: 'Login',
+            title: 'Zaloguj',
             link: '/pages/login',
           },
           {
-            title: 'ResetPassword',
+            title: 'Zrestuj hasło',
             link: '/pages/password-reset',
           },
           {
-            title: 'ResetPasswordChange',
-            link: '/pages/password-reset-change/222',
-          },
-          {
-            title: 'Register',
+            title: 'Zarejestruj',
             link: '/pages/register',
           }
         ],
@@ -101,19 +97,20 @@ export class PagesComponent implements OnInit{
           {
             title: 'Wyszukaj fizjoterapeutę',
             link: '/pages/search-service-provider',
+            hidden: false,
           },
           {
             title: 'Zarządzaj wizytami',
             link: '/pages/visit-management',
           },
           {
-            title: 'Moje wizyty',
-            link: '/pages/my-visit',
-          },
-          {
             title: 'Historia wizyt',
             link: '/pages/visit-history',
           },
+          {
+            title: 'Moje wizyty',
+            link: '/pages/my-visit',
+          }
         ],
       },
     ];

@@ -1,0 +1,19 @@
+<div class="container">
+    <div class="row">
+        <div class="col-sm-8">
+            <messenger [messageRoomId]="messageRoomId" [currentUser]="currentUser"></messenger>
+        </div>
+        
+        <div class="col-sm-4">
+            <nb-card size="small">
+                <nb-list>
+                  <nb-list-item *ngFor="let recipient of messageRecipient">
+                    <nb-user [name]="recipient.userName +' '+ recipient.userSurname" [title]="recipient.userRoleDTO.roleName">
+                    </nb-user>
+                    <button style="float: right !important;" nbButton status="primary" size="tiny" (click)="getMessageRoom(recipient.userId)">Przejdź</button>
+                  </nb-list-item>
+                </nb-list>
+              </nb-card>
+        </div>
+    </div>
+</div>

@@ -44,19 +44,15 @@ export const MENU_ITEMS: NbMenuItem[] = [
     icon: 'lock-outline',
     children: [
       {
-        title: 'Login',
+        title: 'Zaloguj',
         link: '/pages/login',
       },
       {
-        title: 'Register',
+        title: 'Zarejestruj',
         link: '/pages/register',
       },
       {
-        title: 'Request Password',
-        link: '/auth/request-password',
-      },
-      {
-        title: 'Reset Password',
+        title: 'Zresetuj hasło',
         link: '/auth/reset-password',
       },
     ],

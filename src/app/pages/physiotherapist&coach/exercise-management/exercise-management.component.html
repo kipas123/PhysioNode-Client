@@ -1,0 +1,65 @@
+<nb-layout  *ngIf="!exercise" >
+    <nb-layout-header><h5>Wait..</h5></nb-layout-header>
+    <nb-layout-column [nbSpinner]="true" nbSpinnerSize="giant" nbSpinnerStatus="primary" *ngIf="!ailment">
+    </nb-layout-column>
+  </nb-layout>
+
+<div class="row" *ngIf="exercise">
+    <div class="col-lg-4">
+        <nb-card *ngIf="user">
+          <nb-card-header><h2>Ćwiczenie: </h2>
+            <h6>{{exercise.exerciseName}} </h6></nb-card-header>
+          <nb-card-body>
+            <p>Identyfikator: #{{user.userId}}</p>
+            <p>Imię i nazwisko: {{user.userName}} {{user.userSurname}}</p>
+            <p>Twój fizjoterapeuta: {{exercise.attendingCoach.userName}} {{exercise.attendingCoach.userSurname}}</p>
+          </nb-card-body>
+        </nb-card>
+      </div>
+      <div class="col-lg-8">
+        <nb-card *ngIf="user">
+          <nb-card-header><h2>Krótki opis choroby:</h2></nb-card-header>
+          <nb-card-body>
+            <p>{{exercise.exerciseDescription}}</p>
+          </nb-card-body>
+        </nb-card>
+      </div>
+    <div class="col-lg-12">
+        <nb-card>
+            <nb-card-body>
+
+                <nb-tabset fullWidth>
+                    <nb-tab tabTitle="Opis choroby">
+                        <nb-card>
+                            <nb-card-header>Dodaj opis ćwiczenia: </nb-card-header>
+                            <nb-card-body>
+                                <nb-alert status="success" closable (close)="onClose()" *ngIf="alertCreateExerciseDetailIsOpen">
+                                    Dodano opis!
+                                  </nb-alert>
+                                <div class="full-name-inputs">
+                                    <input type="text" nbInput fullWidth placeholder="Nagłówek" #noteHeader="ngModel" [(ngModel)]="exerciseDetailsWriteModel._exerciseDetailsHeader" >
+                                    <br /><br />
+                                    <textarea nbInput fullWidth placeholder="Opis" #noteDescription="ngModel" [(ngModel)]="exerciseDetailsWriteModel._exerciseDetailsDescription"></textarea>
+                                    <br /><br />
+                                    <button style="float: right; margin-top: 5px;" nbButton
+                                        status="success" (click)="createExerciseDetail()">Dodaj</button>
+                                </div>
+                            </nb-card-body>
+                        </nb-card>
+                        <nb-card *ngFor="let exerciseDetails of exercise.exerciseDetailsReadModel">
+                            <nb-card-header>{{exerciseDetails.exerciseDetailsHeader}} </nb-card-header>
+                            <nb-card-body>
+                                <p>{{exerciseDetails.exerciseDetailsDescription}}</p>
+                            </nb-card-body>
+                        </nb-card>
+                    </nb-tab>
+                    <nb-tab tabTitle="Rozmowa">
+                      <messenger [messageRoomId]="messengerMessageRoomId" [currentUser]="currentUser"></messenger>
+
+                  </nb-tab>
+                </nb-tabset>
+
+            </nb-card-body>
+        </nb-card>
+    </div>
+</div>

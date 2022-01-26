@@ -17,16 +17,18 @@ import {
   NbDatepickerModule,
   NbDialogModule,
   NbMenuModule,
+  NbPopoverModule,
   NbSidebarModule,
   NbThemeModule,
   NbToastrModule,
   NbWindowModule,
 } from '@nebular/theme';
-import { MyModuleModule } from './my-module/my-module/my-module.module';
+import { MyModuleModule } from './module/my-module/my-module.module';
 
 @NgModule({
   declarations: [AppComponent],
   imports: [
+    NbPopoverModule,
     HttpClientModule,
     MyModuleModule,
     BrowserModule,

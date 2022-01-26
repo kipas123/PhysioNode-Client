@@ -38,6 +38,9 @@ selectedDateTo : Date;
       console.log("Błąd");
       this.router.navigate(['/login']);
     }
+    this.getListOfService(this.currentUser.userId);
+    this.getUserWorkHour(this.date, this.currentUser.userId);
+    this.getAvailableListOfHours(this.date, this.currentUser.userId);
   }
 
   ngOnInit(): void {
@@ -60,6 +63,7 @@ getUserWorkHour(date: Date, userId: number){
   this.userWorkDataService.executeGetUserWorkHour(userDate).subscribe(
     response =>{
         this.listOfWorkHour = response;
+        console.log(this.listOfWorkHour);
     }
   );
 }

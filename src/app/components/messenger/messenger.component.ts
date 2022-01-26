@@ -13,10 +13,10 @@ import { MessageDataService } from 'app/service/data/message/message-data.servic
 export class MessengerComponent implements OnInit {
   lastRefreshTime: Date;
   FIRST_PAGE: number = 0;
-  @Input("ailmentId") ailmentId: number;
+  @Input("messageRoomId") messageRoomId: number;
   @Input("currentUser") currentUser: UserReadModel;
   messages: any[] = [];
-  messagesFromService: MessageReadModel;
+  messagesFromService: MessageReadModel[];
   messagesFromServicePast: MessageReadModel;
 
   page: number = 1;
@@ -27,20 +27,29 @@ export class MessengerComponent implements OnInit {
       private messageService:MessageDataService) { }
   
     ngOnInit(): void {
-      this.lastRefreshTime = new Date;
-      this.getMessages(this.ailmentId);
+      
     }
-  
+    ngOnChanges() {
+      /**********THIS FUNCTION WILL TRIGGER WHEN PARENT COMPONENT UPDATES 'someInput'**************/
+      //Write your code here
+      if(this.messageRoomId!=null && this.currentUser!=null){
+        this.getMessages(this.messageRoomId); 
+        this.lastRefreshTime = new Date;
+      }
+      this.messages=[];
+      }   
+     
 
 
-  getMessages(ailmentId){
-    this.messageService.executeGetMessage(ailmentId,this.pageSize, this.FIRST_PAGE).subscribe(
+  getMessages(messageRoomId){
+    console.log("Jestem w getMessage" + messageRoomId);
+    this.messageService.executeGetMessageByRoomId(messageRoomId,this.pageSize, this.FIRST_PAGE).subscribe(
       response => {
         this.messagesFromService = response;
         this.createTable();
       }
     );
-    this.messageService.executeCountMessage(ailmentId).subscribe(
+    this.messageService.executeCountMessageByMessageRoomId(messageRoomId).subscribe(
       response => {
         this.numberOfMessages = response;
         if(this.numberOfMessages%this.pageSize==0){
@@ -58,7 +67,7 @@ export class MessengerComponent implements OnInit {
     this.messages = []
     this.page = 1;
     this.lastRefreshTime = new Date();
-    this.getMessages(this.ailmentId);
+    this.getMessages(this.messageRoomId);
   }
   
   isMyMessage(id: number): boolean{
@@ -89,7 +98,7 @@ export class MessengerComponent implements OnInit {
   }
   
   sendMessage(event){
-  let message = new MessageWriteModel(event.message,this.currentUser.userId,this.ailmentId);
+  let message = new MessageWriteModel(event.message,this.currentUser.userId,this.messageRoomId);
   this.messageService.executeSendMessage(message).subscribe(
     response=>this.handleSuccessfulResponseSendMessage(response, event),
     error=> this.handleErrorResponseSendMessage(error)
@@ -125,7 +134,7 @@ export class MessengerComponent implements OnInit {
   
   loadPastMessage(){
     let pastMessage: MessageReadModel;
-    this.messageService.executeGetMessage(this.ailmentId,this.pageSize, this.page).subscribe(
+    this.messageService.executeGetMessageByRoomId(this.messageRoomId,this.pageSize, this.page).subscribe(
       response=>{
         this.handleSuccessfulResponsePastMessage(response);
       }

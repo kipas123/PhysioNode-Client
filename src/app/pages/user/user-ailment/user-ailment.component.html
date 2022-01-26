@@ -6,7 +6,7 @@
               <nb-card-body>
                 <p>Identyfikator: #{{currentUser.userId}}</p>
                 <p>Imię i nazwisko: {{currentUser.userName}} {{currentUser.userSurname}}</p>
-                <p>Twój fizjoterapeuta: {{ailment.attendingphysician}}</p>
+                <p>Twój fizjoterapeuta: {{ailment.attendingphysician.userName}} {{ailment.attendingphysician.userSurname}}</p>
               </nb-card-body>
             </nb-card>
           </div>
@@ -43,7 +43,7 @@
                         <p>Pliki choroby</p>
                     </nb-tab>
                     <nb-tab tabTitle="Rozmowa">
-                      <messenger [ailmentId] = "messengerAilmentId" [currentUser] = "currentUser"></messenger>
+                      <messenger [messageRoomId] = "messengerMessageRoomId" [currentUser] = "currentUser"></messenger>
                   </nb-tab>
                 </nb-tabset>
 
