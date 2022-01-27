@@ -40,7 +40,6 @@ import { ExerciseManagementComponent } from 'app/pages/physiotherapist&coach/exe
      NotFoundComponent,
      UserActivationComponent,
      FindUserComponent,
-    TestComponent,
 MessengerComponent,
 PasswordResetComponent,
 PasswordResetChangeComponent,

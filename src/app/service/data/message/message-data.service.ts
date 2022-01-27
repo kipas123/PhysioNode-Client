@@ -2,6 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Message } from '@angular/compiler/src/i18n/i18n_ast';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
+import { MessageNotificationDTO } from 'app/objModel/message/messageNotificationDTO.model';
 import { MessageReadModel } from 'app/objModel/message/messageReadModel';
 import { UserReadModel } from 'app/objModel/user/userReadModel.model';
 let API_URL = "http://localhost:8081/physio-node/message/";
@@ -47,6 +48,14 @@ export class MessageDataService {
 
     executeCountMessageByMessageRoomId(messageRoomId: number) {
       return this.http.get<number>(API_URL + `countMessageByMessageRoomId/${messageRoomId}`);
+    }
+
+    executeGetUserMessageNotification(userId){
+      return this.http.get<MessageNotificationDTO[]>(API_URL + `getUserMessageNotification/${userId}`);
+    }
+
+    executeDeleteUserMessageNotification(messageNotification){
+      return this.http.get(API_URL + `deleteUserMessageNotification/${messageNotification}`);
     }
     
   }

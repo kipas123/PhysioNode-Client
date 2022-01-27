@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { MessageNotificationDTO } from 'app/objModel/message/messageNotificationDTO.model';
 import { UserReadModel } from 'app/objModel/user/userReadModel.model';
 import { MessageDataService } from 'app/service/data/message/message-data.service';
 import { UserDataService } from 'app/service/data/user/user-data.service';
@@ -10,7 +11,10 @@ import { UserDataService } from 'app/service/data/user/user-data.service';
   styleUrls: ['./user-messenger.component.scss']
 })
 export class UserMessengerComponent implements OnInit {
+userMessageNotification: MessageNotificationDTO[];  
 messageRoomId;
+searchUserFiltr;
+searchUserButton;
 currentUser: UserReadModel
 messageRecipient: UserReadModel;
   constructor(private userDataService: UserDataService, private messageDataService: MessageDataService, private router: Router) { 
@@ -32,6 +36,7 @@ messageRecipient: UserReadModel;
 
   ngOnInit(): void {
       this.getCoachAndPhysiotherapist();  
+      this.getUserMessageNotification();
   }
 
   getCoachAndPhysiotherapist(){
@@ -55,6 +60,34 @@ messageRecipient: UserReadModel;
       }
     );
 
+  }
+  findUser(){
+    this.userDataService.executeGetUserByEmailOrNameOrSurname(this.searchUserFiltr).subscribe(
+      response => {
+        this.messageRecipient = response;
+        this.searchUserButton = this.searchUserFiltr;
+      }
+    );
+  }
+  closeSearching(){
+    this.searchUserButton=null;
+  }
+
+  getUserMessageNotification(){
+    this.messageDataService.executeGetUserMessageNotification(this.currentUser.userId).subscribe(
+      response => {
+        this.userMessageNotification = response;
+      }
+    );
+  }
+
+  openMessageNotification(notificationId, userSenderId){
+    this.getMessageRoom(userSenderId);
+    this.messageDataService.executeDeleteUserMessageNotification(notificationId).subscribe(
+      response => {
+        this.getUserMessageNotification();
+      }
+    );
   }
 
 

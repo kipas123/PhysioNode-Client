@@ -1,19 +1,52 @@
 <div class="container">
-    <div class="row">
-        <div class="col-sm-8">
-            <messenger [messageRoomId]="messageRoomId" [currentUser]="currentUser"></messenger>
-        </div>
-        
-        <div class="col-sm-4">
-            <nb-card size="small">
-                <nb-list>
-                  <nb-list-item *ngFor="let recipient of messageRecipient">
-                    <nb-user [name]="recipient.userName +' '+ recipient.userSurname" [title]="recipient.userRoleDTO.roleName">
-                    </nb-user>
-                    <button style="float: right !important;" nbButton status="primary" size="tiny" (click)="getMessageRoom(recipient.userId)">Przejdź</button>
-                  </nb-list-item>
-                </nb-list>
-              </nb-card>
-        </div>
+  <div class="row">
+    <div class="col-sm-8">
+      <messenger [messageRoomId]="messageRoomId" [currentUser]="currentUser"></messenger>
     </div>
+    <br/><br/><br/>
+    <div class="col-sm-4" style="margin-top: 50px !important;">
+      <nb-card size="large">
+        <br/>
+        <div class="row">
+          <div class="col-sm-12">
+            <button *ngIf="searchUserButton" nbButton size="small" status="danger"
+              style="margin-bottom: 5px; float: right;"
+              (click)="closeSearching()">X<sub>{{searchUserFiltr}}</sub></button>
+          </div>
+          <div class="col-sm-8">
+            <input type="text" nbInput fullWidth #searchUser="ngModel" [(ngModel)]="searchUserFiltr"
+              placeholder="Identyfikator/e-mail">
+          </div>
+          <div class="col-sm-4">
+            <button nbButton status="success" (click)="findUser()">Wyszukaj</button>
+          </div>
+        </div>
+        <nb-list>
+          <nb-list-item *ngFor="let recipient of messageRecipient">
+            <nb-user [name]="recipient.userName +' '+ recipient.userSurname" [title]="recipient.userRoleDTO.roleName">
+            </nb-user>
+            <button style="float: right !important;" nbButton status="primary" size="tiny"
+              (click)="getMessageRoom(recipient.userId)">Przejdź</button>
+          </nb-list-item>
+        </nb-list>
+        <div class="row">
+        <div class="col-sm-12">
+          <nb-card>
+            <nb-card-header>Nieprzeczytane wiadomości:</nb-card-header>
+            <nb-card-body>
+              <nb-list>
+                <nb-list-item *ngFor="let notification of userMessageNotification">
+                  <nb-user [name]="'Nowa wiadomość- ' + notification.userSender.userName +' '+ notification.userSender.userSurname" [title]="notification.postDate |date: 'dd.MM.yyyy HH:mm:ss'">
+                  </nb-user>
+                  <button style="float: right !important;" nbButton status="primary" size="tiny"
+                    (click)="openMessageNotification(notification.idMessageNotification, notification.userSender.userId)">Odczytaj</button>
+                </nb-list-item>
+              </nb-list>
+            </nb-card-body>
+          </nb-card>
+        </div>
+        </div>
+      </nb-card>
+    </div>
+  </div>
 </div>

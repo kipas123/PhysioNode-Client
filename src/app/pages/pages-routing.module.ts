@@ -118,10 +118,6 @@ const routes: Routes = [{
       data: {roles: [Role.admin]}
     },
     {
-      path: 'test',
-      component: TestComponent,
-    },
-    {
       path: 'user-messanger',
       component: UserMessengerComponent,
     },
