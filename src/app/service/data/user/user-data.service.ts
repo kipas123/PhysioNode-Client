@@ -41,7 +41,11 @@ export class UserDataService {
     return this.http.get<UserReadModel>(`http://localhost:8081/physio-node/user/roleManagement/foundUserFiltr/${value}`);
     
   }
-  executeChangeUserRole(userId,roleId){
+  executeGetVerifiedUserByUserNameOrUserSurname(value){
+    return this.http.get<UserReadModel>(`http://localhost:8081/physio-node/user/roleManagement/foundVerifiedUserFiltr/${value}`);
+    
+  }
+  executeChangeUserRole(userId: number,roleId: number){
     return this.http.get(`http://localhost:8081/physio-node/user/roleManagement/changeRole/${userId}/${roleId}`);
     
   }

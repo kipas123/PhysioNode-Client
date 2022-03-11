@@ -9,7 +9,7 @@ import { UserVisitDataService } from 'app/service/visit-system/userVisit/user-vi
   styleUrls: ['./visit-management.component.scss']
 })
 export class VisitManagementComponent implements OnInit {
-
+  alertChangeVisitStatus: boolean = false;
   visitToAccept: UserVisitReadModel[];
   date = new Date();
   visitListForChosenDay: UserVisitReadModel[];
@@ -44,5 +44,18 @@ export class VisitManagementComponent implements OnInit {
 
   handleDateChange($event){
     this.getReservation();
+  }
+
+  changeVisitStatus(visitId:number, statusId: number){
+    this.userVisitDataService.executeChangeVisitStatus(visitId, statusId).subscribe(
+      response => {
+        this.alertChangeVisitStatus = true;
+        this.getReservationToAccept();
+      }
+    );
+  }
+
+  onClose(){
+    this.alertChangeVisitStatus = false;
   }
 }

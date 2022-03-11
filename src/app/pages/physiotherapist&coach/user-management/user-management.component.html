@@ -39,7 +39,7 @@
         </div>
       </nb-card-body>
     </nb-card>
-    <nb-card>
+    <!-- <nb-card>
       <nb-card-header>Dodaj chorobę: </nb-card-header>
       <nb-card-body>
         <nb-alert status="success" closable (close)="onClose()" *ngIf="alertCreateAilmentIsOpen">
@@ -56,7 +56,7 @@
             (click)="createAilment()">Success</button>
         </div>
       </nb-card-body>
-    </nb-card>
+    </nb-card> -->
   </div>
   <div class="col-lg-6">
     <nb-card>
@@ -66,7 +66,7 @@
         <nb-accordion multi>
           <nb-accordion-item *ngFor="let ailment of ailments">
             <nb-accordion-item-header>
-              {{ailment.ailmentName}}
+              {{ailment.ailmentName}} <button nbButton *ngIf="isAilmentOwner(ailment.attendingphysician)" size="tiny" status="warning" disabled> Prowadzący</button>
             </nb-accordion-item-header>
             <nb-accordion-item-body>
               {{ailment.ailmentDescription}}
@@ -81,13 +81,13 @@
   </div>
   <div class="col-lg-6">
     <nb-card>
-      <nb-card-header>Dokumentacja motoryczna: </nb-card-header>
+      <nb-card-header>Dokumentacja treningowa: </nb-card-header>
       <nb-card-body>
 
         <nb-accordion multi>
           <nb-accordion-item *ngFor="let exercise of userExercise">
             <nb-accordion-item-header>
-              {{exercise.exerciseName}}
+              {{exercise.exerciseName}} <button nbButton *ngIf="isExerciseOwner(exercise.attendingCoach)" size="tiny" status="warning" disabled> Prowadzący</button>
             </nb-accordion-item-header>
             <nb-accordion-item-body>
               {{exercise.exerciseDescription}}

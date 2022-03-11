@@ -4,7 +4,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AilmentReadModel } from 'app/objModel/ailment/ailmentReadModel.model';
 import { AilmentWriteModel } from 'app/objModel/ailment/ailmentWriteModel.model';
-import { exerciseReadModel } from 'app/objModel/exercise/exerciseReadModel.model';
+import { ExerciseReadModel } from 'app/objModel/exercise/exerciseReadModel.model';
 import { exerciseWriteModel } from 'app/objModel/exercise/exerciseWriteModel.model';
 import { Mygroup } from 'app/objModel/mygroup/mygroup.model';
 import { UserReadModel } from 'app/objModel/user/userReadModel.model';
@@ -28,7 +28,7 @@ userId: number;
 user:UserReadModel;
 userGroups: Mygroup;
 ailments:AilmentReadModel;
-userExercise: exerciseReadModel[];
+userExercise: ExerciseReadModel[];
 ailment:AilmentWriteModel = new AilmentWriteModel(null,null,null,null);
 exerciseWriteModel =  new exerciseWriteModel(null,null,null,null);
 alertCreateAilmentIsOpen: boolean = false;
@@ -105,7 +105,7 @@ alertCreateExerciseIsOpen: boolean = false;
   }
 
   goToExercise(id: number){
-    this.exerciseIdService.changeIdailment(id);
+    this.exerciseIdService.changeIdExercise(id);
     this.userIdService.changeIduser(this.user.userId);
     this.router.navigate(['/pages/exercise-management']);
 
@@ -128,7 +128,7 @@ alertCreateExerciseIsOpen: boolean = false;
     this.ailmentService.executeGetUserAilmentByIdUser(this.userId).subscribe(
       response => {
         this.ailments = response;
-       // console.log(response.email);
+       console.log(this.ailments);
       }
   );
   }
@@ -145,6 +145,21 @@ alertCreateExerciseIsOpen: boolean = false;
         this.userExercise = response;
       }
     );
+  }
+  isAilmentOwner(attendingPhysician:UserReadModel): boolean{
+    if(this.currentUser.userId==attendingPhysician.userId){
+      return true;
+    }else{
+      return false;
+    }
+  }
+
+  isExerciseOwner(attendingCoach:UserReadModel): boolean{
+    if(this.currentUser.userId==attendingCoach.userId){
+      return true;
+    }else{
+      return false;
+    }
   }
 
 }

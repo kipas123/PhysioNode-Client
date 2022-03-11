@@ -1,0 +1,28 @@
+
+<div class="row">
+    <div class="col-lg-12">
+      <nb-card>
+        <nb-card-header>Moje leczenia: </nb-card-header>
+        <nb-card-body >
+          <nb-layout  *ngIf="!exercises" >
+            <nb-layout-header><h8>Wait..</h8></nb-layout-header>
+            <nb-layout-column [nbSpinner]="true" nbSpinnerSize="giant" nbSpinnerStatus="primary" *ngIf="!user">
+            </nb-layout-column>
+          </nb-layout>
+          <nb-accordion multi>
+            <nb-accordion-item *ngFor="let exercise of exercises" >
+              <nb-accordion-item-header>
+                {{exercise.exerciseName}}
+              </nb-accordion-item-header>
+              <nb-accordion-item-body>
+                {{exercise.exerciseDescription}}
+                <br />
+                <button style="float: right; margin-top: 5px;" nbButton status="warning" (click) = "goToUserExercise(exercise.idexerciseBook)">Wyświetl</button>
+              </nb-accordion-item-body>
+            </nb-accordion-item>
+  
+          </nb-accordion>
+        </nb-card-body>
+      </nb-card>
+    </div>
+  </div>

@@ -22,6 +22,8 @@ import { PasswordResetChangeComponent} from 'app/pages/auth/pasword-reset-change
 import { FileManagerComponent } from 'app/components/file-manager/file-manager.component';
 import { UserMessengerComponent } from 'app/pages/user/user-messenger/user-messenger.component';
 import { ExerciseManagementComponent } from 'app/pages/physiotherapist&coach/exercise-management/exercise-management.component';
+import { UserExerciseListComponent } from 'app/pages/user/user-exercise-list/user-exercise-list.component';
+import { UserExerciseComponent } from 'app/pages/user/user-exercise/user-exercise.component';
 
 
 
@@ -45,7 +47,9 @@ PasswordResetComponent,
 PasswordResetChangeComponent,
 FileManagerComponent,
 UserMessengerComponent,
-ExerciseManagementComponent],
+ExerciseManagementComponent,
+UserExerciseListComponent,
+UserExerciseComponent],
   imports: [
     RouterModule, // RouterModule.forRoot(routes, { useHash: true }), if this is your app.module
     NbLayoutModule,

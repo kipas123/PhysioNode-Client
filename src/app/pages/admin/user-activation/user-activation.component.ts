@@ -49,10 +49,8 @@ export class UserActivationComponent implements OnInit {
         countUnverfiedUsers= response;
         if(countUnverfiedUsers%this.unverfiedUsersPageSize==0){
           this.numberOfPage = ~~(countUnverfiedUsers/this.unverfiedUsersPageSize);
-          console.log("Jestem tu, elo: "+ this.numberOfPage);
         }else{
           this.numberOfPage = ~~(countUnverfiedUsers/this.unverfiedUsersPageSize)+1;
-          console.log(this.numberOfPage);
         }
     });
 
@@ -72,6 +70,7 @@ export class UserActivationComponent implements OnInit {
   }
   changeUserRole(userId, roleId, functionType){
     if(functionType==1){
+      
       this.userService.executeChangeUserRole(userId,roleId).subscribe(
         response=> {
           this.getUnverfiedUser();
@@ -81,7 +80,7 @@ export class UserActivationComponent implements OnInit {
     }else if(functionType==2){
       this.userService.executeChangeUserRole(userId,roleId).subscribe(
         response=> {
-          this.searchUserForRoleChange();
+          this.getUserModRole();
           this.alertIsOpen=true;
         }
       );

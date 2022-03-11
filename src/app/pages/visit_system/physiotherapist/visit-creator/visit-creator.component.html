@@ -13,25 +13,27 @@
                     </nb-card-body>
                 </nb-card>
             </div>
-            <div class="col-sm-6">
-                <nb-card>
+            <div class="col-sm-6" >
+                <nb-card *ngIf="listOfWorkHour && listOfAvailableHour">
                     <nb-card-header>
                         <h1 class="h5">Dodaj godziny</h1>
                     </nb-card-header>
-                    <nb-card-body *ngIf="listOfWorkHour">
+                    <nb-card-body>
                         <label>Od:</label>
-                              <nb-select placeholder="Select Showcase" [(selected)]="selectedDateFrom" size="tiny">
-                                <nb-option *ngFor="let hour of listOfAvailableHour" value="{{hour}}">{{hour}}</nb-option>
-                              </nb-select>
+                              <select class="select" placeholder="Select Showcase" (change)="onChangeHourFrom($event.target.value)" size="tiny">
+                                <option [ngValue]="null" disabled>Wybierz godzine</option>
+                                <option *ngFor="let hour of listOfAvailableHour" value="{{hour}}">{{hour}}</option>
+                              </select>
                               <br/>
                               <label>Do:</label>
-                              <nb-select placeholder="Select Showcase" [(selected)]="selectedDateTo" size="tiny">
-                                <nb-option *ngFor="let hour of listOfAvailableHour" value="{{hour}}">{{hour}}</nb-option>
-                              </nb-select>
+                              <select class="select" placeholder="Select Showcase"(change)="onChangeHourTo($event.target.value)"  size="tiny">
+                                <option [ngValue]="null" disabled>Wybierz godzine</option>
+                                <option *ngFor="let hour of listOfAvailableHour" value="{{hour}}">{{hour}}</option>
+                              </select>
                               <br/>
                               <button nbButton status="primary" size="small" (click)="clickAdd()">Dodaj</button>
                         <br/><br/>
-                        <table class="table table-dark" *ngIf="listOfWorkHour">
+                        <table class="table table-dark">
                             <thead>
                               <tr>
                                 <th scope="col">#</th>

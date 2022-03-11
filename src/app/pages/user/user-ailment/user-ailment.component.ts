@@ -33,6 +33,7 @@ currentUser:UserReadModel;
     this.ailmentIdService.currentIdailment.subscribe(
       ailmentId => this.ailmentId = ailmentId
     );
+    console.log(this.ailmentId);
     this.refreshAilment();
   }
 
@@ -46,7 +47,7 @@ currentUser:UserReadModel;
       response => {
         this.ailment = response;
          this.getMessageRoom();
-        this.ailmentIdService.changeIdailment(-1);
+        // this.ailmentIdService.changeIdailment(-1);
       }
     );
   }

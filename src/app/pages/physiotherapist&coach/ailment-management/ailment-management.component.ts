@@ -123,4 +123,23 @@ export class AilmentManagementComponent implements OnInit {
     this.alertIndicationIsOpen=false;
     this.alertFilepathIsOpen=false;
   }
+
+  isAilmentOwner(): boolean{
+    if(this.currentUser.userId==this.ailment.attendingphysician.userId){
+      return true;
+    }else{
+      return false;
+    }
+  }
+
+  deleteAilment(ailment){
+    if(confirm("Are you sure to delete ")) {
+      this.ailmentService.executeDeleteAilment(ailment.idailment).subscribe(
+        response=>{
+          this.router.navigate(['/pages/groupsManagement']);
+        }
+      );
+    }
+  }
+
 }

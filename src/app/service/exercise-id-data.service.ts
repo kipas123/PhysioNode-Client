@@ -9,7 +9,7 @@ export class ExerciseIdDataService {
   currentIdExercise = this.idexerciseSource.asObservable();
   constructor() { }
   
-  changeIdailment(id: number){
+  changeIdExercise(id: number){
     this.idexerciseSource.next(id);
   }
 }

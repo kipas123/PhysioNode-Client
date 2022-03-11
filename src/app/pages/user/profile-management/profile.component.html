@@ -20,38 +20,26 @@
   </div>
     <div class="col-lg-6">
       <nb-card>
-        <nb-card-header>Dane osobowe: </nb-card-header>
-        <nb-card-body>
-
-          <div class="full-name-inputs">
-            <input type="text" nbInput fullWidth placeholder="Imię">
-            <input type="text" nbInput fullWidth placeholder="Nazwisko">
-            <input nbInput
-               placeholder="Data urodzenia"
-               [nbDatepicker]="formpicker">
-        <nb-datepicker #formpicker></nb-datepicker>
-        <br/>
-        <button style="float: right; margin-top: 5px;" nbButton status="success">Success</button>
-          </div>
-        </nb-card-body>
-      </nb-card>
-      <nb-card>
         <nb-card-header>Zmień hasło: </nb-card-header>
         <nb-card-body>
-
+          <nb-alert status="success" closable (close)="onClose()" *ngIf="alertPasswordChange">
+            Zmieniono hasło!
+          </nb-alert>
+          <nb-alert status="danger" closable (close)="onClose()" *ngIf="alertPasswordChangeError">
+            Błędne hasło !
+          </nb-alert>
+          <nb-alert status="danger" closable (close)="onClose()" *ngIf="alertPasswordChangeCompareError">
+            Podane nowe hasła różnią się!
+          </nb-alert>
           <div class="full-name-inputs">
-            <input type="text" nbInput fullWidth placeholder="Stare hasło">
-            <input type="text" nbInput fullWidth placeholder="Nowe hasło">
-            <input type="text" nbInput fullWidth placeholder="Powtórz nowe hasło">
+            <input type="text" nbInput fullWidth placeholder="Stare hasło" #oldPassword="ngModel" [(ngModel)]="passwordChangeModel._oldPassword">
+            <input type="text" nbInput fullWidth placeholder="Nowe hasło" #newPassword="ngModel" [(ngModel)]="passwordChangeModel._newPassword">
+            <input type="text" nbInput fullWidth placeholder="Powtórz nowe hasło" #PasswordRepeat="ngModel" [(ngModel)]="newPasswordRepeat">
         <br/>
-        <button style="float: right; margin-top: 5px;" nbButton status="info">Zmień hasło</button>
+        <button style="float: right; margin-top: 5px;" nbButton status="info" (click)="changePassword()">Zmień hasło</button>
           </div>
         </nb-card-body>
       </nb-card>
     </div>
-    <div class="col-lg-12">
-      <button  nbButton status="success" (click)="start()">Test przesyłu</button>
-  </div>
-  
   </div>
   

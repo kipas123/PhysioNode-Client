@@ -33,6 +33,10 @@
                 <td>{{unverifiedUser.userSurname}}</td>
                 <td>{{unverifiedUser.userDob}}</td>
                 <td>
+                  <button nbButton size="small" status="danger" (click)="changeUserRole(unverifiedUser.userId,8,1)">Odrzuć</button>
+                </td>
+                <td>
+                  
                   <button nbButton size="small" status="success" (click)="changeUserRole(unverifiedUser.userId,2,1)">Akceptuj</button>
                 </td>
               </tr>
@@ -54,6 +58,7 @@
         <div class="col-4 col-lg-8" style="margin-bottom: 10px;">
             <button nbButton status="info" (click)="searchUserForRoleChange()">Szukaj</button>
         </div>
+        <button *ngIf="roleSearchFiltr" nbButton size="tiny" status="danger" style="margin-bottom: 5px;"(click)="closeSearchAlert()">X<sub>{{roleSearchFiltr}}</sub></button>
         <nb-alert status="success" closable (close)="onClose()" *ngIf="alertIsOpen">
           Zmieniono rolę!
         </nb-alert>
@@ -80,8 +85,8 @@
                 <td>{{chosenUser.userRoleDTO.roleName}}</td>
                 <td>
                   <button nbButton size="tiny" status="danger"(click)="changeUserRole(chosenUser.userId,1,2)">Admin</button>
-                  <button nbButton size="tiny" status="warning">Fizjo</button>
-                  <button nbButton size="tiny" status="success">Trener</button>
+                  <button nbButton size="tiny" status="warning" (click)="changeUserRole(chosenUser.userId,5,2)">Fizjo</button>
+                  <button nbButton size="tiny" status="success" (click)="changeUserRole(chosenUser.userId,6,2)"> Trener</button>
                   <button nbButton size="tiny" status="primary"(click)="changeUserRole(chosenUser.userId,2,2)">User</button>
                 </td>
               </tr>

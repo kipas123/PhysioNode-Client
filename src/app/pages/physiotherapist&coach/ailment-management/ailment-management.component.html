@@ -12,7 +12,7 @@
           <nb-card-body>
             <p>Identyfikator: #{{user.userId}}</p>
             <p>Imię i nazwisko: {{user.userName}} {{user.userSurname}}</p>
-            <p>Twój fizjoterapeuta: {{ailment.attendingphysician}}</p>
+            <p>Twój fizjoterapeuta: {{ailment.attendingphysician.userName}} {{ailment.attendingphysician.userSurname}}</p>
           </nb-card-body>
         </nb-card>
       </div>
@@ -21,6 +21,8 @@
           <nb-card-header><h2>Krótki opis choroby:</h2></nb-card-header>
           <nb-card-body>
             <p>{{ailment.ailmentDescription}}</p>
+            <button nbButton  *ngIf="isAilmentOwner()" status="danger" size="tiny" style="float: right;" (click)="deleteAilment(ailment)">Usuń chorobę</button>
+
           </nb-card-body>
         </nb-card>
       </div>
@@ -30,7 +32,7 @@
 
                 <nb-tabset fullWidth>
                     <nb-tab tabTitle="Opis choroby">
-                        <nb-card>
+                        <nb-card *ngIf="isAilmentOwner()">
                             <nb-card-header>Dodaj notkę do choroby: </nb-card-header>
                             <nb-card-body>
                                 <nb-alert status="success" closable (close)="onClose()" *ngIf="alertNoteIsOpen">
@@ -81,7 +83,7 @@
                     <nb-tab tabTitle="Pliki">
                       <file-manager [ailmentId]="ailmentId" [currentUser]="currentUser"></file-manager>
                     </nb-tab>
-                    <nb-tab tabTitle="Rozmowa">
+                    <nb-tab tabTitle="Rozmowa" *ngIf="isAilmentOwner()">
                       <messenger [messageRoomId]="messengerMessageRoomId" [currentUser]="currentUser"></messenger>
 
                   </nb-tab>

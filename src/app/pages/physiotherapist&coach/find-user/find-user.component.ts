@@ -21,10 +21,12 @@ export class FindUserComponent implements OnInit {
 
 searchUser(){
   this.alertDangerSearchUser = false;
-this.userDataService.executeGetUserByEmailOrNameOrSurname(this.searchUserFiltr).subscribe(
+this.userDataService.executeGetVerifiedUserByUserNameOrUserSurname(this.searchUserFiltr).subscribe(
   response=>{
     this.searchUsers = response;
-    if(this.searchUsers==null) this.alertDangerSearchUser = true;
+  },
+  error => {
+    this.alertDangerSearchUser = true;
   }
 )
 

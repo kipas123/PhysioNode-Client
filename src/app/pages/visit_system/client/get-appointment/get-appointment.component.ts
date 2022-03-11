@@ -32,14 +32,14 @@ export class GetAppointmentComponent implements OnInit {
   chosenHour;
   constructor(private userWorkDataService: UserWorkDataService,private router: Router, private userIdService:UserIdDataService, private userServiceTypeDataService:UserServiceTypeDataService,
     private userVisitDataSercice: UserVisitDataService) {
+   }
+
+  ngOnInit(): void {
     this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
     if(!this.currentUser){
       console.log("Błąd");
       this.router.navigate(['/login']);
     }
-   }
-
-  ngOnInit(): void {
     this.getUserId();
     this.getListOfAvailableDay();
     this.getListOfService(this.serviceProviderId);
@@ -48,8 +48,11 @@ export class GetAppointmentComponent implements OnInit {
 
   getUserId(){
     this.userIdService.currentIduser.subscribe(
-      userId => this.serviceProviderId = userId
+      response => this.serviceProviderId = response
     );
+    if(this.serviceProviderId==-1){
+      this.router.navigate(['/not-found']);
+    }
   }
   
 hasWorkHour(day): boolean{
@@ -58,7 +61,6 @@ hasWorkHour(day): boolean{
 }
 
 getListOfAvailableDay(){
-  console.log(this.serviceProviderId);
   let currentDateAndUser: currentDateAndUserDTO = new currentDateAndUserDTO(this.date, this.serviceProviderId);
   this.userWorkDataService.executeGetListOfAvailableDay(currentDateAndUser).subscribe(
     response => {
@@ -81,16 +83,14 @@ getAvailableHours(){
   this.userWorkDataService.executeGetUserAvailableTerms(currentDateAndUser).subscribe(
     response => {
         this.listOfHours = response;
-        console.log(this.listOfHours);
     }
   );
 }
 
 
-handleSelectChange($event: number){
+handleSelectChange(value){
   this.bookVisitSuccessfull = false;
-  this.chosenServiceId = $event;
-  console.log(this.chosenServiceId);
+  this.chosenServiceId = value;
 }
 
 getAvailableUserServiceType(chosenHour){
@@ -100,8 +100,7 @@ getAvailableUserServiceType(chosenHour){
   this.userServiceTypeDataService.executeGetAvailableUserServiceType(chosenTermDTO).subscribe(
     response => {
       this.serviceType = response
-      if(this.serviceType==null) this.userServiceTypeisNull=true;
-      console.log(this.serviceType);
+      if(this.serviceType==null) {this.userServiceTypeisNull=true};
     }
 
   );
@@ -117,6 +116,7 @@ getListOfService(userId: number){
 
 bookVisit(){
   let reservation = new UserVisitWriteModel(this.currentUser.userId, this.date, this.chosenServiceId,this.chosenHour);
+  console.log(reservation);
   this.userVisitDataSercice.executeBookVisit(reservation).subscribe(
     response =>{
       this.bookVisitSuccessfull = true;

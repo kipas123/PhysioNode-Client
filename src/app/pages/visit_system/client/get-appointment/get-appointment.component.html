@@ -79,14 +79,14 @@
                     <nb-alert status="success" *ngIf="bookVisitSuccessfull">
                         Zapisałeś się na wizytę!
                     </nb-alert>
-                    <nb-select placeholder="Placeholder" fullWidth="true" (selectedChange)="handleSelectChange($event)"
-                        *ngIf="serviceType">
-                        <nb-option *ngFor="let service of serviceType" value="{{service.idUserServiceType}}" >
-                            {{service.userServiceTypeName}}</nb-option>
-                    </nb-select>
+                    <select class="select" placeholder="Placeholder" fullWidth="true" (change)="handleSelectChange($event.target.value)">
+                        <option [ngValue]="null" disabled>Wybierz godzine</option>
+                        <option *ngFor="let service of serviceType" value="{{service.idUserServiceType}}" >
+                            {{service.userServiceTypeName}}</option>
+                    </select>
                     <br /><br />
                     <input *ngIf="serviceType" type="text" nbInput placeholder="{{chosenHour}}" disabled>
-                    <input *ngIf="serviceType" type="text" nbInput placeholder="{{chosenService}}" disabled>
+                    <!-- <input *ngIf="serviceType" type="text" nbInput placeholder="{{chosenService}}" disabled> -->
                     <br /><br />
                     <button nbButton status="primary" style="float: right;" *ngIf="serviceType" (click)="bookVisit()">Zapisz</button>
                 </nb-card-body>

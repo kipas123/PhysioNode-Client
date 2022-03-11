@@ -1,7 +1,7 @@
 import { UserReadModel } from "../user/userReadModel.model";
 import { ExerciseDetailsReadModel } from "./exerciseDetailsReadModel.model";
 
-export class exerciseReadModel{
+export class ExerciseReadModel{
     private _idexerciseBook: number;
     private _exerciseName: String;
     private _exerciseDescription: String;

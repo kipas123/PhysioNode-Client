@@ -24,9 +24,10 @@ import {
   NbWindowModule,
 } from '@nebular/theme';
 import { MyModuleModule } from './module/my-module/my-module.module';
+import { DelateAlertFormComponent } from './components/delate-alert-form/delate-alert-form.component';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, DelateAlertFormComponent],
   imports: [
     NbPopoverModule,
     HttpClientModule,

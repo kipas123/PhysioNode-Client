@@ -64,6 +64,9 @@ export class GroupManagementComponent implements OnInit {
     this.groupService.executeGetAllUsersByMygroupId(this.mygroupId).subscribe(
       response => {
         this.userList = response;
+      },
+      error => {
+        this.userList = null;
       }
     );
   }
@@ -123,5 +126,15 @@ export class GroupManagementComponent implements OnInit {
   closeSearchUserList(){
     this.searchUserList = null;
     this.alertAddUser = false;
+  }
+
+  deleteGroup(group){
+    if(confirm("Are you sure to delete ")) {
+      this.groupService.executeDeleteGroup(group.idMygroup).subscribe(
+        response=>{
+          this.router.navigate(['/pages/groupsManagement']);
+        }
+      );
+    }
   }
 }

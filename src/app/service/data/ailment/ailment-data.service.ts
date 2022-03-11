@@ -46,4 +46,8 @@ export class AilmentDataService {
       return this.http.post("http://localhost:8081/physio-node/ailment/createAilmentIndication", ailmentIndication, {headers:this.getCurrentUserHeader()});
       
     }
+    executeDeleteAilment(ailmentId: number){
+      return this.http.get(`http://localhost:8081/physio-node/ailment/deleteAilment/${ailmentId}`, {headers:this.getCurrentUserHeader()});
+      
+    }
 }

@@ -2,7 +2,6 @@ import { RouterModule, Routes } from '@angular/router';
 import { NgModule } from '@angular/core';
 
 import { PagesComponent } from './pages.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
 import { ProfileComponent } from './user/profile-management/profile.component';
 import { GroupManagementComponent } from './physiotherapist&coach/group-management/group-management.component';
 import { UserManagementComponent } from './physiotherapist&coach/user-management/user-management.component';
@@ -28,6 +27,8 @@ import { MyVisitComponent } from './visit_system/client/my-visit/my-visit.compon
 import { VisitHistoryComponent } from './visit_system/physiotherapist/visit-history/visit-history.component';
 import { UserMessengerComponent } from './user/user-messenger/user-messenger.component';
 import { ExerciseManagementComponent } from './physiotherapist&coach/exercise-management/exercise-management.component';
+import { UserExerciseListComponent } from './user/user-exercise-list/user-exercise-list.component';
+import { UserExerciseComponent } from './user/user-exercise/user-exercise.component';
 
 const routes: Routes = [{
   path: '',
@@ -58,10 +59,6 @@ const routes: Routes = [{
       component: NotFoundComponent,
     },
     {
-      path: 'dashboard',
-      component: DashboardComponent,
-    },
-    {
       path: 'profile',
       component: ProfileComponent,
       canActivate: [AuthGuard],
@@ -74,6 +71,10 @@ const routes: Routes = [{
     {
       path: 'ailment-list',
       component: UserAilmentListComponent,
+    },
+    {
+      path: 'exercise-list',
+      component: UserExerciseListComponent,
     },
     {
       path: 'groupsManagement',
@@ -90,6 +91,12 @@ const routes: Routes = [{
     {
       path: 'ailment',
       component: UserAilmentComponent,
+      canActivate: [AuthGuard],
+      data: {roles: [Role.user, Role.admin]}
+    },
+    {
+      path: 'exercise',
+      component: UserExerciseComponent,
       canActivate: [AuthGuard],
       data: {roles: [Role.user, Role.admin]}
     },

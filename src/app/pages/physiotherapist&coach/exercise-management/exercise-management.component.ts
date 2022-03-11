@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ExerciseDetailsWriteModel } from 'app/objModel/exercise/exerciseDetailsWriteModel.model';
-import { exerciseReadModel } from 'app/objModel/exercise/exerciseReadModel.model';
+import { ExerciseReadModel } from 'app/objModel/exercise/exerciseReadModel.model';
 import { UserReadModel } from 'app/objModel/user/userReadModel.model';
 import { ExerciseDataService } from 'app/service/data/exercise/exercise-data.service';
 import { MessageDataService } from 'app/service/data/message/message-data.service';
@@ -16,7 +16,7 @@ import { UserIdDataService } from 'app/service/user-id-data.service';
 })
 export class ExerciseManagementComponent implements OnInit {
   currentExerciseId: number;
-  exercise: exerciseReadModel;
+  exercise: ExerciseReadModel;
   currentUser: UserReadModel;
   userId: number;
   user: UserReadModel;
@@ -100,5 +100,22 @@ export class ExerciseManagementComponent implements OnInit {
       }
     );
 
+  }
+  isExerciseOwner(): boolean{
+    if(this.currentUser.userId==this.exercise.attendingCoach.userId){
+      return true;
+    }else{
+      return false;
+    }
+  }
+
+  deleteExercise(exercise){
+    if(confirm("Are you sure to delete ")) {
+      this.exerciseDataService.executeDeleteExerciseBook(exercise.idexerciseBook).subscribe(
+        response=>{
+          this.router.navigate(['/pages/groupsManagement']);
+        }
+      );
+    }
   }
 }

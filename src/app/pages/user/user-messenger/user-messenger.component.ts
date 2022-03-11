@@ -17,6 +17,7 @@ searchUserFiltr;
 searchUserButton;
 currentUser: UserReadModel
 messageRecipient: UserReadModel;
+alertSearchingError: boolean = false;
   constructor(private userDataService: UserDataService, private messageDataService: MessageDataService, private router: Router) { 
     this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
     if(!this.currentUser){
@@ -62,15 +63,19 @@ messageRecipient: UserReadModel;
 
   }
   findUser(){
-    this.userDataService.executeGetUserByEmailOrNameOrSurname(this.searchUserFiltr).subscribe(
+    this.userDataService.executeGetVerifiedUserByUserNameOrUserSurname(this.searchUserFiltr).subscribe(
       response => {
         this.messageRecipient = response;
         this.searchUserButton = this.searchUserFiltr;
+      },
+      error => {
+        this.alertSearchingError = true;
       }
     );
   }
   closeSearching(){
     this.searchUserButton=null;
+    this.getCoachAndPhysiotherapist();
   }
 
   getUserMessageNotification(){
@@ -88,6 +93,10 @@ messageRecipient: UserReadModel;
         this.getUserMessageNotification();
       }
     );
+  }
+
+  onClose(){
+    this.alertSearchingError = false;
   }
 
 

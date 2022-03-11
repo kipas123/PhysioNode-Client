@@ -24,49 +24,130 @@ export class PagesComponent implements OnInit{
     if(!this.currentUser){
       //this.router.navigate(['/pages/login']);
     }
-    if(this.currentUser && this.currentUser.userRoleDTO.roleName == "admin"){
+    if(this.currentUser){
       this.adminRole = false;
     }
+    // if(this.currentUser && this.currentUser.userRoleDTO.roleName == "admin"){
+    //   this.adminRole = false;
+    // }
    
 }
   ngOnInit(): void {
     this.menu = [
       {
-        title: 'Dashboard',
-        icon: 'home-outline',
-        link: '/pages/dashboard',
-        home: true,
+        title: 'Administrator',
+        icon: 'lock-outline',
+        hidden: this.adminRole,  
+        children: [
+          {
+            title: 'Profil',
+            link: '/pages/profile',
+          },
+          {
+            title: 'Wiadomości',
+            link: '/pages/user-messanger',
+          },
+          {
+            title: 'Aktywacja użytkowników',
+            link: '/pages/user-activation', 
+            hidden: false        
+          }
+        ],
       },
       {
-        title: 'FEATURES',
-        group: true,
+        title: 'Fizjoterapeuta',
+        icon: 'lock-outline',
+        hidden: this.adminRole,
+        children: [
+          {
+            title: 'Profil',
+            link: '/pages/profile',
+          },
+          {
+            title: 'Wiadomości',
+            link: '/pages/user-messanger',
+          },
+          {
+            title: 'Wyszukaj użytkownika',
+            link: '/pages/findUser',
+            hidden: false,
+          },
+          {
+            title: 'Zarządzanie grupami',
+            link: '/pages/groupsManagement', 
+            hidden: false        
+          },
+          {
+            title: 'Kreator Wizyt',
+            link: '/pages/visit-creator',
+          },
+          {
+            title: 'Zarządzaj wizytami',
+            link: '/pages/visit-management',
+          },
+          {
+            title: 'Historia wizyt',
+            link: '/pages/visit-history',
+          }
+        ],
       },
       {
-        title: 'Wyszukaj użytkownika',
-        link: '/pages/findUser',
-        hidden: false,
+        title: 'Trener',
+        icon: 'lock-outline',
+        hidden: this.adminRole,
+        children: [
+          {
+            title: 'Profil',
+            link: '/pages/profile',
+          },
+          {
+            title: 'Wiadomości',
+            link: '/pages/user-messanger',
+          },
+          {
+            title: 'Wyszukaj użytkownika',
+            link: '/pages/findUser',
+            hidden: false,
+          },
+          {
+            title: 'Zarządzanie grupami',
+            link: '/pages/groupsManagement', 
+            hidden: false        
+          }
+        ],
       },
       {
-        title: 'Profil',
-        link: '/pages/profile',
-      },
-      {
-        title: 'Wiadomości',
-        link: '/pages/user-messanger',
-      },
-      {
-        title: 'Moje leczenie',
-        link: '/pages/ailment-list',
-      },
-      {
-        title: 'Zarządzanie grupami',
-        link: '/pages/groupsManagement', 
-        hidden: this.adminRole         
-      },
-      {
-        title: 'Aktywacja użytkowników',
-        link: '/pages/user-activation', 
-        hidden: this.adminRole         
+        title: 'Zawodnik',
+        icon: 'lock-outline',
+        hidden: this.adminRole,
+        children: [
+          {
+            title: 'Profil',
+            link: '/pages/profile',
+          },
+          {
+            title: 'Wiadomości',
+            link: '/pages/user-messanger',
+          },
+          {
+            title: 'Dokumentacja motoryczna',
+            link: '/pages/exercise-list',
+          },
+          {
+            title: 'Dokumentacja medyczna',
+            link: '/pages/ailment-list',
+          },
+          {
+            title: 'Zapisz się na wizytę',
+            link: '/pages/search-service-provider',
+            hidden: false,
+          },
+          {
+            title: 'Moje wizyty',
+            link: '/pages/my-visit',
+          }
+          
+        ],
       },
       {
         title: 'Auth',
@@ -83,33 +164,6 @@ export class PagesComponent implements OnInit{
           {
             title: 'Zarejestruj',
             link: '/pages/register',
-          }
-        ],
-      },
-      {
-        title: 'Visit-system',
-        icon: 'lock-outline',
-        children: [
-          {
-            title: 'Kreator Wizyt',
-            link: '/pages/visit-creator',
-          },
-          {
-            title: 'Wyszukaj fizjoterapeutę',
-            link: '/pages/search-service-provider',
-            hidden: false,
-          },
-          {
-            title: 'Zarządzaj wizytami',
-            link: '/pages/visit-management',
-          },
-          {
-            title: 'Historia wizyt',
-            link: '/pages/visit-history',
-          },
-          {
-            title: 'Moje wizyty',
-            link: '/pages/my-visit',
           }
         ],
       },

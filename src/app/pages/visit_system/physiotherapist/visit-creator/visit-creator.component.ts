@@ -33,19 +33,16 @@ selectedDateTo : Date;
   listOfWorkHour: UserWorkHourReadModel[];
   listOfService: UserServiceTypeReadModel[];
   constructor(private userWorkDataService: UserWorkDataService, private userServiceTypeService: UserServiceTypeDataService,  private router: Router) { 
+  }
+
+  ngOnInit(): void {
     this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
     if(!this.currentUser){
       console.log("Błąd");
       this.router.navigate(['/login']);
     }
-    this.getListOfService(this.currentUser.userId);
     this.getUserWorkHour(this.date, this.currentUser.userId);
-    this.getAvailableListOfHours(this.date, this.currentUser.userId);
-  }
-
-  ngOnInit(): void {
     this.getListOfService(this.currentUser.userId);
-    this.getUserWorkHour(this.date, this.currentUser.userId);
     this.getAvailableListOfHours(this.date, this.currentUser.userId);
   }
 
@@ -139,20 +136,30 @@ getAvailableListOfHours(date: Date, userId: number){
   }
 
   deleteService(serviceId: number){
-    this.userServiceTypeService.executeDeleteServiceById(serviceId).subscribe(
-      response => {
-        this.getListOfService(this.currentUser.userId);
-      }
-    );
+    if(confirm("Are you sure to delete ")) {
+      this.userServiceTypeService.executeDeleteServiceById(serviceId).subscribe(
+        response => {
+          this.getListOfService(this.currentUser.userId);
+        }
+      );
+    }
   }
 
   deleteWorkHour(workHourId: number){
-    this.userWorkDataService.executeDeleteWorkHourByIdWorkHour(workHourId).subscribe(
-      response => {
-        this.getUserWorkHour(this.date, this.currentUser.userId);
-        this.getAvailableListOfHours(this.date, this.currentUser.userId);
-      }
-    );
-  }
+    if(confirm("Are you sure to delete ")) {
+      this.userWorkDataService.executeDeleteWorkHourByIdWorkHour(workHourId).subscribe(
+        response => {
+          this.getUserWorkHour(this.date, this.currentUser.userId);
+          this.getAvailableListOfHours(this.date, this.currentUser.userId);
+        }
+      );
+    }
 
+  }
+  onChangeHourFrom(value){
+    this.selectedDateFrom = value;
+  }
+  onChangeHourTo(value){
+    this.selectedDateTo = value;
+  }
 }

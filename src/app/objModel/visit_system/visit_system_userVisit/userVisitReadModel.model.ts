@@ -2,14 +2,16 @@ import { UserReadModel } from "app/objModel/user/userReadModel.model";
 import { UserServiceTypeReadModel } from "../visit_system_userServiceType/userServiceTypeReadModel.model";
 
 export class UserVisitReadModel{
+    private idUserVisit: number;
     private userDTO: UserReadModel;
     private userVisitTime: Date;
     private userServiceTypeDTO: UserServiceTypeReadModel;
     private visitDate: Date;
     private visitProvider: UserReadModel;
     
-    constructor(userDTO: UserReadModel, userVisitTime: Date, userServiceTypeDTO: UserServiceTypeReadModel,
+    constructor(idUserVisit: number, userDTO: UserReadModel, userVisitTime: Date, userServiceTypeDTO: UserServiceTypeReadModel,
         visitDate: Date, visitProvider: UserReadModel){
+            this._idUserVisit = idUserVisit;
             this.userDTO = userDTO;
             this.userVisitTime = userVisitTime;
             this.userServiceTypeDTO = userServiceTypeDTO;
@@ -17,6 +19,12 @@ export class UserVisitReadModel{
             this.visitProvider = visitProvider;
         }
         
+        public get _idUserVisit(): number {
+            return this.idUserVisit;
+        }
+        public set _idUserVisit(value: number) {
+            this.idUserVisit = value;
+        }
         
         public get _visitDate(): Date {
             return this.visitDate;

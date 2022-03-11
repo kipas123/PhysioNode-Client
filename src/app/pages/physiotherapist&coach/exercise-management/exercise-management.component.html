@@ -12,7 +12,7 @@
           <nb-card-body>
             <p>Identyfikator: #{{user.userId}}</p>
             <p>Imię i nazwisko: {{user.userName}} {{user.userSurname}}</p>
-            <p>Twój fizjoterapeuta: {{exercise.attendingCoach.userName}} {{exercise.attendingCoach.userSurname}}</p>
+            <p>Twój trener: {{exercise.attendingCoach.userName}} {{exercise.attendingCoach.userSurname}}</p>
           </nb-card-body>
         </nb-card>
       </div>
@@ -21,6 +21,8 @@
           <nb-card-header><h2>Krótki opis choroby:</h2></nb-card-header>
           <nb-card-body>
             <p>{{exercise.exerciseDescription}}</p>
+            <button  *ngIf="isExerciseOwner()" nbButton status="danger" size="tiny" style="float: right;" (click)="deleteExercise(exercise)">Usuń ćwiczenie</button>
+
           </nb-card-body>
         </nb-card>
       </div>
@@ -30,7 +32,7 @@
 
                 <nb-tabset fullWidth>
                     <nb-tab tabTitle="Opis choroby">
-                        <nb-card>
+                        <nb-card *ngIf="isExerciseOwner()">
                             <nb-card-header>Dodaj opis ćwiczenia: </nb-card-header>
                             <nb-card-body>
                                 <nb-alert status="success" closable (close)="onClose()" *ngIf="alertCreateExerciseDetailIsOpen">
@@ -53,7 +55,7 @@
                             </nb-card-body>
                         </nb-card>
                     </nb-tab>
-                    <nb-tab tabTitle="Rozmowa">
+                    <nb-tab tabTitle="Rozmowa" *ngIf="isExerciseOwner()">
                       <messenger [messageRoomId]="messengerMessageRoomId" [currentUser]="currentUser"></messenger>
 
                   </nb-tab>

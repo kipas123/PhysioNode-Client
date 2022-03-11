@@ -1,0 +1,55 @@
+<nb-layout *ngIf="!userExercise">
+  <nb-layout-header>
+    <h5>Wait..</h5>
+  </nb-layout-header>
+  <nb-layout-column [nbSpinner]="true" nbSpinnerSize="giant" nbSpinnerStatus="primary" *ngIf="!ailment">
+  </nb-layout-column>
+</nb-layout>
+
+<div class="row" *ngIf="userExercise">
+  <div class="col-lg-4">
+    <nb-card *ngIf="currentUser">
+      <nb-card-header>
+        <h2>Ćwiczenie: </h2>
+        <h6>{{userExercise.exerciseName}} </h6>
+      </nb-card-header>
+      <nb-card-body>
+        <p>Identyfikator: #{{currentUser.userId}}</p>
+        <p>Imię i nazwisko: {{currentUser.userName}} {{currentUser.userSurname}}</p>
+        <p>Twój trener: {{userExercise.attendingCoach.userName}} {{userExercise.attendingCoach.userSurname}}</p>
+      </nb-card-body>
+    </nb-card>
+  </div>
+  <div class="col-lg-8">
+    <nb-card *ngIf="currentUser">
+      <nb-card-header>
+        <h2>Krótki opis choroby:</h2>
+      </nb-card-header>
+      <nb-card-body>
+        <p>{{userExercise.exerciseDescription}}</p>
+      </nb-card-body>
+    </nb-card>
+  </div>
+  <div class="col-lg-12">
+    <nb-card>
+      <nb-card-body>
+
+        <nb-tabset fullWidth>
+          <nb-tab tabTitle="Opis choroby">
+            <nb-card *ngFor="let exerciseDetails of userExercise.exerciseDetailsReadModel">
+              <nb-card-header>{{exerciseDetails.exerciseDetailsHeader}} </nb-card-header>
+              <nb-card-body>
+                <p>{{exerciseDetails.exerciseDetailsDescription}}</p>
+              </nb-card-body>
+            </nb-card>
+          </nb-tab>
+          <nb-tab tabTitle="Rozmowa">
+            <messenger [messageRoomId]="messengerMessageRoomId" [currentUser]="currentUser"></messenger>
+
+          </nb-tab>
+        </nb-tabset>
+
+      </nb-card-body>
+    </nb-card>
+  </div>
+</div>

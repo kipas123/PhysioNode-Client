@@ -37,10 +37,10 @@ export class MygroupDataService {
     
   }
 
-  executeGetAllGroups(){
-    return this.http.get<Mygroup>("http://localhost:8081/physio-node/group/all", {headers:this.getCurrentUserHeader()});
+  // executeGetAllGroups(){
+  //   return this.http.get<Mygroup>("http://localhost:8081/physio-node/group/all", {headers:this.getCurrentUserHeader()});
     
-  }
+  // }
 
   executeGetGroupByGroupId(id){
     return this.http.get<Mygroup>(`http://localhost:8081/physio-node/group/${id}`, {headers:this.getCurrentUserHeader()});
@@ -68,6 +68,10 @@ export class MygroupDataService {
 
   executeRemoveUserFromGroup(userId,groupId){
     return this.http.get(`http://localhost:8081/physio-node/group/removeUserFromGroup/${userId}/${groupId}`, {headers:this.getCurrentUserHeader()});
+    
+  }
+  executeDeleteGroup(groupId){
+    return this.http.get(`http://localhost:8081/physio-node/group/deleteGroup/${groupId}`, {headers:this.getCurrentUserHeader()});
     
   }
 }

@@ -1,5 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { PasswordChangeModel } from 'app/objModel/user/passwordChangeModel.model';
 import { UserReadModel } from 'app/objModel/user/userReadModel.model';
 import { UserWriteModel } from 'app/objModel/user/userWriteMode.model';
 import { BehaviorSubject, Observable } from 'rxjs';
@@ -60,7 +61,11 @@ export class AuthDataService {
     
   }
   executeChangePasswordByResetToken(passwordResetModel){
-    return this.http.post(API_URL + `changePasswordWithResetToken`, passwordResetModel);
+    return this.http.put(API_URL + `changePasswordWithResetToken`, passwordResetModel);
+    
+  }
+  executeChangePassword(passwordChangeModel: PasswordChangeModel){
+    return this.http.put(API_URL + `changePassword`, passwordChangeModel);
     
   }
 

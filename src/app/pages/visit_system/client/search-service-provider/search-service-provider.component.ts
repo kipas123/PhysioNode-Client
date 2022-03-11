@@ -13,14 +13,14 @@ export class SearchServiceProviderComponent implements OnInit {
   currentUser: UserReadModel;
   serviceProviderList: UserReadModel;
   constructor(private userDataService: UserDataService, private router: Router, private userIdService:UserIdDataService ) {
+   }
+
+  ngOnInit(): void {
     this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
     if(!this.currentUser){
       console.log("Błąd");
       this.router.navigate(['/login']);
     }
-   }
-
-  ngOnInit(): void {
     this.getServiceProviderList();
   }
 

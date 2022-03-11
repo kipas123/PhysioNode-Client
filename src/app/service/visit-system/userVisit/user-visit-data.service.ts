@@ -30,7 +30,13 @@ export class UserVisitDataService {
     return this.http.get<UserVisitReadModel[]>(API_URL + `getUserVisit/${userId}`);
   }
 
-  executeGetProviderVisit(userId){
-    return this.http.get<UserVisitReadModel[]>(API_URL + `getProviderVisit/${userId}`);
+  executeGetProviderVisit(userId, page, size){
+    return this.http.get<UserVisitReadModel[]>(API_URL + `getProviderVisit/${userId}/${page}/${size}`);
+  }
+  executeCountProviderVisit(userId){
+    return this.http.get<number>(API_URL + `countProviderVisit/${userId}`);
+  }
+  executeChangeVisitStatus(visitId: number, statusId: number){
+    return this.http.get<UserVisitReadModel[]>(API_URL + `changeVisitStatus/${visitId}/${statusId}`);
   }
 }
