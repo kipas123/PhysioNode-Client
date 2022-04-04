@@ -10,15 +10,15 @@
           <nb-card-header><h2>Ćwiczenie: </h2>
             <h6>{{exercise.exerciseName}} </h6></nb-card-header>
           <nb-card-body>
-            <p>Identyfikator: #{{user.userId}}</p>
-            <p>Imię i nazwisko: {{user.userName}} {{user.userSurname}}</p>
-            <p>Twój trener: {{exercise.attendingCoach.userName}} {{exercise.attendingCoach.userSurname}}</p>
+            <p>ID: #{{user.userId}}</p>
+            <p>Name and surname: {{user.userName}} {{user.userSurname}}</p>
+            <p>Your coach: {{exercise.attendingCoach.userName}} {{exercise.attendingCoach.userSurname}}</p>
           </nb-card-body>
         </nb-card>
       </div>
       <div class="col-lg-8">
         <nb-card *ngIf="user">
-          <nb-card-header><h2>Krótki opis choroby:</h2></nb-card-header>
+          <nb-card-header><h2>Brief description of the exercise:</h2></nb-card-header>
           <nb-card-body>
             <p>{{exercise.exerciseDescription}}</p>
             <button  *ngIf="isExerciseOwner()" nbButton status="danger" size="tiny" style="float: right;" (click)="deleteExercise(exercise)">Usuń ćwiczenie</button>
@@ -31,20 +31,20 @@
             <nb-card-body>
 
                 <nb-tabset fullWidth>
-                    <nb-tab tabTitle="Opis choroby">
+                    <nb-tab tabTitle="Exercise description">
                         <nb-card *ngIf="isExerciseOwner()">
-                            <nb-card-header>Dodaj opis ćwiczenia: </nb-card-header>
+                            <nb-card-header>Add exercise description: </nb-card-header>
                             <nb-card-body>
                                 <nb-alert status="success" closable (close)="onClose()" *ngIf="alertCreateExerciseDetailIsOpen">
-                                    Dodano opis!
+                                  Description added!
                                   </nb-alert>
                                 <div class="full-name-inputs">
-                                    <input type="text" nbInput fullWidth placeholder="Nagłówek" #noteHeader="ngModel" [(ngModel)]="exerciseDetailsWriteModel._exerciseDetailsHeader" >
+                                    <input type="text" nbInput fullWidth placeholder="Header" #noteHeader="ngModel" [(ngModel)]="exerciseDetailsWriteModel._exerciseDetailsHeader" >
                                     <br /><br />
-                                    <textarea nbInput fullWidth placeholder="Opis" #noteDescription="ngModel" [(ngModel)]="exerciseDetailsWriteModel._exerciseDetailsDescription"></textarea>
+                                    <textarea nbInput fullWidth placeholder="Description" #noteDescription="ngModel" [(ngModel)]="exerciseDetailsWriteModel._exerciseDetailsDescription"></textarea>
                                     <br /><br />
                                     <button style="float: right; margin-top: 5px;" nbButton
-                                        status="success" (click)="createExerciseDetail()">Dodaj</button>
+                                        status="success" (click)="createExerciseDetail()">Add</button>
                                 </div>
                             </nb-card-body>
                         </nb-card>
@@ -55,7 +55,7 @@
                             </nb-card-body>
                         </nb-card>
                     </nb-tab>
-                    <nb-tab tabTitle="Rozmowa" *ngIf="isExerciseOwner()">
+                    <nb-tab tabTitle="Messenger" *ngIf="isExerciseOwner()">
                       <messenger [messageRoomId]="messengerMessageRoomId" [currentUser]="currentUser"></messenger>
 
                   </nb-tab>

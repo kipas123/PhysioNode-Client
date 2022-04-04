@@ -16,30 +16,30 @@
             <div class="col-sm-6" >
                 <nb-card *ngIf="listOfWorkHour && listOfAvailableHour">
                     <nb-card-header>
-                        <h1 class="h5">Dodaj godziny</h1>
+                        <h1 class="h5">Add work hour</h1>
                     </nb-card-header>
                     <nb-card-body>
-                        <label>Od:</label>
+                        <label>From:</label>
                               <select class="select" placeholder="Select Showcase" (change)="onChangeHourFrom($event.target.value)" size="tiny">
-                                <option [ngValue]="null" disabled>Wybierz godzine</option>
+                                <option [ngValue]="null" disabled>Choose hour</option>
                                 <option *ngFor="let hour of listOfAvailableHour" value="{{hour}}">{{hour}}</option>
                               </select>
                               <br/>
-                              <label>Do:</label>
+                              <label>To:</label>
                               <select class="select" placeholder="Select Showcase"(change)="onChangeHourTo($event.target.value)"  size="tiny">
-                                <option [ngValue]="null" disabled>Wybierz godzine</option>
+                                <option [ngValue]="null" disabled>Choose hour</option>
                                 <option *ngFor="let hour of listOfAvailableHour" value="{{hour}}">{{hour}}</option>
                               </select>
                               <br/>
-                              <button nbButton status="primary" size="small" (click)="clickAdd()">Dodaj</button>
+                              <button nbButton status="primary" size="small" (click)="clickAdd()">Add</button>
                         <br/><br/>
                         <table class="table table-dark">
                             <thead>
                               <tr>
                                 <th scope="col">#</th>
-                                <th scope="col">Godzina start</th>
-                                <th scope="col">Godzina koniec</th>
-                                <th scope="col">Narzędzia</th>
+                                <th scope="col">Beginning hour</th>
+                                <th scope="col">Ending hour</th>
+                                <th scope="col">Tools</th>
                               </tr>
                             </thead>
                             <tbody>
@@ -57,22 +57,22 @@
             <div class="col-sm-6">
                 <nb-card>
                     <nb-card-header>
-                        <h1 class="h5">Twoje usługi</h1>
+                        <h1 class="h5">Your servisec</h1>
                     </nb-card-header>
                     <nb-card-body>
-                        <label>Nazwa usługi:</label><br/>
+                        <label>Name of service:</label><br/>
                         <input  type="text" nbInput  #passwordReset="ngModel" [(ngModel)] = "serviceName"><br/><br/>
-                        <label>Czas usługi:</label><br/>
+                        <label>Duration of service:</label><br/>
                         <input type="number"  name="change" id="pennies" min="0" max="120" step="15" #serviceDurationModel="ngModel" [(ngModel)] = "serviceDuration"> min<br/><br/>
-                        <button nbButton size="small" status="primary" (click)="addService()">Dodaj</button><br/><br/>
+                        <button nbButton size="small" status="primary" (click)="addService()">Add</button><br/><br/>
 
                         <table class="table table-dark" *ngIf="listOfService">
                             <thead>
                               <tr>
                                 <th scope="col">#</th>
-                                <th scope="col">Nazwa</th>
-                                <th scope="col">Czas trwania</th>
-                                <th scope="col">Narzędzia</th>
+                                <th scope="col">Name</th>
+                                <th scope="col">Duration</th>
+                                <th scope="col">Tools</th>
                               </tr>
                             </thead>
                             <tbody>
@@ -80,7 +80,7 @@
                                 <th scope="row">{{indexOfelement+1}}</th>
                                 <td>{{service.userServiceTypeName}}</td>
                                 <td>{{service.userServiceTypeDuration}}</td>
-                                <td><button nbButton status="danger" size="tiny" (click)="deleteService(service.idUserServiceType)">usuń</button></td>
+                                <td><button nbButton status="danger" size="tiny" (click)="deleteService(service.idUserServiceType)">delete</button></td>
                               </tr>
                             </tbody>
                           </table>

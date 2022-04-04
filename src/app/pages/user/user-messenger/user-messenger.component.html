@@ -10,7 +10,7 @@
         <div class="row">
           <div class="col-sm-12">
             <nb-alert status="danger" closable (close)="onClose()" *ngIf="alertSearchingError">
-              Nie znaleziono ! 
+              Not found ! 
             </nb-alert>
             <button *ngIf="searchUserButton" nbButton size="small" status="danger"
               style="margin-bottom: 5px; float: right;"
@@ -18,10 +18,10 @@
           </div>
           <div class="col-sm-8">
             <input type="text" nbInput fullWidth #searchUser="ngModel" [(ngModel)]="searchUserFiltr"
-              placeholder="Identyfikator/e-mail">
+              placeholder="Id/E-mail">
           </div>
           <div class="col-sm-4">
-            <button nbButton status="success" (click)="findUser()">Wyszukaj</button>
+            <button nbButton status="success" (click)="findUser()">Search</button>
           </div>
         </div>
         <nb-list>
@@ -29,20 +29,20 @@
             <nb-user [name]="recipient.userName +' '+ recipient.userSurname" [title]="recipient.userRoleDTO.roleName">
             </nb-user>
             <button style="float: right !important;" nbButton status="primary" size="tiny"
-              (click)="getMessageRoom(recipient.userId)">Przejdź</button>
+              (click)="getMessageRoom(recipient.userId)">Open</button>
           </nb-list-item>
         </nb-list>
         <div class="row">
         <div class="col-sm-12">
           <nb-card>
-            <nb-card-header>Nieprzeczytane wiadomości:</nb-card-header>
+            <nb-card-header>Unread messsages:</nb-card-header>
             <nb-card-body>
               <nb-list>
                 <nb-list-item *ngFor="let notification of userMessageNotification">
                   <nb-user [name]="'Nowa wiadomość- ' + notification.userSender.userName +' '+ notification.userSender.userSurname" [title]="notification.postDate |date: 'dd.MM.yyyy HH:mm:ss'">
                   </nb-user>
                   <button style="float: right !important;" nbButton status="primary" size="tiny"
-                    (click)="openMessageNotification(notification.idMessageNotification, notification.userSender.userId)">Odczytaj</button>
+                    (click)="openMessageNotification(notification.idMessageNotification, notification.userSender.userId)">Open</button>
                 </nb-list-item>
               </nb-list>
             </nb-card-body>

@@ -2,7 +2,7 @@
 <div class="row">
     <div class="col-lg-12">
       <nb-card>
-        <nb-card-header>Moje leczenia: </nb-card-header>
+        <nb-card-header>My motor documentation: </nb-card-header>
         <nb-card-body >
           <nb-layout  *ngIf="!exercises" >
             <nb-layout-header><h8>Wait..</h8></nb-layout-header>
@@ -17,7 +17,7 @@
               <nb-accordion-item-body>
                 {{exercise.exerciseDescription}}
                 <br />
-                <button style="float: right; margin-top: 5px;" nbButton status="warning" (click) = "goToUserExercise(exercise.idexerciseBook)">Wyświetl</button>
+                <button style="float: right; margin-top: 5px;" nbButton status="warning" (click) = "goToUserExercise(exercise.idexerciseBook)">View</button>
               </nb-accordion-item-body>
             </nb-accordion-item>
   

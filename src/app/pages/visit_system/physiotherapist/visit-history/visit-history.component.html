@@ -3,17 +3,17 @@
         <div class="col-sm-12">
             <nb-card>
                 <nb-card-header>
-                    <h1 class="h5">Historia wizyt:</h1>
+                    <h1 class="h5">Visit history:</h1>
                 </nb-card-header>
                 <nb-card-body>
                     <table class="table table-dark" *ngIf="listOfProviderVisit">
                         <thead>
                           <tr>
                             <th scope="col">#</th>
-                            <th scope="col">Nazwa</th>
-                            <th scope="col">Czas trwania</th>
-                            <th scope="col">Klient</th>
-                            <th scope="col">Data wizyty</th>
+                            <th scope="col">Name</th>
+                            <th scope="col">Duration</th>
+                            <th scope="col">Client</th>
+                            <th scope="col">Date of visit</th>
                           </tr>
                         </thead>
                         <tbody>
@@ -27,8 +27,8 @@
                         </tbody>
                       </table>
                       <div class="col-sm-12" style="padding: 10px;">
-                        <button *ngIf="visibilityButtonPreview()" nbButton status="info" style="float: left;"(click)="decrementButton()">Poprzednia</button>
-                        <button *ngIf="visibilityButtonNext()" nbButton status="info" style="float: right;"(click)="incrementButton()">Następna</button>
+                        <button *ngIf="visibilityButtonPreview()" nbButton status="info" style="float: left;"(click)="decrementButton()">Previous</button>
+                        <button *ngIf="visibilityButtonNext()" nbButton status="info" style="float: right;"(click)="incrementButton()">Next</button>
                     </div>
                 </nb-card-body>
             </nb-card>

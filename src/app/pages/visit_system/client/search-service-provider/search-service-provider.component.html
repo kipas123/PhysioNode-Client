@@ -2,17 +2,17 @@
     <div class="row">
         <div class="col-lg-12">
             <nb-card>
-                <nb-card-header>Fizjoterapeuci: </nb-card-header>
+                <nb-card-header>Physiotherapists: </nb-card-header>
                 <nb-card-body>
                     <nb-accordion multi>
                         <nb-accordion-item *ngFor="let serviceProvider of serviceProviderList">
                             <nb-accordion-item-header>
-                                Fizjoterapeuta: {{serviceProvider.userName}} {{serviceProvider.userSurname}}
+                                Physiotherapist: {{serviceProvider.userName}} {{serviceProvider.userSurname}}
                             </nb-accordion-item-header>
                             <nb-accordion-item-body>
                                 <br />
                                 <button style="float: right; margin-top: 5px;" nbButton status="warning" (click)="goToGetAppointment(serviceProvider.userId)"
-                                    >Przejdź</button>
+                                    >Go</button>
                             </nb-accordion-item-body>
                         </nb-accordion-item>
 

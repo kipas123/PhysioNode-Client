@@ -6,31 +6,31 @@
 <div class="row" *ngIf=group>
   <div class="col-lg-12">
     <nb-card >
-      <nb-card-header><h3>Nazwa grupy: "{{group.mygroupName}}"</h3></nb-card-header>
+      <nb-card-header><h3>Group name: "{{group.mygroupName}}"</h3></nb-card-header>
       <nb-card-body>
-        <h6>Opis grupy:</h6> <p>{{group.mygroupDescription}}</p>
-        <h6>Założyciel:</h6> <p>{{group.mygroupFounder}}</p>
-        <button nbButton status="danger" size="tiny" style="float: right;" (click)="deleteGroup(group)">Usuń grupę</button>
+        <h6>Group description:</h6> <p>{{group.mygroupDescription}}</p>
+        <h6>Group owner:</h6> <p>{{group.mygroupFounder}}</p>
+        <button nbButton status="danger" size="tiny" style="float: right;" (click)="deleteGroup(group)">Delete group</button>
       </nb-card-body>
     </nb-card>
   </div>
   <div class="col-lg-6">
     <nb-card>
-      <nb-card-header>Dodaj użytkownika: </nb-card-header>
+      <nb-card-header>Add user: </nb-card-header>
       <nb-card-body>
 
         <div class="full-name-inputs">
           <nb-alert status="danger" closable (close)="onClose()" *ngIf="alertSearchUser">
-            Nieznaleziono użytkownika!
+            User not found
           </nb-alert>
           <div *ngIf="!searchUserList">
-          <input type="text" nbInput fullWidth #searchUser="ngModel" [(ngModel)] = "searchUserFiltr" placeholder="Identyfikator/e-mail">
+          <input type="text" nbInput fullWidth #searchUser="ngModel" [(ngModel)] = "searchUserFiltr" placeholder="ID/e-mail">
           <br />
-          <button style="float: right; margin-top: 5px;" nbButton status="success" (click)="findUser()">Wyszukaj</button><br/><br/>
+          <button style="float: right; margin-top: 5px;" nbButton status="success" (click)="findUser()">Search</button><br/><br/>
         </div>
         <button *ngIf="searchUserList" nbButton size="tiny" status="danger" style="margin-bottom: 5px;"(click)="closeSearchUserList()">X<sub>{{searchUserFiltr}}</sub></button>
         <nb-alert status="success" closable (close)="onClose()" *ngIf="alertAddUser">
-          Dodano użytkownika
+          User added!
         </nb-alert>
           <table *ngIf="searchUserList" class="table table-dark" style="margin-top: 5px !important;">
             <thead>
@@ -38,8 +38,8 @@
                 <th scope="col">E-mail</th>
                 <th scope="col">Name</th>
                 <th scope="col">Surname</th>
-                <th scope="col">D.Urodzenia</th>
-                <th scope="col">Narzedzia</th>
+                <th scope="col">Date of birth</th>
+                <th scope="col">Tools</th>
               </tr>
             </thead>
             <tbody>
@@ -48,7 +48,7 @@
                 <td>{{user.userName}}</td>
                 <td>{{user.userSurname}}</td>
                 <td>{{user.userDob}}</td>
-                <td><button nbButton size="small" status="success"(click)="addUserToGroup(user.userId)">Dodaj</button></td>
+                <td><button nbButton size="small" status="success"(click)="addUserToGroup(user.userId)">Add</button></td>
               </tr>
             </tbody>
           </table>
@@ -59,35 +59,35 @@
   <div class="col-lg-6">
     <nb-card>
       <nb-card-header>
-        Zmień nazwę grupy: </nb-card-header>
+        Rename the group: </nb-card-header>
       <nb-card-body>
         <nb-alert status="success" closable (close)="onClose()" *ngIf="alertIsOpen">
-          Zmieniono nazwę grupy!
+          The group name has been changed!
         </nb-alert>
         <div class="full-name-inputs">
-          <input type="text" nbInput fullWidth placeholder="Nazwa grupy" #name="ngModel" 
+          <input type="text" nbInput fullWidth placeholder="Name of group" #name="ngModel" 
           [(ngModel)]="groupServiceObj.mygroupName">
           <br /><br />
-          <textarea nbInput fullWidth placeholder="Krótki opis grupy" #description="ngModel" 
+          <textarea nbInput fullWidth placeholder="Short description of group" #description="ngModel" 
           [(ngModel)]="groupServiceObj.mygroupDescription"></textarea>
           <br /><br />
-          <button style="float: right; margin-top: 5px;" nbButton status="success" (click)="changeGroupInfo()">Zmień</button>
+          <button style="float: right; margin-top: 5px;" nbButton status="success" (click)="changeGroupInfo()">Change</button>
         </div>
       </nb-card-body>
     </nb-card>
   </div>
   <div class="col-md-12 col-lg-12 col-xxxl-12">
     <nb-card class="list-card" size="small">
-      <nb-card-header>Użytkownicy:</nb-card-header>
+      <nb-card-header>Users:</nb-card-header>
       <nb-alert status="danger" closable (close)="onClose()" *ngIf="alertRemoveUser">
-        Usunieto użytkownika!
+        User deleted!
       </nb-alert>
       <nb-list>
         <nb-list-item *ngFor="let user of userList">
           <nb-user [name]="user.userName + ' ' + user.userSurname" [title]="user.userRole">
           </nb-user>
-          <button style="float: right;" nbButton status="warning" (click)="goToUserManagement(user.userId)">Przejdź</button>
-          <button style="float: right;" nbButton status="danger" (click)="removeUserFromGroup(user.userId)">Usuń</button>
+          <button style="float: right;" nbButton status="warning" (click)="goToUserManagement(user.userId)">Go to</button>
+          <button style="float: right;" nbButton status="danger" (click)="removeUserFromGroup(user.userId)">Delete</button>
         </nb-list-item>
       </nb-list>
     </nb-card>

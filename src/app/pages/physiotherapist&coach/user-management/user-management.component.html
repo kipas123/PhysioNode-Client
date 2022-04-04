@@ -60,7 +60,7 @@
   </div>
   <div class="col-lg-6">
     <nb-card>
-      <nb-card-header>Dokumentacja medyczna: </nb-card-header>
+      <nb-card-header>Medical documentation: </nb-card-header>
       <nb-card-body>
 
         <nb-accordion multi>
@@ -81,19 +81,19 @@
   </div>
   <div class="col-lg-6">
     <nb-card>
-      <nb-card-header>Dokumentacja treningowa: </nb-card-header>
+      <nb-card-header>Motor documentation: </nb-card-header>
       <nb-card-body>
 
         <nb-accordion multi>
           <nb-accordion-item *ngFor="let exercise of userExercise">
             <nb-accordion-item-header>
-              {{exercise.exerciseName}} <button nbButton *ngIf="isExerciseOwner(exercise.attendingCoach)" size="tiny" status="warning" disabled> Prowadzący</button>
+              {{exercise.exerciseName}} <button nbButton *ngIf="isExerciseOwner(exercise.attendingCoach)" size="tiny" status="warning" disabled> Leading:</button>
             </nb-accordion-item-header>
             <nb-accordion-item-body>
               {{exercise.exerciseDescription}}
               <br />
               <button style="float: right; margin-top: 5px;" nbButton status="warning"
-                (click)="goToExercise(exercise.idexerciseBook)">Wyświetl</button>
+                (click)="goToExercise(exercise.idexerciseBook)">View</button>
             </nb-accordion-item-body>
           </nb-accordion-item>
         </nb-accordion>

@@ -40,110 +40,110 @@ export class PagesComponent implements OnInit{
         hidden: this.adminRole,  
         children: [
           {
-            title: 'Profil',
+            title: 'Profile',
             link: '/pages/profile',
           },
           {
-            title: 'Wiadomości',
+            title: 'Messages',
             link: '/pages/user-messanger',
           },
           {
-            title: 'Aktywacja użytkowników',
+            title: 'Activation of users',
             link: '/pages/user-activation', 
             hidden: false        
           }
         ],
       },
       {
-        title: 'Fizjoterapeuta',
+        title: 'Physiotherapist',
         icon: 'lock-outline',
         hidden: this.adminRole,
         children: [
           {
-            title: 'Profil',
+            title: 'Profile',
             link: '/pages/profile',
           },
           {
-            title: 'Wiadomości',
+            title: 'Messages',
             link: '/pages/user-messanger',
           },
           {
-            title: 'Wyszukaj użytkownika',
+            title: 'Search for a user',
             link: '/pages/findUser',
             hidden: false,
           },
           {
-            title: 'Zarządzanie grupami',
+            title: 'Group management',
             link: '/pages/groupsManagement', 
             hidden: false        
           },
           {
-            title: 'Kreator Wizyt',
+            title: 'Visit creator',
             link: '/pages/visit-creator',
           },
           {
-            title: 'Zarządzaj wizytami',
+            title: 'Visit management',
             link: '/pages/visit-management',
           },
           {
-            title: 'Historia wizyt',
+            title: 'Visit history',
             link: '/pages/visit-history',
           }
         ],
       },
       {
-        title: 'Trener',
+        title: 'Coach',
         icon: 'lock-outline',
         hidden: this.adminRole,
         children: [
           {
-            title: 'Profil',
+            title: 'Profile',
             link: '/pages/profile',
           },
           {
-            title: 'Wiadomości',
+            title: 'Messages',
             link: '/pages/user-messanger',
           },
           {
-            title: 'Wyszukaj użytkownika',
+            title: 'Search for a user',
             link: '/pages/findUser',
             hidden: false,
           },
           {
-            title: 'Zarządzanie grupami',
+            title: 'Group management',
             link: '/pages/groupsManagement', 
             hidden: false        
           }
         ],
       },
       {
-        title: 'Zawodnik',
+        title: 'Athlete',
         icon: 'lock-outline',
         hidden: this.adminRole,
         children: [
           {
-            title: 'Profil',
+            title: 'Profile',
             link: '/pages/profile',
           },
           {
-            title: 'Wiadomości',
+            title: 'Messages',
             link: '/pages/user-messanger',
           },
           {
-            title: 'Dokumentacja motoryczna',
+            title: 'Motor Documentation',
             link: '/pages/exercise-list',
           },
           {
-            title: 'Dokumentacja medyczna',
+            title: 'Medical documentation',
             link: '/pages/ailment-list',
           },
           {
-            title: 'Zapisz się na wizytę',
+            title: 'Make an appointment',
             link: '/pages/search-service-provider',
             hidden: false,
           },
           {
-            title: 'Moje wizyty',
+            title: 'My visit',
             link: '/pages/my-visit',
           }
           
@@ -154,15 +154,15 @@ export class PagesComponent implements OnInit{
         icon: 'lock-outline',
         children: [
           {
-            title: 'Zaloguj',
+            title: 'Log in',
             link: '/pages/login',
           },
           {
-            title: 'Zrestuj hasło',
+            title: 'Reset password',
             link: '/pages/password-reset',
           },
           {
-            title: 'Zarejestruj',
+            title: 'Register',
             link: '/pages/register',
           }
         ],

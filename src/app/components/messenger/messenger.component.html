@@ -1,6 +1,6 @@
-<button *ngIf="hasPastMessage()" nbButton status="primary" size="tiny" (click)="loadPastMessage()" style="margin-bottom: 10px;">Załaduj wcześniejsze rozmowy(pozostało: {{numberOfMessages-(page*pageSize)}})</button>
-<button  nbButton status="warning" size="tiny" (click)="refreshMessage()" style="margin-bottom: 10px;">Odśwież (stan na {{lastRefreshTime |date: 'dd.MM.yyyy HH:mm:ss'}})</button>
-<nb-chat title="Okno rozmowy">
+<button *ngIf="hasPastMessage()" nbButton status="primary" size="tiny" (click)="loadPastMessage()" style="margin-bottom: 10px;">Load previous conversations(remaining: {{numberOfMessages-(page*pageSize)}})</button>
+<button  nbButton status="warning" size="tiny" (click)="refreshMessage()" style="margin-bottom: 10px;">Refresh (state for {{lastRefreshTime |date: 'dd.MM.yyyy HH:mm:ss'}})</button>
+<nb-chat title="Conversation window">
     <nb-chat-message *ngFor="let msg of messages"
                      [dateFormat]="msg.dateFormat"
                      [type]="msg.type"

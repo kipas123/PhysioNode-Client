@@ -1,14 +1,14 @@
 <nb-alert status="success" closable (close)="onClose()" *ngIf="alertAddedFile">
-  Dodano plik!
+  Added file!
 </nb-alert>
 <nb-alert status="danger" closable (close)="onClose()" *ngIf="alertDelateFile">
-  Usunięto plik!
+  Deleted file!
 </nb-alert>
-<button nbButton hero status="primary"style="margin-bottom:10px;" (click)="showAddForm()">Dodaj +</button>
+<button nbButton hero status="primary"style="margin-bottom:10px;" (click)="showAddForm()">Add +</button>
 <div *ngIf="addFileFormShow" class="col-sm-4" style="margin-bottom: 10px">
-    <label class="label" for="input-email">Wybierz plik:</label>
+    <label class="label" for="input-email">Choose file:</label>
     <input nbInput fullWidth placeholder="Email-address" type="file" multiple="multiple" (change)="onFileChanged($event)">
-    <button nbButton size="small" status="primary" style="margin-top: 5px; margin-bottom:5px; float:right;"(click)="uploadFile()">Dodaj</button>
+    <button nbButton size="small" status="primary" style="margin-top: 5px; margin-bottom:5px; float:right;"(click)="uploadFile()">Add</button>
 </div>
 
 <div class="table-responsive">
@@ -16,11 +16,11 @@
         <thead>
             <tr>
               <th scope="col">#</th>
-              <th scope="col">Nazwa</th>
-              <th scope="col">Typ</th>
-              <th scope="col">Rozmiar</th>
-              <th scope="col">Data przesłania</th>
-              <th scope="col">Narzędzia</th>
+              <th scope="col">Name</th>
+              <th scope="col">Type</th>
+              <th scope="col">Size</th>
+              <th scope="col">Date sent</th>
+              <th scope="col">Tools</th>
             </tr>
           </thead>
           <tbody>
@@ -31,12 +31,12 @@
               <td>{{file.size}}</td>
               <td>{{file.dateAdded | date:'medium'}}</td>
               <td>
-                <button *ngIf="isUploadedByCurrenUser(file.userId)" nbButton size="small" status="danger" (click)="deleteFile(file.idailment_files)">Usuń</button>
+                <button *ngIf="isUploadedByCurrenUser(file.userId)" nbButton size="small" status="danger" (click)="deleteFile(file.idailment_files)">Delete</button>
                 &nbsp;&nbsp;
-                <a href="{{file.url}}" style="text-decoration: none;"><button nbButton size="small" status="warning">Pobierz</button></a>
+                <a href="{{file.url}}" style="text-decoration: none;"><button nbButton size="small" status="warning">Download</button></a>
               </td>
             </tr>
           </tbody>
     </table>
   </div>
-  <p>Uwaga! Możesz usuwać tylko te pliki, które należą do Ciebie!</p>
+  <p>Note that you can only delete files that belong to you!</p>

@@ -1,0 +1,209 @@
+[33mcommit 575f32bdb7b708231715a95e304bbb941076ae45[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m)[m
+Author: kipa <kipas@gazezta.pl>
+Date:   Mon Apr 4 10:07:18 2022 +0200
+
+    Add validation to register for
+
+[33mcommit ffc0fd9f1e70362e34b2928dd1c8a32fd5605a6c[m[33m ([m[1;31morigin/main[m[33m)[m
+Author: kipa <kipas@gazezta.pl>
+Date:   Fri Mar 11 02:33:38 2022 +0100
+
+    Physio-node-client version 1.0
+
+[33mcommit 7b1648d556f578bf4e011364305bc31cd0f4280a[m
+Author: kipa <kipas@gazezta.pl>
+Date:   Thu Jan 27 11:34:10 2022 +0100
+
+    Add messageNotification to messanger
+
+[33mcommit f3aa7a6483f4e68c5f91d8b2a212c702bba699a1[m
+Author: kipa <kipas@gazezta.pl>
+Date:   Wed Jan 26 12:11:13 2022 +0100
+
+    Add exercise management components & services
+
+[33mcommit 357cdf266df21ded88edd4f444484cecccef1e25[m
+Author: kipa <kipas@gazezta.pl>
+Date:   Tue Dec 7 12:42:14 2021 +0100
+
+    Add VisitSystem
+    
+    Add components, services, obj models to handle VisitSystem
+
+[33mcommit 9c8c677abc3bf8d9d27321a1e31be304f81ed72e[m
+Author: kipa <kipas@gazezta.pl>
+Date:   Tue Nov 2 15:31:05 2021 +0100
+
+    Create file-manager component
+    
+    Component allow add&delete files to ailments
+
+[33mcommit 0f2582e06c486eeb16c6482a398992a7212c9155[m
+Author: kipa <kipas@gazezta.pl>
+Date:   Tue Oct 26 13:12:35 2021 +0200
+
+    Add password-reset&password-reset-change component
+    
+    Additionally:
+    - create auth-data-service
+    - extrac meth login/register from uds to ads
+    uds:user-data-sercice
+    ads:auth-data-serice
+
+[33mcommit 2ae00b4cc3f0b172fec78df43afdf4bb27f8f0c7[m
+Author: kipa <kipas@gazezta.pl>
+Date:   Fri Oct 22 00:15:20 2021 +0200
+
+    Create messenger component
+    
+    Create messege component,
+    
+    Add messenger component to:
+    user-ailment, ailment-managemen
+
+[33mcommit c85aeba8c70f4edeb5798820814719d1d680e7ab[m
+Author: kipa <kipas@gazezta.pl>
+Date:   Fri Oct 15 15:11:44 2021 +0200
+
+    Add list of User's groups in user-mgm view
+    
+    "user-mgm" - user-management
+    Additionally:
+    rename executeGetAllGroupsByUserId for executeGetAllGroupsByUserOwner
+    Add new function to mygroup-data-service: executeGetAllGroupsByUserId
+
+[33mcommit 576674011af3dbf52177db38c9ac1e903df73486[m
+Author: kipa <kipas@gazezta.pl>
+Date:   Fri Oct 15 10:21:49 2021 +0200
+
+    Add findUser view & service
+
+[33mcommit 1730af7439ff3fe15f74a38a770a8f425d769bee[m
+Author: kipa <kipas@gazezta.pl>
+Date:   Fri Oct 15 09:51:53 2021 +0200
+
+    Add&Remove Users to Groups /Service
+
+[33mcommit 5fadfdb566329f3442480b9ee4e5cebebf874a45[m
+Author: kipa <kipas@gazezta.pl>
+Date:   Thu Oct 14 14:39:25 2021 +0200
+
+    Add verify user function with pagination
+
+[33mcommit f752098a3ead07dda465f116b84d9377b1fc24ec[m
+Author: kipa <kipas@gazezta.pl>
+Date:   Mon Oct 11 15:20:46 2021 +0200
+
+    Add user-activation view & changeUserRole service
+    
+    user-activation include view for change user role
+
+[33mcommit c19522299693c599dfbb5f9179434c41059e299c[m
+Author: kipa <kipas@gazezta.pl>
+Date:   Wed Oct 6 13:01:19 2021 +0200
+
+    Add user-activation view
+    
+    View without service
+
+[33mcommit a49b4ce15829d2c9456504498bd22ccfd310c190[m
+Author: kipa <kipas@gazezta.pl>
+Date:   Tue Sep 21 21:57:21 2021 +0200
+
+    Add new objModel and adjustment in data-service
+    
+    Additionally add:
+    - not-found view
+    - unathorized view
+
+[33mcommit 8ef013ab85fef9a5937dd1bf5de1c250cbe8048e[m
+Author: kipa <kipas@gazezta.pl>
+Date:   Tue Sep 21 21:56:21 2021 +0200
+
+    Add serivce to pass variable between views
+
+[33mcommit d2fb67d4fd74f40d17e5c3b88dd997c972eff817[m
+Author: kipa <kipas@gazezta.pl>
+Date:   Mon Sep 20 10:04:14 2021 +0200
+
+    Adjust the view to spring security
+    
+    Main changes in *-data-.service & in ObjModel
+
+[33mcommit 296e62b1b0cc434de75179788f07391e553600a3[m
+Author: kipa <kipas@gazezta.pl>
+Date:   Thu Sep 9 13:53:54 2021 +0200
+
+    Add alerts to views
+
+[33mcommit a78c13bafddc99178ccfe8ed803482cfcb7f0a72[m
+Author: kipa <kipas@gazezta.pl>
+Date:   Thu Sep 9 10:23:17 2021 +0200
+
+    Add form handling in group-management view
+
+[33mcommit 5313119e21654d9e0e1284486b4e3678ef66c881[m
+Author: kipa <kipas@gazezta.pl>
+Date:   Wed Sep 8 12:47:55 2021 +0200
+
+    Add form handling in ailment-management view
+    
+    Changes in objModel needed to aply form handling.
+
+[33mcommit d95f80a782e79aa3e65060882b582e8473f7baff[m
+Author: kipa <kipas@gazezta.pl>
+Date:   Tue Sep 7 14:51:03 2021 +0200
+
+    Add post service to GML&UM && Add NbSpinner
+    
+    GML = group-management-list
+    UM = user-management
+    
+    Add spiner to some views: profile, user-ailment, GML
+
+[33mcommit 137bdd6172c34f430c1705328208179d7670b797[m
+Author: kipa <kipas@gazezta.pl>
+Date:   Tue Aug 31 23:07:08 2021 +0200
+
+    Add ailment objModels & rename components
+    
+    Add ailmentIndication&ailmentNode&AilmentFilePath objModel
+    Rename components for more user-friendly
+
+[33mcommit 7eda7df3c58615bab7436f6f0f39cd88ee79651d[m
+Author: kipa <kipas@gazezta.pl>
+Date:   Mon Aug 30 22:24:01 2021 +0200
+
+    Add user-data-service & small changes in views
+
+[33mcommit 2910ee9d511b6d0dc516f20eb934cceadda7f716[m
+Author: kipa <kipas@gazezta.pl>
+Date:   Sun Aug 8 16:02:57 2021 +0200
+
+    Add treatment-management view
+
+[33mcommit 73ff7ec18daf30291a9c56aadc5bd9de35361edd[m
+Author: kipa <kipas@gazezta.pl>
+Date:   Sun Aug 8 14:26:53 2021 +0200
+
+    Add treatment view & reorganization in pages dir
+    
+    Changes in files layout. Create main views folders named physiotherapist
+    & user
+
+[33mcommit ea821b8769b9c2508f35a26d2bfd2d65fc558a8c[m
+Author: kipa <kipas@gazezta.pl>
+Date:   Fri Aug 6 12:11:13 2021 +0200
+
+    Add GROUP&GROUPS MANAGEMENT VIEW
+    
+    Add new views. Adjustment in routing and my-module.
+    Additionally, small changes in Profile View
+
+[33mcommit f3e7033d6eb2a266acd10c992dbed3aa7bfdba41[m
+Author: kipa <kipas@gazezta.pl>
+Date:   Thu Aug 5 20:55:53 2021 +0200
+
+    First adjustment in NGX-ADMIN & ADD PROFILE VIEW
+    
+    Adjustemnt in NGX-ADMIN-STARTER-KIT like remove default pages

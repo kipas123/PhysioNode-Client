@@ -12,20 +12,20 @@
             <label class="label" for="input-email">Email address:</label>
             <input type="text" nbInput fullWidth placeholder="Email-address" id="input-email" #userEmail="ngModel" [(ngModel)] = "user.userEmail">
             <br /><br />
-            <label class="label" for="input-password">Hasło:</label>
-            <input type="password" nbInput fullWidth placeholder="Hasło" id="input-password" #userPassword="ngModel" [(ngModel)] = "user.userPassword">
+            <label class="label" for="input-password">Password:</label>
+            <input type="password" nbInput fullWidth placeholder="Password" id="input-password" #userPassword="ngModel" [(ngModel)] = "user.userPassword">
             <br /><br />
-            <label class="label" for="input-password-repeat">Powtórz hasło:</label>
-            <input type="password" nbInput fullWidth placeholder="Powtórz hasło" id="input-password-repeat" #userPassword="ngModel" [(ngModel)] = "repeatPassword">
+            <label class="label" for="input-password-repeat">Confirm password:</label>
+            <input type="password" nbInput fullWidth placeholder="Confirm password" id="input-password-repeat" #userPassword="ngModel" [(ngModel)] = "repeatPassword">
             <br /><br />
-            <label class="label" for="input-name">Imię:</label>
-            <input type="text" nbInput fullWidth placeholder="Imię" id="input-name" #userPassword="ngModel" [(ngModel)] = "user.userName">
+            <label class="label" for="input-name">Name:</label>
+            <input type="text" nbInput fullWidth placeholder="Name" id="input-name" #userPassword="ngModel" [(ngModel)] = "user.userName">
             <br /><br />
-            <label class="label" for="input-surname">Nazwisko:</label>
-            <input type="text" nbInput fullWidth placeholder="Nazwisko" id="input-surname" #userPassword="ngModel" [(ngModel)] = "user.userSurname">
+            <label class="label" for="input-surname">Surname:</label>
+            <input type="text" nbInput fullWidth placeholder="Surname" id="input-surname" #userPassword="ngModel" [(ngModel)] = "user.userSurname">
             <br /><br />
             <fieldset class="form-group">
-                <label>Data urodzenia:</label>
+                <label>Date of birth:</label>
                 <input type="date" #targetDate="ngModel"
                 [ngModel]="user.userDob | date:'yyyy-MM-dd' "
                 (ngModelChange)="user.userDob = $event"
@@ -39,7 +39,7 @@
         <p><input type="text" nbInput fullWidth fieldSize="medium" [(ngModel)]="user.userPassword" #password="ngModel" placeholder="Password" id="password" type="password"></p>
         <button nbButton status="success" size="large" style="float: right;">Loguj</button> -->
     </nb-card-body>
-    <nb-card-footer>Jeżeli masz konto, zaloguj się</nb-card-footer>
+    <nb-card-footer>If you have an account, please log in</nb-card-footer>
   </nb-card>
   </div>
 </div>

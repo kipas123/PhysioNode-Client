@@ -4,15 +4,15 @@
               <nb-card-header><h2>Choroba: </h2>
                 <h6>{{ailment.ailmentName}} </h6></nb-card-header>
               <nb-card-body>
-                <p>Identyfikator: #{{currentUser.userId}}</p>
-                <p>Imię i nazwisko: {{currentUser.userName}} {{currentUser.userSurname}}</p>
-                <p>Twój fizjoterapeuta: {{ailment.attendingphysician.userName}} {{ailment.attendingphysician.userSurname}}</p>
+                <p>ID: #{{currentUser.userId}}</p>
+                <p>Name and Surname: {{currentUser.userName}} {{currentUser.userSurname}}</p>
+                <p>Your physiotherapist: {{ailment.attendingphysician.userName}} {{ailment.attendingphysician.userSurname}}</p>
               </nb-card-body>
             </nb-card>
           </div>
           <div class="col-lg-8">
             <nb-card *ngIf="user">
-              <nb-card-header><h2>Krótki opis choroby:</h2></nb-card-header>
+              <nb-card-header><h2>Brief description of the ailness:</h2></nb-card-header>
               <nb-card-body>
                 <p>{{ailment.ailmentDescription}}</p>
               </nb-card-body>
@@ -23,7 +23,7 @@
             <nb-card-body>
 
                 <nb-tabset fullWidth *ngIf="ailment">
-                    <nb-tab tabTitle="Opis choroby">
+                    <nb-tab tabTitle="Ailment description">
                         <nb-card *ngFor="let note of ailment.ailmentNotes">
                             <nb-card-header>{{note.noteHeader}} </nb-card-header>
                             <nb-card-body>
@@ -31,7 +31,7 @@
                             </nb-card-body>
                         </nb-card>
                     </nb-tab>
-                    <nb-tab tabTitle="Zalecenia">
+                    <nb-tab tabTitle="Indication">
                         <nb-card *ngFor="let indication of ailment.ailmentIndications">
                             <nb-card-header>{{indication.indicationHeader}} </nb-card-header>
                             <nb-card-body>
@@ -39,10 +39,10 @@
                             </nb-card-body>
                         </nb-card>
                     </nb-tab>
-                    <nb-tab tabTitle="Pliki">
+                    <nb-tab tabTitle="Files">
                       <file-manager [ailmentId]="ailmentId" [currentUser]="currentUser"></file-manager>
                     </nb-tab>
-                    <nb-tab tabTitle="Rozmowa">
+                    <nb-tab tabTitle="Messenger">
                       <messenger [messageRoomId] = "messengerMessageRoomId" [currentUser] = "currentUser"></messenger>
                   </nb-tab>
                 </nb-tabset>

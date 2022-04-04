@@ -7,18 +7,18 @@
 <div class="row" *ngIf="ailment">
     <div class="col-lg-4">
         <nb-card *ngIf="user">
-          <nb-card-header><h2>Choroba: </h2>
+          <nb-card-header><h2>Ailment: </h2>
             <h6>{{ailment.ailmentName}} </h6></nb-card-header>
           <nb-card-body>
-            <p>Identyfikator: #{{user.userId}}</p>
-            <p>Imię i nazwisko: {{user.userName}} {{user.userSurname}}</p>
-            <p>Twój fizjoterapeuta: {{ailment.attendingphysician.userName}} {{ailment.attendingphysician.userSurname}}</p>
+            <p>ID: #{{user.userId}}</p>
+            <p>Name and surname: {{user.userName}} {{user.userSurname}}</p>
+            <p>Your physiotherapist: {{ailment.attendingphysician.userName}} {{ailment.attendingphysician.userSurname}}</p>
           </nb-card-body>
         </nb-card>
       </div>
       <div class="col-lg-8">
         <nb-card *ngIf="user">
-          <nb-card-header><h2>Krótki opis choroby:</h2></nb-card-header>
+          <nb-card-header><h2>Brief description of the ailness:</h2></nb-card-header>
           <nb-card-body>
             <p>{{ailment.ailmentDescription}}</p>
             <button nbButton  *ngIf="isAilmentOwner()" status="danger" size="tiny" style="float: right;" (click)="deleteAilment(ailment)">Usuń chorobę</button>
@@ -31,20 +31,20 @@
             <nb-card-body>
 
                 <nb-tabset fullWidth>
-                    <nb-tab tabTitle="Opis choroby">
+                    <nb-tab tabTitle="Ailment description">
                         <nb-card *ngIf="isAilmentOwner()">
-                            <nb-card-header>Dodaj notkę do choroby: </nb-card-header>
+                            <nb-card-header>Add a note to the disease: </nb-card-header>
                             <nb-card-body>
                                 <nb-alert status="success" closable (close)="onClose()" *ngIf="alertNoteIsOpen">
-                                    Dodano notkę!
+                                  Added a note!
                                   </nb-alert>
                                 <div class="full-name-inputs">
-                                    <input type="text" nbInput fullWidth placeholder="Nagłówek" #noteHeader="ngModel" [(ngModel)]="ailmentNote.noteHeader" >
+                                    <input type="text" nbInput fullWidth placeholder="Header" #noteHeader="ngModel" [(ngModel)]="ailmentNote.noteHeader" >
                                     <br /><br />
-                                    <textarea nbInput fullWidth placeholder="Opis" #noteDescription="ngModel" [(ngModel)]="ailmentNote.noteDescription"></textarea>
+                                    <textarea nbInput fullWidth placeholder="Description" #noteDescription="ngModel" [(ngModel)]="ailmentNote.noteDescription"></textarea>
                                     <br /><br />
                                     <button style="float: right; margin-top: 5px;" nbButton
-                                        status="success" (click)="createAilmentNote()">Dodaj</button>
+                                        status="success" (click)="createAilmentNote()">Add</button>
                                 </div>
                             </nb-card-body>
                         </nb-card>
@@ -55,20 +55,20 @@
                             </nb-card-body>
                         </nb-card>
                     </nb-tab>
-                    <nb-tab tabTitle="Zalecenia">
+                    <nb-tab tabTitle="Indication">
                         <nb-card>
-                            <nb-card-header>Dodaj zalecenia: </nb-card-header>
+                            <nb-card-header>Add indication: </nb-card-header>
                             <nb-card-body>
                                 <nb-alert status="success" closable (close)="onClose()" *ngIf="alertIndicationIsOpen">
-                                    Dodano zalecenie!
+                                   Added indication
                                   </nb-alert>
                                 <div class="full-name-inputs">
-                                    <input type="text" nbInput fullWidth placeholder="Nagłówek" #indicationHeader="ngModel" [(ngModel)]="ailmentIndication.indicationHeader">
+                                    <input type="text" nbInput fullWidth placeholder="Header" #indicationHeader="ngModel" [(ngModel)]="ailmentIndication.indicationHeader">
                                     <br /><br />
-                                    <textarea nbInput fullWidth placeholder="Opis" #indicationDescription="ngModel" [(ngModel)]="ailmentIndication.indicationDescription"></textarea>
+                                    <textarea nbInput fullWidth placeholder="Description" #indicationDescription="ngModel" [(ngModel)]="ailmentIndication.indicationDescription"></textarea>
                                     <br /><br />
                                     <button style="float: right; margin-top: 5px;" nbButton
-                                        status="success" (click)="createAilmentIndication()">Dodaj</button>
+                                        status="success" (click)="createAilmentIndication()">Add</button>
                                 </div>
                                 </nb-card-body>
                                 </nb-card>
@@ -80,10 +80,10 @@
                                 </nb-card>
 
                     </nb-tab>
-                    <nb-tab tabTitle="Pliki">
+                    <nb-tab tabTitle="Files manager">
                       <file-manager [ailmentId]="ailmentId" [currentUser]="currentUser"></file-manager>
                     </nb-tab>
-                    <nb-tab tabTitle="Rozmowa" *ngIf="isAilmentOwner()">
+                    <nb-tab tabTitle="Messenger" *ngIf="isAilmentOwner()">
                       <messenger [messageRoomId]="messengerMessageRoomId" [currentUser]="currentUser"></messenger>
 
                   </nb-tab>
