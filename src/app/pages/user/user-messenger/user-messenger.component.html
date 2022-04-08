@@ -39,7 +39,7 @@
             <nb-card-body>
               <nb-list>
                 <nb-list-item *ngFor="let notification of userMessageNotification">
-                  <nb-user [name]="'Nowa wiadomość- ' + notification.userSender.userName +' '+ notification.userSender.userSurname" [title]="notification.postDate |date: 'dd.MM.yyyy HH:mm:ss'">
+                  <nb-user [name]="'New message- ' + notification.userSender.userName +' '+ notification.userSender.userSurname" [title]="notification.postDate |date: 'dd.MM.yyyy HH:mm:ss'">
                   </nb-user>
                   <button style="float: right !important;" nbButton status="primary" size="tiny"
                     (click)="openMessageNotification(notification.idMessageNotification, notification.userSender.userId)">Open</button>

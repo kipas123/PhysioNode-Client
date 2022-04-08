@@ -70,8 +70,8 @@
                             <td>{{visit.userServiceTypeDTO.userServiceTypeName}}</td>
                             <td>{{visit.userServiceTypeDTO.userServiceTypeDuration}}</td>
                             <td>{{visit.userDTO.userName}} {{visit.userDTO.userSurname}}</td>
-                            <td><button nbButton status="danger" size="tiny" (click)="changeVisitStatus(visit.idUserVisit, 2)">Anuluj</button>
-                                <button nbButton status="success" size="tiny" (click)="changeVisitStatus(visit.idUserVisit, 1)">Akceptuj</button>
+                            <td><button nbButton status="danger" size="tiny" (click)="changeVisitStatus(visit.idUserVisit, 2)">Cancel</button>
+                                <button nbButton status="success" size="tiny" (click)="changeVisitStatus(visit.idUserVisit, 1)">Accept</button>
                             </td>
                             </tr>
                         </tbody>

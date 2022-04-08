@@ -51,6 +51,7 @@ export class VisitManagementComponent implements OnInit {
       response => {
         this.alertChangeVisitStatus = true;
         this.getReservationToAccept();
+        this.getReservation();
       }
     );
   }

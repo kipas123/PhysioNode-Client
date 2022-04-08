@@ -21,17 +21,18 @@
     </nb-card>
   </div>
   <div class="col-lg-12">
-    <nb-card>
-      <nb-card-header>Dodaj ćwiczenie: </nb-card-header>
+    <nb-card *ngIf="currentUser.userRoleDTO.roleName=='coach' || currentUser.userRoleDTO.roleName=='admin'">
+      <!-- currentUser.userRoleDTO.roleName=='coach' || currentUser.userRoleDTO.roleName=='admin'" -->
+      <nb-card-header>Add exercise: </nb-card-header>
       <nb-card-body>
         <nb-alert status="success" closable (close)="onClose()" *ngIf="alertCreateExerciseIsOpen">
-          Dodano ćwiczenie!
+          Exercise added!
         </nb-alert>
         <div class="full-name-inputs">
-          <input type="text" nbInput fullWidth placeholder="Nazwa ćwiczenia" #name="ngModel"
+          <input type="text" nbInput fullWidth placeholder="Exercise name" #name="ngModel"
             [(ngModel)]="exerciseWriteModel._exerciseName">
           <br /><br />
-          <textarea nbInput fullWidth placeholder="Krótki opis ćwiczenia" #description="ngModel"
+          <textarea nbInput fullWidth placeholder="Exercise short desc" #description="ngModel"
             [(ngModel)]="exerciseWriteModel._exerciseDescription"></textarea>
           <br /><br />
           <button style="float: right; margin-top: 5px;" nbButton status="success"
@@ -39,24 +40,24 @@
         </div>
       </nb-card-body>
     </nb-card>
-    <!-- <nb-card>
-      <nb-card-header>Dodaj chorobę: </nb-card-header>
+    <nb-card *ngIf="currentUser.userRoleDTO.roleName=='physiotherapist'">
+      <nb-card-header>Add ailment: </nb-card-header>
       <nb-card-body>
         <nb-alert status="success" closable (close)="onClose()" *ngIf="alertCreateAilmentIsOpen">
-          Dodano leczenie!
+          Ailment added!
         </nb-alert>
         <div class="full-name-inputs">
-          <input type="text" nbInput fullWidth placeholder="Nazwa choroby" #name="ngModel"
+          <input type="text" nbInput fullWidth placeholder="Ailment name" #name="ngModel"
             [(ngModel)]="ailment.ailmentName">
           <br /><br />
-          <textarea nbInput fullWidth placeholder="Krótki opis choroby" #description="ngModel"
+          <textarea nbInput fullWidth placeholder="Ailment short desc" #description="ngModel"
             [(ngModel)]="ailment.ailmentDescription"></textarea>
           <br /><br />
           <button style="float: right; margin-top: 5px;" nbButton status="success"
             (click)="createAilment()">Success</button>
         </div>
       </nb-card-body>
-    </nb-card> -->
+    </nb-card>
   </div>
   <div class="col-lg-6">
     <nb-card>
@@ -66,13 +67,13 @@
         <nb-accordion multi>
           <nb-accordion-item *ngFor="let ailment of ailments">
             <nb-accordion-item-header>
-              {{ailment.ailmentName}} <button nbButton *ngIf="isAilmentOwner(ailment.attendingphysician)" size="tiny" status="warning" disabled> Prowadzący</button>
+              {{ailment.ailmentName}} <button nbButton *ngIf="isAilmentOwner(ailment.attendingphysician)" size="tiny" status="warning" disabled> access</button>
             </nb-accordion-item-header>
             <nb-accordion-item-body>
               {{ailment.ailmentDescription}}
               <br />
               <button style="float: right; margin-top: 5px;" nbButton status="warning"
-                (click)="goToAilment(ailment.idailment)">Wyświetl</button>
+                (click)="goToAilment(ailment.idailment)">View</button>
             </nb-accordion-item-body>
           </nb-accordion-item>
         </nb-accordion>
@@ -87,7 +88,7 @@
         <nb-accordion multi>
           <nb-accordion-item *ngFor="let exercise of userExercise">
             <nb-accordion-item-header>
-              {{exercise.exerciseName}} <button nbButton *ngIf="isExerciseOwner(exercise.attendingCoach)" size="tiny" status="warning" disabled> Leading:</button>
+              {{exercise.exerciseName}} <button nbButton *ngIf="isExerciseOwner(exercise.attendingCoach)" size="tiny" status="warning" disabled> access:</button>
             </nb-accordion-item-header>
             <nb-accordion-item-body>
               {{exercise.exerciseDescription}}

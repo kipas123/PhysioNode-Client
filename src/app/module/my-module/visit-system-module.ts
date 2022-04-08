@@ -3,7 +3,7 @@ import { ThemeModule } from 'app/@theme/theme.module';
 import { FormsModule } from '@angular/forms';
 import { VisitCreatorComponent } from 'app/pages/visit_system/physiotherapist/visit-creator/visit-creator.component';
 import { PagesRoutingModule } from 'app/pages/pages-routing.module';
-import { NbAccordionModule, NbAlertModule, NbButtonModule, NbCalendarModule, NbCardModule, NbInputModule, NbListModule, NbMenuModule, NbSelectModule } from '@nebular/theme';
+import { NbAccordionModule, NbAlertModule, NbButtonModule, NbCalendarModule, NbCardModule, NbInputModule, NbListModule, NbMenuModule, NbSelectModule, NbWindowModule } from '@nebular/theme';
 import { SearchServiceProviderComponent } from 'app/pages/visit_system/client/search-service-provider/search-service-provider.component';
 import { GetAppointmentComponent } from 'app/pages/visit_system/client/get-appointment/get-appointment.component';
 import { VisitManagementComponent } from 'app/pages/visit_system/physiotherapist/visit-management/visit-management.component';
@@ -34,7 +34,7 @@ import { VisitHistoryComponent } from 'app/pages/visit_system/physiotherapist/vi
     NbInputModule,
     NbAccordionModule,
     NbAlertModule,
-    NbAccordionModule
+    NbAccordionModule,
   ]
 })
 export class MyModuleModule { }

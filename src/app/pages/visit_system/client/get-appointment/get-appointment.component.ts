@@ -91,6 +91,7 @@ getAvailableHours(){
 handleSelectChange(value){
   this.bookVisitSuccessfull = false;
   this.chosenServiceId = value;
+  console.log(this.chosenServiceId);
 }
 
 getAvailableUserServiceType(chosenHour){
