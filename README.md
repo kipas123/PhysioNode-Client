@@ -1,5 +1,5 @@
 ## Physio-Node - Frontend (Angular)
-<p align="center"><img src="https://i.ibb.co/72czZ3W/Physio-2.png" border="0"></p>
+<p align="center"><img src='https://i.postimg.cc/VvnkWZrN/Physio-2.png' border='0' alt='Physio-2'/></p>
 
 
 ## Overview
